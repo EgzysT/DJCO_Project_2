@@ -35,7 +35,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - MainCameraHide
   - 
   m_SortingLayers:
   - name: Default
