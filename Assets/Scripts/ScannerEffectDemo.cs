@@ -39,15 +39,15 @@ public class ScannerEffectDemo : MonoBehaviour
 
 		if (Input.GetMouseButtonDown(0))
 		{
-			Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-			RaycastHit hit;
+			//Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+			//RaycastHit hit;
 
-			if (Physics.Raycast(ray, out hit))
-			{
-				_scanning = true;
-				ScanDistance = 0;
-				ScannerOrigin.position = hit.point;
-			}
+			//if (Physics.Raycast(ray, out hit))
+			//{
+			//	_scanning = true;
+			//	ScanDistance = 0;
+			//	ScannerOrigin.position = hit.point;
+			//}
 		}
 	}
 	// End Demo Code
