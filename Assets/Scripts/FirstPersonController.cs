@@ -69,6 +69,7 @@ public class FirstPersonController : MonoBehaviour {
     public MovementSettings movementSettings = new MovementSettings();
     public MouseLook mouseLook = new MouseLook();
     public AdvancedSettings advancedSettings = new AdvancedSettings();
+    public bool canLook = true;
 
 
     private Rigidbody m_RigidBody;
@@ -191,7 +192,8 @@ public class FirstPersonController : MonoBehaviour {
         // get the rotation before it's changed
         float oldYRotation = transform.eulerAngles.y;
 
-        mouseLook.LookRotation(transform, cam.transform);
+        if(canLook)
+            mouseLook.LookRotation(transform, cam.transform);
 
         if (m_IsGrounded || advancedSettings.airControl) {
             // Rotate the rigidbody velocity to match the new direction that the character is looking
