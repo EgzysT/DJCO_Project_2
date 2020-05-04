@@ -11,6 +11,7 @@ public class PickupAbility : MonoBehaviour
     private FirstPersonController fpController;
     private float throwForce = 300;
     private bool isHolding = false;
+    private Pickupable lastLookedObject;
     public bool canHold = true;
 
     [Header("Rotate Object")]
@@ -28,37 +29,47 @@ public class PickupAbility : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (isHolding)
         {
-            if (isHolding)
-            {
-                Drop();
-            }
-            else if (canHold)
-            {
-                Pickup();
-            }
+            Carry();
+            CheckDrop();
         }
-        Carry();
+        else if (canHold)
+        {
+            Pickup();
+        }
     }
 
     void Pickup()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            int x = Screen.width / 2;
-            int y = Screen.height / 2;
+        
+        int x = Screen.width / 2;
+        int y = Screen.height / 2;
 
-            Ray ray = Camera.main.ScreenPointToRay(new Vector3(x, y));
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+        Ray ray = Camera.main.ScreenPointToRay(new Vector3(x, y));
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {    
+            Pickupable p = hit.collider.GetComponent<Pickupable>();
+
+            if (lastLookedObject != null && lastLookedObject != p)
+                lastLookedObject.TurnOffShader();
+            lastLookedObject = p;
+
+            if (lastLookedObject != null && hit.distance > DISTANCE)
             {
-                if (hit.distance > DISTANCE) return;
-                
-                Pickupable p = hit.collider.GetComponent<Pickupable>();
+                lastLookedObject.TurnOffShader();
+                lastLookedObject = null;
+                return;
+            }
 
-                if (p != null)
+            if (p != null)
+            {
+                p.TurnOnShader();
+
+                if (Input.GetKeyDown(KeyCode.E))
                 {
+                    p.TurnOffShader();
                     isHolding = true;
                     pickedItemRB = hit.collider.GetComponent<Rigidbody>();
                     pickedItemRB.isKinematic = true;
@@ -71,6 +82,14 @@ public class PickupAbility : MonoBehaviour
                     m_OriginalRotation = pickedItemRB.transform.localRotation;
                 }
             }
+        }
+    }
+
+    void CheckDrop()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Drop();
         }
     }
 
@@ -87,23 +106,20 @@ public class PickupAbility : MonoBehaviour
 
     void Carry()
     {
-        if (isHolding)
+        //holdingObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        pickedItemRB.angularVelocity = Vector3.zero;
+
+        CheckRotate();
+
+        if (Input.GetMouseButtonDown(0))
         {
-            //holdingObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            pickedItemRB.angularVelocity = Vector3.zero;
-
-            Rotate();
-
-            if (Input.GetMouseButtonDown(0))
-            {
-                Rigidbody tempRB = pickedItemRB;
-                Drop();
-                tempRB.AddForce(Camera.main.transform.forward * throwForce);
-            }
+            Rigidbody tempRB = pickedItemRB;
+            Drop();
+            tempRB.AddForce(Camera.main.transform.forward * throwForce);
         }
     }
     
-    void Rotate()
+    void CheckRotate()
     {
         if (Input.GetKeyDown(KeyCode.R))
             fpController.canLook = false;
