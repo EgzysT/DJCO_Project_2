@@ -7,37 +7,29 @@ public class Pickupable : MonoBehaviour
     public float ZoomSpeed = 50f;
     public float ThrowForce = 10f;
 
+    public float MinZoomDistance = 1f;
+    public float MaxZoomDistance = 3f;
+
     public bool canHold = true;
     public bool isHolding = false;
 
-    private Rigidbody rb;
+    private new Rigidbody rigidbody;
+    private new Camera camera;
     private GameObject holdSpot;
     private MouseLook firstPerson;
 
-    //private Transform currentTransform;
-    //private float currentRotation;
-
-    //private Renderer renderer;
-    //private Shader defaultShader;
-    //private Shader outlinedShader;
-
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rigidbody = GetComponent<Rigidbody>();
         holdSpot = GameObject.Find("HoldSpot");
         firstPerson = GameObject.Find("MainCamera").GetComponent<MouseLook>();
-
-        //renderer = GetComponent<Renderer>();
-        //defaultShader = renderer.material.shader;
-        //outlinedShader = Shader.Find("Outlined/UltimateOutline");
+        camera = Camera.main;
     }
 
     private void Update()
     {
         if (!isHolding)
             return;
-
-        //rb.MovePosition(currentTransform.position);
 
         firstPerson.canLook = !Input.GetKey(KeyCode.R);
 
@@ -68,18 +60,25 @@ public class Pickupable : MonoBehaviour
             return;
 
         isHolding = true;
-        rb.useGravity = false;
-        transform.SetParent(holdSpot.transform);
+        rigidbody.useGravity = false;
 
-        currentTransform = rb.transform;
+        holdSpot.transform.position = transform.position;
+        transform.SetParent(holdSpot.transform);
+        holdSpot.GetComponent<FixedJoint>().connectedBody = rigidbody;
+
+        rigidbody.freezeRotation = true;
     }
 
     private void Drop()
     {
         isHolding = false;
-        rb.useGravity = true;
-        rb.detectCollisions = true;
+        rigidbody.useGravity = true;
+        rigidbody.detectCollisions = true;
+
         transform.SetParent(null);
+        holdSpot.GetComponent<FixedJoint>().connectedBody = null;
+
+        rigidbody.freezeRotation = false;
 
         // Make sure to free the camera after dropping
         firstPerson.canLook = true;
@@ -90,11 +89,15 @@ public class Pickupable : MonoBehaviour
         if (!isHolding || !Input.GetKey(KeyCode.R))
             return;
 
+        rigidbody.freezeRotation = false;
+
         float xRotation = -Input.GetAxis("Mouse X") * RotationSpeed;
         float yRotation = Input.GetAxis("Mouse Y") * RotationSpeed;
 
-        transform.Rotate(transform.parent.up, xRotation, Space.World);
-        transform.Rotate(transform.parent.right, yRotation, Space.World);
+        holdSpot.transform.Rotate(camera.transform.up, xRotation, Space.World);
+        holdSpot.transform.Rotate(camera.transform.right, yRotation, Space.World);
+
+        rigidbody.freezeRotation = true;
     }
 
     private void Zoom()
@@ -103,8 +106,12 @@ public class Pickupable : MonoBehaviour
             return;
 
         float zoom = Input.GetAxis("Mouse ScrollWheel") * ZoomSpeed;
+        float distance = Mathf.Clamp(Vector3.Distance(holdSpot.transform.position, camera.transform.position), MinZoomDistance, MaxZoomDistance);
 
-        //transform.Translate(transform.parent.forward * zoom * Time.deltaTime, Space.World);
+        if ((zoom < 0 && distance <= MinZoomDistance) || (zoom > 0 && distance >= MaxZoomDistance))
+            return;
+
+        holdSpot.transform.Translate(camera.transform.forward * zoom * Time.deltaTime, Space.World);
     }
 
     private void Throw()
@@ -112,18 +119,8 @@ public class Pickupable : MonoBehaviour
         if (!isHolding)
             return;
 
-        rb.AddForce(transform.parent.forward * ThrowForce, ForceMode.Impulse);
-
         Drop();
+
+        rigidbody.AddForce(camera.transform.forward * ThrowForce, ForceMode.Impulse);
     }
-
-    //public void TurnOnShader()
-    //{
-    //    renderer.material.shader = outlinedShader;
-    //}
-
-    //public void TurnOffShader()
-    //{
-    //    renderer.material.shader = defaultShader;
-    //}
 }
