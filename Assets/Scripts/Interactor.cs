@@ -44,6 +44,7 @@ public class Interactor {
         else
         {
             crosshairController.ShowNone();
+            currentlyLooking.CheckDistance();
             currentlyLooking.Zoom();
 
             if (Input.GetMouseButtonUp(0)) 
