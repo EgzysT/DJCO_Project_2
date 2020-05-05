@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
-public class Pickupable : MonoBehaviour
-{
+public class Pickupable : MonoBehaviour {
     //public float Distance = 3f;
     public float RotationSpeed = 5f;
     public float ZoomSpeed = 50f;
@@ -10,55 +9,63 @@ public class Pickupable : MonoBehaviour
     public float MinZoomDistance = 1f;
     public float MaxZoomDistance = 3f;
 
-    public bool canHold = true;
     public bool isHolding = false;
 
     private new Rigidbody rigidbody;
     private new Camera camera;
     private GameObject holdSpot;
-    private MouseLook firstPerson;
+    //private MouseLook firstPerson;
 
-    private void Start()
-    {
+    //private Transform currentTransform;
+    //private float currentRotation;
+
+    //private Renderer renderer;
+    //private Shader defaultShader;
+    //private Shader outlinedShader;
+
+
+
+    private void Start() {
         rigidbody = GetComponent<Rigidbody>();
         holdSpot = GameObject.Find("HoldSpot");
-        firstPerson = GameObject.Find("MainCamera").GetComponent<MouseLook>();
+        //firstPerson = GameObject.Find("MainCamera").GetComponent<MouseLook>();
+
+        //renderer = GetComponent<Renderer>();
+        //defaultShader = renderer.material.shader;
+        //outlinedShader = Shader.Find("Outlined/UltimateOutline");
         camera = Camera.main;
     }
 
-    private void Update()
-    {
-        if (!isHolding)
-            return;
+    //private void Update() {
+        //if (!isHolding)
+        //    return;
 
-        firstPerson.canLook = !Input.GetKey(KeyCode.R);
+        ////rb.MovePosition(currentTransform.position);
 
-        Zoom();
+        //firstPerson.canLook = !Input.GetKey(KeyCode.R);
 
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-            Throw();
-    }
+        //Zoom();
 
-    private void OnMouseDown()
-    {
-        Pick();
-    }
+        //if (Input.GetKeyDown(KeyCode.Mouse1))
+        //    Throw();
+    //}
 
-    private void OnMouseUp()
-    {
-        Drop();
-    }
+    //private void OnMouseDown()
+    //{
+    //    Pick();
+    //}
 
-    private void OnMouseDrag()
-    {
-        Rotate();
-    }
+    //private void OnMouseUp()
+    //{
+    //    Drop();
+    //}
 
-    private void Pick()
-    {
-        if (!canHold)
-            return;
+    //private void OnMouseDrag()
+    //{
+    //    Rotate();
+    //}
 
+    public void Pick() {
         isHolding = true;
         rigidbody.useGravity = false;
 
@@ -66,11 +73,11 @@ public class Pickupable : MonoBehaviour
         transform.SetParent(holdSpot.transform);
         holdSpot.GetComponent<FixedJoint>().connectedBody = rigidbody;
 
+        //currentTransform = rb.transform;
         rigidbody.freezeRotation = true;
     }
 
-    private void Drop()
-    {
+    public void Drop() {
         isHolding = false;
         rigidbody.useGravity = true;
         rigidbody.detectCollisions = true;
@@ -81,12 +88,14 @@ public class Pickupable : MonoBehaviour
         rigidbody.freezeRotation = false;
 
         // Make sure to free the camera after dropping
-        firstPerson.canLook = true;
+        //firstPerson.canLook = true;
     }
 
-    private void Rotate()
-    {
-        if (!isHolding || !Input.GetKey(KeyCode.R))
+    public void Rotate() {
+        //if (!isHolding || !Input.GetKey(KeyCode.R))
+        //    return;
+
+        if (!isHolding)
             return;
 
         rigidbody.freezeRotation = false;
@@ -100,8 +109,7 @@ public class Pickupable : MonoBehaviour
         rigidbody.freezeRotation = true;
     }
 
-    private void Zoom()
-    {
+    public void Zoom() {
         if (!isHolding)
             return;
 
@@ -114,8 +122,7 @@ public class Pickupable : MonoBehaviour
         holdSpot.transform.Translate(camera.transform.forward * zoom * Time.deltaTime, Space.World);
     }
 
-    private void Throw()
-    {
+    public void Throw() {
         if (!isHolding)
             return;
 

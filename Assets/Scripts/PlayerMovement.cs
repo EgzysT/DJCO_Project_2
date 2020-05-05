@@ -3,6 +3,7 @@
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
+    private Interactor interactor;
 
     public float speed = 12f;
     public float gravity = -9.81f;
@@ -18,10 +19,13 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        interactor = new Interactor();
     }
 
     void Update()
     {
+        interactor.Interact();
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask); 
 
         if (isGrounded && velocity.y < 0)
