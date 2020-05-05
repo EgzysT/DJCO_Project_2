@@ -3,7 +3,7 @@
 public class Pickupable : MonoBehaviour
 {
     public float Distance = 3f;
-    public float RotationSpeed = 50f;
+    public float RotationSpeed = 10f;
     public float ZoomSpeed = 50f;
 
     public bool canHold = true;
@@ -30,9 +30,10 @@ public class Pickupable : MonoBehaviour
 
     private void Update()
     {
-        firstPerson.canLook = !(isHolding && Input.GetKey(KeyCode.R));
+        if (!isHolding)
+            return;
 
-        Debug.Log("Can look: " + firstPerson.canLook);
+        firstPerson.canLook = !Input.GetKey(KeyCode.R);
 
         Zoom();
     }
@@ -52,6 +53,9 @@ public class Pickupable : MonoBehaviour
         isHolding = false;
         rb.useGravity = true;
         transform.SetParent(null);
+
+        // Make sure to free the camera after dropping
+        firstPerson.canLook = true;
     }
 
     private void OnMouseDrag()

@@ -327,6 +327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sensitivity: 2
+  canLook: 1
   playerBody: {fileID: 1597467043}
 --- !u!1 &420577486
 GameObject:
@@ -1311,7 +1312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Distance: 3
-  RotationSpeed: 50
+  RotationSpeed: 10
   ZoomSpeed: 50
   canHold: 1
   isHolding: 0
@@ -2052,7 +2053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Distance: 3
-  RotationSpeed: 50
+  RotationSpeed: 10
   ZoomSpeed: 50
   canHold: 1
   isHolding: 0

@@ -4,7 +4,7 @@ public class MouseLook : MonoBehaviour
 {
     public float Sensitivity = 2f;
 
-    public bool canLook { get; set;  } = true;
+    public bool canLook = true;
 
     public Transform playerBody;
 
