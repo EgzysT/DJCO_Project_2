@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -67,14 +67,17 @@ public class Interactor {
     void CheckRaycast() {
         RaycastHit hit;
 
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(screenCenter), out hit, interactionMaxDistance)) {
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(screenCenter), out hit, interactionMaxDistance))
+        {
             currentlyLooking = hit.collider.GetComponent<Pickupable>();
 
-            if (currentlyLooking != null) {
+            if (currentlyLooking != null)
+            {
                 crosshairController.ShowInteract();
                 return;
             }
         }
+        else currentlyLooking = null;
 
         crosshairController.ShowNormal();
     }
