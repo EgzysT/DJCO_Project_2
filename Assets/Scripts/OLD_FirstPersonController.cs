@@ -5,7 +5,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
-public class FirstPersonController : MonoBehaviour {
+public class OLD_FirstPersonController : MonoBehaviour {
 
     [Serializable]
     public class MovementSettings {
@@ -67,7 +67,7 @@ public class FirstPersonController : MonoBehaviour {
 
     public Camera cam;
     public MovementSettings movementSettings = new MovementSettings();
-    public MouseLook mouseLook = new MouseLook();
+    public OLD_MouseLook mouseLook = new OLD_MouseLook();
     public AdvancedSettings advancedSettings = new AdvancedSettings();
     public bool canLook = true;
 
