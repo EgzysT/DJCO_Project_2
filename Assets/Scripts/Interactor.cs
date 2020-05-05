@@ -18,67 +18,69 @@ public class Interactor {
     }
 
     public void Interact() {
-
-        if (currentlyLooking == null || (currentlyLooking.isHolding == false))
+        
+        // Check if not holding the object because of distance
+        if (currentlyLooking == null || !currentlyLooking.isHolding)
             CheckRaycast();
 
-        if (Input.GetMouseButtonDown(0)) {
-            if (currentlyLooking != null) {
-                currentlyLooking.Pick();
-                crosshairController.ShowInteract();
-            }
+        if (currentlyLooking == null)
+        {
+            crosshairController.ShowNormal();
+            return;
         }
 
-        if (currentlyLooking != null && currentlyLooking.isHolding) {
+        if (!currentlyLooking.isHolding)
+        {
+            crosshairController.ShowInteract();
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                currentlyLooking.Pick();
+                crosshairController.ShowNone();
+            }
+
+            firstPerson.canLook = true;
+        } 
+        else
+        {
             crosshairController.ShowNone();
             currentlyLooking.Zoom();
 
-            if (Input.GetMouseButtonUp(0)) {
+            if (Input.GetMouseButtonUp(0)) 
+            {
                 currentlyLooking.Drop();
                 currentlyLooking = null;
                 crosshairController.ShowNormal();
                 return;
             }
 
-            if (Input.GetMouseButtonDown(1)) {
+            if (Input.GetMouseButtonDown(1)) 
+            {
                 currentlyLooking.Throw();
                 currentlyLooking = null;
                 crosshairController.ShowNormal();
                 return;
             }
 
-            if (Input.GetKey(KeyCode.R)) {
+            if (Input.GetKey(KeyCode.R)) 
+            {
                 firstPerson.canLook = false;
                 currentlyLooking.Rotate();
             }
-            else {
+            else 
+            {
                 firstPerson.canLook = true;
-            }
-        }
-        else {
-            firstPerson.canLook = true;
-
-            if (Input.GetMouseButtonDown(0)) {
-                CheckRaycast();
             }
         }
     }
 
-    void CheckRaycast() {
+    void CheckRaycast()
+    {
         RaycastHit hit;
 
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(screenCenter), out hit, interactionMaxDistance))
-        {
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(screenCenter), out hit, interactionMaxDistance)) 
             currentlyLooking = hit.collider.GetComponent<Pickupable>();
-
-            if (currentlyLooking != null)
-            {
-                crosshairController.ShowInteract();
-                return;
-            }
-        }
-        else currentlyLooking = null;
-
-        crosshairController.ShowNormal();
+        else
+            currentlyLooking = null;
     }
 }
