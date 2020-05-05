@@ -11,6 +11,7 @@ public class Pickupable : MonoBehaviour
     public float MaxZoomDistance = 3f;
     public float MaxDistance = 3.8f;
     public float MaxCollisionVelocity = 3.8f;
+    public float MaxAngle = 35f;
 
     public bool isHolding = false;
 
@@ -85,6 +86,13 @@ public class Pickupable : MonoBehaviour
     {
         float distance = Vector3.Distance(transform.position, camera.transform.position);
         if (distance > MaxDistance)
+            Drop();
+    }
+
+    public void CheckAngle()
+    {
+        float angle = Vector3.Angle(camera.transform.forward, transform.position - camera.transform.position);
+        if (angle > MaxAngle)
             Drop();
     }
 }
