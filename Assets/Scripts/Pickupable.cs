@@ -2,9 +2,10 @@
 
 public class Pickupable : MonoBehaviour
 {
-    public float Distance = 3f;
-    public float RotationSpeed = 10f;
+    //public float Distance = 3f;
+    public float RotationSpeed = 5f;
     public float ZoomSpeed = 50f;
+    public float ThrowForce = 10f;
 
     public bool canHold = true;
     public bool isHolding = false;
@@ -12,6 +13,9 @@ public class Pickupable : MonoBehaviour
     private Rigidbody rb;
     private GameObject holdSpot;
     private MouseLook firstPerson;
+
+    //private Transform currentTransform;
+    //private float currentRotation;
 
     //private Renderer renderer;
     //private Shader defaultShader;
@@ -33,6 +37,8 @@ public class Pickupable : MonoBehaviour
         if (!isHolding)
             return;
 
+        //rb.MovePosition(currentTransform.position);
+
         firstPerson.canLook = !Input.GetKey(KeyCode.R);
 
         Zoom();
@@ -43,7 +49,7 @@ public class Pickupable : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Pickup();
+        Pick();
     }
 
     private void OnMouseUp()
@@ -56,7 +62,7 @@ public class Pickupable : MonoBehaviour
         Rotate();
     }
 
-    private void Pickup()
+    private void Pick()
     {
         if (!canHold)
             return;
@@ -64,12 +70,15 @@ public class Pickupable : MonoBehaviour
         isHolding = true;
         rb.useGravity = false;
         transform.SetParent(holdSpot.transform);
+
+        currentTransform = rb.transform;
     }
 
     private void Drop()
     {
         isHolding = false;
         rb.useGravity = true;
+        rb.detectCollisions = true;
         transform.SetParent(null);
 
         // Make sure to free the camera after dropping
@@ -95,7 +104,7 @@ public class Pickupable : MonoBehaviour
 
         float zoom = Input.GetAxis("Mouse ScrollWheel") * ZoomSpeed;
 
-        transform.Translate(transform.parent.forward * zoom * Time.deltaTime, Space.World);
+        //transform.Translate(transform.parent.forward * zoom * Time.deltaTime, Space.World);
     }
 
     private void Throw()
@@ -103,7 +112,7 @@ public class Pickupable : MonoBehaviour
         if (!isHolding)
             return;
 
-        rb.AddForce(transform.parent.forward * 10f, ForceMode.Impulse);
+        rb.AddForce(transform.parent.forward * ThrowForce, ForceMode.Impulse);
 
         Drop();
     }
@@ -117,5 +126,4 @@ public class Pickupable : MonoBehaviour
     //{
     //    renderer.material.shader = defaultShader;
     //}
-
 }
