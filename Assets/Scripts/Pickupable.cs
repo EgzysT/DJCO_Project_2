@@ -36,9 +36,27 @@ public class Pickupable : MonoBehaviour
         firstPerson.canLook = !Input.GetKey(KeyCode.R);
 
         Zoom();
+
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+            Throw();
     }
 
     private void OnMouseDown()
+    {
+        Pickup();
+    }
+
+    private void OnMouseUp()
+    {
+        Drop();
+    }
+
+    private void OnMouseDrag()
+    {
+        Rotate();
+    }
+
+    private void Pickup()
     {
         if (!canHold)
             return;
@@ -48,7 +66,7 @@ public class Pickupable : MonoBehaviour
         transform.SetParent(holdSpot.transform);
     }
 
-    private void OnMouseUp()
+    private void Drop()
     {
         isHolding = false;
         rb.useGravity = true;
@@ -58,7 +76,7 @@ public class Pickupable : MonoBehaviour
         firstPerson.canLook = true;
     }
 
-    private void OnMouseDrag()
+    private void Rotate()
     {
         if (!isHolding || !Input.GetKey(KeyCode.R))
             return;
@@ -82,7 +100,12 @@ public class Pickupable : MonoBehaviour
 
     private void Throw()
     {
+        if (!isHolding)
+            return;
 
+        rb.AddForce(transform.parent.forward * 10f, ForceMode.Impulse);
+
+        Drop();
     }
 
     //public void TurnOnShader()
