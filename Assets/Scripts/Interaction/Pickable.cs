@@ -49,7 +49,6 @@ public class Pickable : InteractableObject
         transform.SetParent(holdSpot.transform);
         holdSpot.GetComponent<FixedJoint>().connectedBody = rigidbody;
 
-        //currentTransform = rb.transform;
         rigidbody.freezeRotation = true;
     }
 
@@ -99,7 +98,7 @@ public class Pickable : InteractableObject
     private void CheckDistance()
     {
         float distance = Vector3.Distance(transform.position, camera.transform.position);
-        if (distance > MaxDistance && distance < MinDistance)
+        if (distance > MaxDistance || distance < MinDistance)
             Drop();
     }
 
