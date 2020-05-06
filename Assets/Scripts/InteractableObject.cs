@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-public class InteractableObject : MonoBehaviour
+public abstract class InteractableObject : MonoBehaviour
 {
     public bool isInteracting = false;
-    public virtual void LeftMouseButtonDown() { }
-    public virtual void LeftMouseButtonUp() { }
-    public virtual void RightMouseButtonDown() { }
-    public virtual void PressR() { }
-    public virtual void Interacting() { }
+    public abstract void LeftMouseButtonDown();
+    public abstract void LeftMouseButtonUp();
+    public abstract void RightMouseButtonDown();
+    public abstract void PressR();
+    public abstract void Interacting();
 }
