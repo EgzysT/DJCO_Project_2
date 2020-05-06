@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Pickupable : InteractableObject
@@ -9,6 +10,7 @@ public class Pickupable : InteractableObject
     public float MinZoomDistance = 1f;
     public float MaxZoomDistance = 3f;
     public float MaxDistance = 3.8f;
+    public float MinDistance = 0.8f;
     public float MaxCollisionVelocity = 3.8f;
     public float MaxAngle = 35f;
 
@@ -21,6 +23,8 @@ public class Pickupable : InteractableObject
         rigidbody = GetComponent<Rigidbody>();
         holdSpot = GameObject.Find("HoldSpot");
         camera = Camera.main;
+        if (MaxDistance <= MaxZoomDistance || MinDistance >= MinZoomDistance)
+            throw new Exception("[" + gameObject.name + "] MinDistance must be < than MinZoomDistance and MaxDistance must be > than MaxZoomDistance");
     }
 
     private void Pick() 
@@ -82,7 +86,7 @@ public class Pickupable : InteractableObject
     private void CheckDistance()
     {
         float distance = Vector3.Distance(transform.position, camera.transform.position);
-        if (distance > MaxDistance)
+        if (distance > MaxDistance && distance < MinDistance)
             Drop();
     }
 
