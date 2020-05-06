@@ -1,8 +1,10 @@
 using System;
 using UnityEngine;
 
-public class Pickupable : InteractableObject
+[RequireComponent(typeof(AudioSource))]
+public class Pickable : InteractableObject
 {
+    [Header("Contraints")]
     public float RotationSpeed = 5f;
     public float ZoomSpeed = 50f;
     public float ThrowForce = 10f;
@@ -14,6 +16,10 @@ public class Pickupable : InteractableObject
     public float MaxCollisionVelocity = 3.8f;
     public float MaxAngle = 35f;
 
+    [Header("Sounds")]
+    public AudioEvent collisionAudioEvent;
+    private AudioSource audioSource;
+
     private new Rigidbody rigidbody;
     private new Camera camera;
     private GameObject holdSpot;
@@ -23,8 +29,15 @@ public class Pickupable : InteractableObject
         rigidbody = GetComponent<Rigidbody>();
         holdSpot = GameObject.Find("HoldSpot");
         camera = Camera.main;
+        audioSource = GetComponent<AudioSource>();
+        audioSource.spatialBlend = 1.0f;
+
         if (MaxDistance <= MaxZoomDistance || MinDistance >= MinZoomDistance)
             throw new Exception("[" + gameObject.name + "] MinDistance must be < than MinZoomDistance and MaxDistance must be > than MaxZoomDistance");
+    }
+
+    private void OnCollisionEnter(Collision collision) {
+        collisionAudioEvent.Play(audioSource);
     }
 
     private void Pick() 

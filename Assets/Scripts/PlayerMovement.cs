@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
@@ -16,10 +17,15 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity;
     bool isGrounded;
 
+    public AudioEvent ouchAudioEvent;
+    private AudioSource audioSource;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
         interactor = new Interactor();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.spatialBlend = 1.0f;
     }
 
     void Update()
@@ -48,5 +54,10 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    private void OnCollisionEnter(Collision collision) {
+        if (collision.gameObject.GetComponent<Pickable>() != null)
+            ouchAudioEvent.Play(audioSource);
     }
 }
