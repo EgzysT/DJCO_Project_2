@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class Pickupable : MonoBehaviour 
+public class Pickupable : InteractableObject
 {
-    //public float Distance = 3f;
     public float RotationSpeed = 5f;
     public float ZoomSpeed = 50f;
     public float ThrowForce = 10f;
@@ -12,8 +11,6 @@ public class Pickupable : MonoBehaviour
     public float MaxDistance = 3.8f;
     public float MaxCollisionVelocity = 3.8f;
     public float MaxAngle = 35f;
-
-    public bool isHolding = false;
 
     private new Rigidbody rigidbody;
     private new Camera camera;
@@ -26,9 +23,9 @@ public class Pickupable : MonoBehaviour
         camera = Camera.main;
     }
 
-    public void Pick() 
+    private void Pick() 
     {
-        isHolding = true;
+        isInteracting = true;
         rigidbody.useGravity = false;
 
         holdSpot.transform.position = transform.position;
@@ -39,9 +36,9 @@ public class Pickupable : MonoBehaviour
         rigidbody.freezeRotation = true;
     }
 
-    public void Drop() 
+    private void Drop() 
     {
-        isHolding = false;
+        isInteracting = false;
         rigidbody.useGravity = true;
         rigidbody.detectCollisions = true;
 
@@ -51,7 +48,7 @@ public class Pickupable : MonoBehaviour
         rigidbody.freezeRotation = false;
     }
 
-    public void Rotate() 
+    private void Rotate() 
     {
         rigidbody.freezeRotation = false;
 
@@ -64,7 +61,7 @@ public class Pickupable : MonoBehaviour
         rigidbody.freezeRotation = true;
     }
 
-    public void Zoom() 
+    private void Zoom() 
     {
         float zoom = Input.GetAxis("Mouse ScrollWheel") * ZoomSpeed;
         float distance = Mathf.Clamp(Vector3.Distance(holdSpot.transform.position, camera.transform.position), MinZoomDistance, MaxZoomDistance);
@@ -75,24 +72,52 @@ public class Pickupable : MonoBehaviour
         holdSpot.transform.Translate(camera.transform.forward * zoom * Time.deltaTime, Space.World);
     }
 
-    public void Throw() 
+    private void Throw() 
     {
         Drop();
 
         rigidbody.AddForce(camera.transform.forward * ThrowForce, ForceMode.Impulse);
     }
 
-    public void CheckDistance()
+    private void CheckDistance()
     {
         float distance = Vector3.Distance(transform.position, camera.transform.position);
         if (distance > MaxDistance)
             Drop();
     }
 
-    public void CheckAngle()
+    private void CheckAngle()
     {
         float angle = Vector3.Angle(camera.transform.forward, transform.position - camera.transform.position);
         if (angle > MaxAngle)
             Drop();
+    }
+
+    // Implement InteractableObject methods
+    public override void LeftMouseButtonDown()
+    {
+        Pick();
+    }
+
+    public override void LeftMouseButtonUp()
+    {
+        Drop();
+    }
+
+    public override void RightMouseButtonDown()
+    {
+        Throw();
+    }
+
+    public override void PressR()
+    {
+        Rotate();
+    }
+
+    public override void Interacting()
+    {
+        CheckDistance();
+        CheckAngle();
+        Zoom();
     }
 }

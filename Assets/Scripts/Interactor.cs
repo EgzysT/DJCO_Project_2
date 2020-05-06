@@ -8,7 +8,7 @@ public class Interactor {
 
     private Vector3 screenCenter;
     private readonly CrosshairController crosshairController;
-    private Pickupable currentlyLooking;
+    private InteractableObject currentlyLooking;
     private readonly MouseLook firstPerson;
 
     public Interactor() {
@@ -20,7 +20,7 @@ public class Interactor {
     public void Interact() {
         
         // Check if not holding the object because of distance
-        if (currentlyLooking == null || !currentlyLooking.isHolding)
+        if (currentlyLooking == null || !currentlyLooking.isInteracting)
             CheckRaycast();
 
         if (currentlyLooking == null)
@@ -29,13 +29,13 @@ public class Interactor {
             return;
         }
 
-        if (!currentlyLooking.isHolding)
+        if (!currentlyLooking.isInteracting)
         {
             crosshairController.ShowInteract();
 
             if (Input.GetMouseButtonDown(0))
             {
-                currentlyLooking.Pick();
+                currentlyLooking.LeftMouseButtonDown();
                 crosshairController.ShowNone();
             }
 
@@ -44,13 +44,11 @@ public class Interactor {
         else
         {
             crosshairController.ShowNone();
-            currentlyLooking.CheckDistance();
-            currentlyLooking.CheckAngle();
-            currentlyLooking.Zoom();
+            currentlyLooking.Interacting();
 
             if (Input.GetMouseButtonUp(0)) 
             {
-                currentlyLooking.Drop();
+                currentlyLooking.LeftMouseButtonUp();
                 currentlyLooking = null;
                 crosshairController.ShowNormal();
                 return;
@@ -58,7 +56,7 @@ public class Interactor {
 
             if (Input.GetMouseButtonDown(1)) 
             {
-                currentlyLooking.Throw();
+                currentlyLooking.RightMouseButtonDown();
                 currentlyLooking = null;
                 crosshairController.ShowNormal();
                 return;
@@ -67,7 +65,7 @@ public class Interactor {
             if (Input.GetKey(KeyCode.R)) 
             {
                 firstPerson.canLook = false;
-                currentlyLooking.Rotate();
+                currentlyLooking.PressR();
             }
             else 
             {
@@ -81,7 +79,7 @@ public class Interactor {
         RaycastHit hit;
 
         if (Physics.Raycast(Camera.main.ScreenPointToRay(screenCenter), out hit, interactionMaxDistance)) 
-            currentlyLooking = hit.collider.GetComponent<Pickupable>();
+            currentlyLooking = hit.collider.GetComponent<InteractableObject>();
         else
             currentlyLooking = null;
     }
