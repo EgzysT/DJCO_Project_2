@@ -65,13 +65,13 @@ public class MovementInputData : ScriptableObject
     public void ResetInput()
     {
         m_inputVector = Vector2.zero;
-                
+
         m_isRunning = false;
         m_isCrouching = false;
 
         m_crouchClicked = false;
         m_jumpClicked = false;
         m_runClicked = false;
-        m_runReleased =false;
+        m_runReleased = false;
     }
 }

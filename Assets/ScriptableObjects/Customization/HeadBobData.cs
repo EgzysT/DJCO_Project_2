@@ -3,7 +3,7 @@ using NaughtyAttributes;
 
 [CreateAssetMenu(fileName = "HeadBobData", menuName = "FirstPersonController/Data/HeadBobData", order = 3)]
 public class HeadBobData : ScriptableObject
-{   
+{
     [BoxGroup("Curves")] public AnimationCurve xCurve;
     [BoxGroup("Curves")] public AnimationCurve yCurve;
 
@@ -23,6 +23,6 @@ public class HeadBobData : ScriptableObject
     [BoxGroup("Crouch Multipliers")] public float crouchAmplitudeMultiplier;
     [BoxGroup("Crouch Multipliers")] public float crouchFrequencyMultiplier;
 
-    public float MoveBackwardsFrequencyMultiplier {get;set;}
-    public float MoveSideFrequencyMultiplier {get;set;}
+    public float MoveBackwardsFrequencyMultiplier { get; set; }
+    public float MoveSideFrequencyMultiplier { get; set; }
 }

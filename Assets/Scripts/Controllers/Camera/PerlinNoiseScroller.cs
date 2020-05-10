@@ -9,15 +9,15 @@ public class PerlinNoiseScroller
 
     public Vector3 Noise => m_noise;
 
-    public PerlinNoiseScroller (PerlinNoiseData _data)
+    public PerlinNoiseScroller(PerlinNoiseData _data)
     {
         m_data = _data;
 
         float _rand = 32f;
 
-        m_noiseOffset.x = Random.Range(0f,_rand);
-        m_noiseOffset.y = Random.Range(0f,_rand);
-        m_noiseOffset.z = Random.Range(0f,_rand);
+        m_noiseOffset.x = Random.Range(0f, _rand);
+        m_noiseOffset.y = Random.Range(0f, _rand);
+        m_noiseOffset.z = Random.Range(0f, _rand);
     }
 
     public void UpdateNoise()
@@ -28,9 +28,9 @@ public class PerlinNoiseScroller
         m_noiseOffset.y += _scrollOffset;
         m_noiseOffset.z += _scrollOffset;
 
-        m_noise.x = Mathf.PerlinNoise(m_noiseOffset.x,0f);
-        m_noise.y = Mathf.PerlinNoise(m_noiseOffset.x,1f);
-        m_noise.z = Mathf.PerlinNoise(m_noiseOffset.x,2f);
+        m_noise.x = Mathf.PerlinNoise(m_noiseOffset.x, 0f);
+        m_noise.y = Mathf.PerlinNoise(m_noiseOffset.x, 1f);
+        m_noise.z = Mathf.PerlinNoise(m_noiseOffset.x, 2f);
 
         m_noise -= Vector3.one * 0.5f;
         m_noise *= m_data.amplitude;

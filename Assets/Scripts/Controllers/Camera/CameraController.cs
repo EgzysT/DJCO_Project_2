@@ -3,19 +3,20 @@ using NaughtyAttributes;
 
 public class CameraController : MonoBehaviour
 {
-    [Space,Header("Data")]
+    [Space, Header("Data")]
     [SerializeField] private CameraInputData camInputData = null;
 
-    [Space,Header("Custom Classes")]
+    [Space, Header("Custom Classes")]
     [SerializeField] private CameraZoom cameraZoom = null;
     [SerializeField] private CameraSwaying cameraSway = null;
 
-    [Space,Header("Look Settings")]
+    [Space, Header("Look Settings")]
     [SerializeField] private Vector2 sensitivity = Vector2.zero;
     [SerializeField] private Vector2 smoothAmount = Vector2.zero;
     [SerializeField] [MinMaxSlider(-90f, 90f)] private Vector2 lookAngleMinMax = Vector2.zero;
 
-    public bool CanLook {
+    public bool CanLook
+    {
         set => m_canLook = value;
     }
 
@@ -80,8 +81,8 @@ public class CameraController : MonoBehaviour
 
     void SmoothRotation()
     {
-        m_yaw = Mathf.Lerp(m_yaw,m_desiredYaw, smoothAmount.x * Time.deltaTime);
-        m_pitch = Mathf.Lerp(m_pitch,m_desiredPitch, smoothAmount.y * Time.deltaTime);
+        m_yaw = Mathf.Lerp(m_yaw, m_desiredYaw, smoothAmount.x * Time.deltaTime);
+        m_pitch = Mathf.Lerp(m_pitch, m_desiredPitch, smoothAmount.y * Time.deltaTime);
     }
 
     void ApplyRotation()
@@ -90,20 +91,20 @@ public class CameraController : MonoBehaviour
         m_pitchTranform.localEulerAngles = new Vector3(m_pitch, 0f, 0f);
     }
 
-    public void HandleSway(Vector3 _inputVector,float _rawXInput)
+    public void HandleSway(Vector3 _inputVector, float _rawXInput)
     {
-        cameraSway.SwayPlayer(_inputVector,_rawXInput);
+        cameraSway.SwayPlayer(_inputVector, _rawXInput);
     }
 
     void HandleZoom()
     {
-        if(camInputData.ZoomClicked || camInputData.ZoomReleased)
+        if (camInputData.ZoomClicked || camInputData.ZoomReleased)
             cameraZoom.ChangeFOV(this);
     }
 
     public void ChangeRunFOV(bool _returning)
     {
-        cameraZoom.ChangeRunFOV(_returning,this);
+        cameraZoom.ChangeRunFOV(_returning, this);
     }
 
     void ChangeCursorState()

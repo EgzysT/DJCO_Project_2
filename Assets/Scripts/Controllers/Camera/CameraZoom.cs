@@ -4,13 +4,13 @@ using UnityEngine;
 [System.Serializable]
 public class CameraZoom
 {
-    [Space,Header("Zoom Settings")]
-    [Range(20f,60f)] [SerializeField] private float zoomFOV = 20f;
+    [Space, Header("Zoom Settings")]
+    [Range(20f, 60f)] [SerializeField] private float zoomFOV = 20f;
     [SerializeField] private AnimationCurve zoomCurve = new AnimationCurve();
     [SerializeField] private float zoomTransitionDuration = 0f;
 
-    [Space,Header("Run Settings")]
-    [Range(60f,100f)] [SerializeField] private float runFOV = 60f;
+    [Space, Header("Run Settings")]
+    [Range(60f, 100f)] [SerializeField] private float runFOV = 60f;
     [SerializeField] private AnimationCurve runCurve = new AnimationCurve();
     [SerializeField] private float runTransitionDuration = 0f;
     [SerializeField] private float runReturnTransitionDuration = 0f;
@@ -36,17 +36,17 @@ public class CameraZoom
 
     public void ChangeFOV(MonoBehaviour _mono)
     {
-        if(m_running)
+        if (m_running)
         {
             m_camInputData.IsZooming = !m_camInputData.IsZooming;
             m_zooming = m_camInputData.IsZooming;
             return;
         }
 
-        if(m_ChangeRunFOVRoutine != null)
+        if (m_ChangeRunFOVRoutine != null)
             _mono.StopCoroutine(m_ChangeRunFOVRoutine);
 
-        if(m_ChangeFOVRoutine != null)
+        if (m_ChangeFOVRoutine != null)
             _mono.StopCoroutine(m_ChangeFOVRoutine);
 
         m_ChangeFOVRoutine = ChangeFOVRoutine();
@@ -61,12 +61,12 @@ public class CameraZoom
         float _speed = 1f / zoomTransitionDuration;
 
         float _currentFOV = m_cam.fieldOfView;
-        float  _targetFOV = m_camInputData.IsZooming ? m_initFOV : zoomFOV;
+        float _targetFOV = m_camInputData.IsZooming ? m_initFOV : zoomFOV;
 
         m_camInputData.IsZooming = !m_camInputData.IsZooming;
         m_zooming = m_camInputData.IsZooming;
 
-        while(_percent < 1f)
+        while (_percent < 1f)
         {
             _percent += Time.deltaTime * _speed;
             _smoothPercent = zoomCurve.Evaluate(_percent);
@@ -75,12 +75,12 @@ public class CameraZoom
         }
     }
 
-    public void ChangeRunFOV(bool _returning,MonoBehaviour _mono)
+    public void ChangeRunFOV(bool _returning, MonoBehaviour _mono)
     {
-        if(m_ChangeFOVRoutine != null)
+        if (m_ChangeFOVRoutine != null)
             _mono.StopCoroutine(m_ChangeFOVRoutine);
 
-        if(m_ChangeRunFOVRoutine != null)
+        if (m_ChangeRunFOVRoutine != null)
             _mono.StopCoroutine(m_ChangeRunFOVRoutine);
 
         m_ChangeRunFOVRoutine = ChangeRunFOVRoutine(_returning);
@@ -96,11 +96,11 @@ public class CameraZoom
         float _speed = 1f / _duration;
 
         float _currentFOV = m_cam.fieldOfView;
-        float  _targetFOV = _returning ? m_initFOV : runFOV;
+        float _targetFOV = _returning ? m_initFOV : runFOV;
 
         m_running = !_returning;
 
-        while(_percent < 1f)
+        while (_percent < 1f)
         {
             _percent += Time.deltaTime * _speed;
             _smoothPercent = runCurve.Evaluate(_percent);

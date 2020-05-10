@@ -19,7 +19,7 @@ public class HeadBob
         set => m_currentStateHeight = value;
     }
 
-    public HeadBob(HeadBobData _data,float _moveBackwardsMultiplier,float _moveSideMultiplier)
+    public HeadBob(HeadBobData _data, float _moveBackwardsMultiplier, float _moveSideMultiplier)
     {
         m_data = _data;
 
@@ -51,8 +51,8 @@ public class HeadBob
         _additionalMultiplier = _input.x != 0 & _input.y == 0 ? m_data.MoveSideFrequencyMultiplier : _additionalMultiplier;
 
 
-        m_xScroll += Time.deltaTime * m_data.xFrequency * _frequencyMultiplier ; // you can also multiply this by _additionalMultiplier but it looks unnatural a bit;
-        m_yScroll += Time.deltaTime * m_data.yFrequency * _frequencyMultiplier ;
+        m_xScroll += Time.deltaTime * m_data.xFrequency * _frequencyMultiplier; // you can also multiply this by _additionalMultiplier but it looks unnatural a bit;
+        m_yScroll += Time.deltaTime * m_data.yFrequency * _frequencyMultiplier;
 
         float _xValue;
         float _yValue;

@@ -14,5 +14,5 @@ public class PerlinNoiseData : ScriptableObject
 
     [Space]
     public float amplitude;
-    public float frequency;  
+    public float frequency;
 }
