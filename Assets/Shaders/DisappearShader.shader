@@ -1,4 +1,4 @@
-﻿Shader "Custom/AppearShader"
+﻿Shader "Custom/DissapearShader"
 {
     Properties
     {
@@ -81,16 +81,16 @@
             //float3 NoDissolve = float3(1, 1, 1) - DissolveLine;
             //c.rgb = (DissolveLine * _DisLineColor) + (NoDissolve * c.rgb);
             //o.Emission = (DissolveLine * _DisLineColor) * 2;
-            //c.a = step(_DisAmount, sphereNoise);
+            //c.a = step(sphereNoise - _DisLineWidth, _DisAmount);
 
             //o.Albedo = c.rgb;
 
             float3 DissolveLine = step(sphereNoise - _DisLineWidth, _DisAmount) * step(_DisAmount, sphereNoise); // line between two textures
             DissolveLine *= _DisLineColor; // color the line
 
-            float3 tex = (step(_DisAmount, sphereNoise) * c.rgb);
+            float3 tex = (step(sphereNoise - _DisLineWidth, _DisAmount) * c.rgb);
             float3 resultTex = tex + DissolveLine;
-            c.a = step(_DisAmount, sphereNoise);
+            c.a = step(sphereNoise - _DisLineWidth, _DisAmount);
             o.Albedo = resultTex;
 
             o.Emission = DissolveLine * _DisLineColor;
