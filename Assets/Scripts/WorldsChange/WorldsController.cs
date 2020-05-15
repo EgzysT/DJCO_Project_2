@@ -8,7 +8,9 @@ public enum World { NORMAL, ARCANE, BOTH }
 
 public class WorldsController : MonoBehaviour {
 
-    static public World currentWorld;
+    public static WorldsController instance;
+
+    World currentWorld;
     bool isChangingWorlds;
 
     public ParticleSystem dustEffect;
@@ -22,6 +24,7 @@ public class WorldsController : MonoBehaviour {
     public AnimationCurve effectTransitionCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
 
     void Awake() {
+        instance = this;
         effectSpeedPercent = effectSpeed / maxRadius;
 
         // Starts on the NORMAL world
