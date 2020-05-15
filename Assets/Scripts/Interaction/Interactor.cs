@@ -11,11 +11,14 @@ public class Interactor : MonoBehaviour
 
     private InteractableObject currentlyLooking;
 
+    private Camera cam;
+
     private void Start()
     {
         screenCenter = new Vector3(Screen.width / 2, Screen.height / 2);
         crosshairController = GameObject.Find("Crosshair").GetComponent<CrosshairController>();
         cameraController = GameObject.Find("CameraHolder").GetComponent<CameraController>();
+        cam = Camera.main;
     }
 
     private void Update()
@@ -59,7 +62,7 @@ public class Interactor : MonoBehaviour
             {
                 currentlyLooking.RightMouseButtonDown();
                 currentlyLooking = null;
-                crosshairController.ShowNormal();
+                crosshairController.ShowNormal()    ;
                 return;
             }
 
@@ -79,7 +82,8 @@ public class Interactor : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(screenCenter), out hit, interactionMaxDistance))
+        // It checks everything except the UninteractiveWorld layer
+        if (Physics.Raycast(cam.ScreenPointToRay(screenCenter), out hit, interactionMaxDistance, ~(1 << LayerMask.NameToLayer("UninteractiveWorld"))))
             currentlyLooking = hit.collider.GetComponent<InteractableObject>();
         else
             currentlyLooking = null;

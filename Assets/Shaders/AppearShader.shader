@@ -7,7 +7,6 @@
         _NoiseTex("Dissolve Noise", 2D) = "white"{}
         _NScale("Noise Scale", Range(0, 10)) = 1
         _DisAmount("Noise Texture Opacity", Range(0.01, 1)) = 0.01
-        _Radius("Radius", Range(0, 10)) = 0
         _DisLineWidth("Line Width", Range(0, 2)) = 0
         _DisLineColor("Line Tint", Color) = (1,1,1,1)
         _Glossiness("Smoothness", Range(0,1)) = 0.5
@@ -28,6 +27,7 @@
         #pragma target 3.0
 
         float3 _Position; // from script
+        float _Radius; // from script
 
         sampler2D _MainTex, _SecondTex;
         float4 _Color, _Color2;
@@ -35,7 +35,6 @@
         float _DisAmount, _NScale;
         float _DisLineWidth;
         float4 _DisLineColor;
-        float _Radius;
 
         struct Input
         {

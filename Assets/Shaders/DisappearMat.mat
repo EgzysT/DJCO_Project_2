@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DisapearMat
+  m_Name: DisappearMat
   m_Shader: {fileID: 4800000, guid: 9f6c0bb66c55da741980626942ac1da4, type: 3}
   m_ShaderKeywords: ALPHA
   m_LightmapFlags: 4
