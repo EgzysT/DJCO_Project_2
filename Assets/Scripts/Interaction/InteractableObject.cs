@@ -2,6 +2,7 @@
 
 public abstract class InteractableObject : MonoBehaviour
 {
+    [HideInInspector]
     public bool isInteracting = false;
 
     public abstract void LeftMouseButtonDown();
