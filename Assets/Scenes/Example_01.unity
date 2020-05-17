@@ -1383,6 +1383,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1809259584290229023, guid: e171885bcdc2d4b40878c72297f1f810,
+        type: 3}
+      propertyPath: EmissionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5503128408718045850, guid: e171885bcdc2d4b40878c72297f1f810,
         type: 3}
       propertyPath: sensitivity.x

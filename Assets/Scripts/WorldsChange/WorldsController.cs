@@ -11,6 +11,7 @@ public class WorldsController : MonoBehaviour {
     public static WorldsController instance;
 
     World currentWorld;
+    private ParticleSystem.EmissionModule dustEffectEmission;
     bool isChangingWorlds;
 
     public ParticleSystem dustEffect;
@@ -29,6 +30,7 @@ public class WorldsController : MonoBehaviour {
 
         // Starts on the NORMAL world
         currentWorld = World.NORMAL;
+        dustEffectEmission = dustEffect.emission;
         dustEffect.Stop();
     }
 
@@ -49,13 +51,15 @@ public class WorldsController : MonoBehaviour {
 
     void changeWorlds() {
         isChangingWorlds = true;
-
+        
         if (currentWorld == World.NORMAL) {
+            dustEffectEmission.enabled = true;
             dustEffect.Play();
             currentWorld = World.ARCANE;
             GameEvents.instance.ArcaneWorldEnter(transform.position);
         }
         else if (currentWorld == World.ARCANE) {
+            dustEffectEmission.enabled = false;
             dustEffect.Stop();
             currentWorld = World.NORMAL;
             GameEvents.instance.NormalWorldEnter(transform.position);
