@@ -10,48 +10,6 @@ public class ScannerEffectDemo : MonoBehaviour
 
 	private Camera _camera;
 
-	// Demo Code
-	bool _scanning;
-	//Scannable[] _scannables;
-
-	void Start()
-	{
-		//_scannables = FindObjectsOfType<Scannable>();
-	}
-
-	void Update()
-	{
-		if (_scanning)
-		{
-			ScanDistance += Time.deltaTime * 10;
-			//foreach (Scannable s in _scannables)
-			//{
-			//	if (Vector3.Distance(ScannerOrigin.position, s.transform.position) <= ScanDistance)
-			//		s.Ping();
-			//}
-		}
-
-		if (Input.GetKeyDown(KeyCode.C))
-		{
-			_scanning = true;
-			ScanDistance = 0;
-		}
-
-		if (Input.GetMouseButtonDown(0))
-		{
-			//Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-			//RaycastHit hit;
-
-			//if (Physics.Raycast(ray, out hit))
-			//{
-			//	_scanning = true;
-			//	ScanDistance = 0;
-			//	ScannerOrigin.position = hit.point;
-			//}
-		}
-	}
-	// End Demo Code
-
 	void OnEnable()
 	{
 		_camera = GetComponent<Camera>();
@@ -61,8 +19,6 @@ public class ScannerEffectDemo : MonoBehaviour
 	[ImageEffectOpaque]
 	void OnRenderImage(RenderTexture src, RenderTexture dst)
 	{
-		EffectMaterial.SetVector("_WorldSpaceScannerPos", ScannerOrigin.position);
-		EffectMaterial.SetFloat("_ScanDistance", ScanDistance);
 		RaycastCornerBlit(src, dst, EffectMaterial);
 	}
 
