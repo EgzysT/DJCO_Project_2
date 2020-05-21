@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NaughtyAttributes.Editor;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,8 +12,10 @@ public class EnemyMovement : MonoBehaviour
     private NavMeshAgent agent;
     private Rigidbody rigidBody;
     private Transform raycastTargets;
-    public float offScreenDot = 0.8f;
-    public 
+    private Transform bodies;
+    private GameObject currentBody;
+    private bool playerSawSeeMe;
+
     void Awake()
     {
         player = GameObject.Find("Player");
@@ -20,22 +23,49 @@ public class EnemyMovement : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         rigidBody = GetComponent<Rigidbody>();
         raycastTargets = transform.Find("RaycastTargets");
+        bodies = transform.Find("Body").transform;
+        ChooseBody();
+        StartChasing();
     }
 
     void Update()
     {
-        if (PlayerCanSeeMe())
+        if (playerSawSeeMe == PlayerCanSeeMe()) return;
+        else playerSawSeeMe ^= true;
+
+        if (playerSawSeeMe)
         {
-            agent.isStopped = true;
-            rigidBody.isKinematic = true;
-        } else
+            ChooseBody();
+            StopChasing();
+        } 
+        else
         {
-            rigidBody.isKinematic = false;
-            agent.SetDestination(player.transform.position);
-            agent.isStopped = false;
+            StartChasing();
         }
     }
 
+    private void ChooseBody()
+    {
+        int nextBodyIndex = UnityEngine.Random.Range(0, bodies.childCount);
+        currentBody?.SetActive(false);
+        currentBody = bodies.GetChild(nextBodyIndex).gameObject;
+        currentBody.SetActive(true);
+    }
+
+    private void StopChasing()
+    {
+        agent.isStopped = true;
+        rigidBody.isKinematic = true;
+        rigidBody.constraints = RigidbodyConstraints.FreezeAll;
+    }
+
+    private void StartChasing()
+    {
+        rigidBody.isKinematic = false;
+        rigidBody.constraints = RigidbodyConstraints.None;
+        agent.SetDestination(player.transform.position);
+        agent.isStopped = false;
+    }
 
     private bool PlayerCanSeeMe()
     {
