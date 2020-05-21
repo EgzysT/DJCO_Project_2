@@ -24,6 +24,7 @@ public class EnemyMovement : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         raycastTargets = transform.Find("RaycastTargets");
         bodies = transform.Find("Body").transform;
+        DisableAllBodies();
         ChooseBody();
         StartChasing();
     }
@@ -50,6 +51,14 @@ public class EnemyMovement : MonoBehaviour
         currentBody?.SetActive(false);
         currentBody = bodies.GetChild(nextBodyIndex).gameObject;
         currentBody.SetActive(true);
+    }
+
+    private void DisableAllBodies()
+    {
+        foreach (Transform body in bodies)
+        {
+            body.gameObject.SetActive(false);
+        }
     }
 
     private void StopChasing()
