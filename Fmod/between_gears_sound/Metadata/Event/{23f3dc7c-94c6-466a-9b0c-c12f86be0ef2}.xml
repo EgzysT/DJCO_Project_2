@@ -36,6 +36,7 @@
 		</relationship>
 		<relationship name="banks">
 			<destination>{862018c6-60de-4b3c-931b-5ce228090ece}</destination>
+			<destination>{481bfce5-7855-44af-a4cb-76fba8c54897}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{3df50932-3ee1-42c2-bfb7-d493a4eb2d46}">
@@ -122,7 +123,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{30a33d45-b4a6-46e4-affa-857a76eecaef}" />
 	<object class="SingleSound" id="{debe155e-6ba4-4a9e-85da-13a6f31bb431}">
-		<property name="name" />
 		<relationship name="audioFile">
 			<destination>{503f44d0-c7b8-4796-8984-9060d605ff53}</destination>
 		</relationship>
