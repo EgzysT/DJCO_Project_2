@@ -30,7 +30,7 @@ Material:
     m_Floats:
     - _ALPHA: 1
     - _DisAmount: 0.01
-    - _DisLineWidth: 0.07
+    - _DisLineWidth: 0
     - _Glossiness: 0
     - _Metallic: 0
     - _NScale: 1
