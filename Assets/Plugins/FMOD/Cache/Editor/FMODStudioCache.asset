@@ -1,0 +1,167 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8496617793212402833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sound Test
+  m_EditorClassIdentifier: 
+  Path: event:/Sound Test
+  guid: 7cdcf323c6946a469b0cc12f86be0ef2
+  Banks:
+  - {fileID: -6128455938040516114}
+  - {fileID: -909792262524792186}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
+--- !u!114 &-7986280766402110994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/TestBank.bank
+  m_EditorClassIdentifier: 
+  Path: Fmod/between_gears_sound/Build/Desktop/TestBank.bank
+  SubDir: 
+  lastModified: 637258591031103490
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
+--- !u!114 &-7621750766501282171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Fmod/between_gears_sound/Build/Desktop/Master.strings.bank
+  SubDir: 
+  lastModified: 637259353405036437
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 844
+  Exists: 1
+--- !u!114 &-6128455938040516114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Fmod/between_gears_sound/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637259353405046453
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-909792262524792186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/TestBank.bank
+  m_EditorClassIdentifier: 
+  Path: Fmod/between_gears_sound/Build/Desktop/TestBank.bank
+  SubDir: 
+  lastModified: 637258591031103490
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: -7621750766501282171}
+  - {fileID: -6128455938040516114}
+  - {fileID: -909792262524792186}
+  EditorEvents:
+  - {fileID: -8496617793212402833}
+  - {fileID: 1523060593595781354}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: -6128455938040516114}
+  StringsBanks:
+  - {fileID: -7621750766501282171}
+  stringsBankWriteTime: 637259353405036437
+  cacheVersion: 3
+--- !u!114 &1387897628765889508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Fmod/between_gears_sound/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637258591031093497
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
+--- !u!114 &1523060593595781354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sound Test 3D
+  m_EditorClassIdentifier: 
+  Path: event:/Sound Test 3D
+  guid: 2723eb3fcf31d64283b069fa238ee466
+  Banks:
+  - {fileID: -6128455938040516114}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
