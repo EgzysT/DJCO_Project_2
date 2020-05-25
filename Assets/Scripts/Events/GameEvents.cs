@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Build.Reporting;
 using UnityEngine;
 
 public class GameEvents : MonoBehaviour

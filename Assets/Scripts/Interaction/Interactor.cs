@@ -13,8 +13,11 @@ public class Interactor : MonoBehaviour
 
     private Camera cam;
 
+    private bool canInteract;
+
     private void Start()
     {
+        canInteract = true;
         screenCenter = new Vector3(Screen.width / 2, Screen.height / 2);
         crosshairController = GameObject.Find("Crosshair").GetComponent<CrosshairController>();
         cameraController = GameObject.Find("CameraHolder").GetComponent<CameraController>();
@@ -23,6 +26,9 @@ public class Interactor : MonoBehaviour
 
     private void Update()
     {
+        if (!canInteract)
+            return;
+
         // Check if not holding the object because of distance
         if (currentlyLooking == null || !currentlyLooking.isInteracting)
             CheckRaycast();
@@ -87,5 +93,9 @@ public class Interactor : MonoBehaviour
             currentlyLooking = hit.collider.GetComponent<InteractableObject>();
         else
             currentlyLooking = null;
+    }
+
+    public void setInteract(bool state) {
+        canInteract = state;
     }
 }
