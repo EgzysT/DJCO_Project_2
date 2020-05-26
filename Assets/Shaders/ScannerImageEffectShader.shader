@@ -72,7 +72,7 @@ Shader "Hidden/ScannerEffect"
 				float4 _HBarColor;
 
 				float3 _Position; // from script
-				float _Radius; // from script
+				float _ScannerRadius; // from script
 
 				float4 horizBars(float2 p)
 				{
@@ -96,9 +96,9 @@ Shader "Hidden/ScannerEffect"
 
 					float dist = distance(wsPos, _Position);
 
-					if (dist < _Radius && dist > _Radius - _ScanWidth && linearDepth < 1)
+					if (dist < _ScannerRadius && dist > _ScannerRadius - _ScanWidth && linearDepth < 1)
 					{
-						float diff = 1 - (_Radius - dist) / (_ScanWidth);
+						float diff = 1 - (_ScannerRadius - dist) / (_ScanWidth);
 						half4 edge = lerp(_MidColor, _LeadColor, pow(diff, _LeadSharp));
 						scannerCol = lerp(_TrailColor, edge, diff) + horizBars(i.uv) * _HBarColor;
 						scannerCol *= diff;

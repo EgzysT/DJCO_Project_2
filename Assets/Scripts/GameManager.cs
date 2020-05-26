@@ -25,11 +25,12 @@ public class GameManager : MonoBehaviour {
             StartTimer = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (pauseMenu.activeSelf)
-                ResumeGame();
-            else
+        // TODO May cause problems if more Tweens are used later on???
+        if (Input.GetKeyDown(KeyCode.Escape) && LeanTween.tweensRunning == 0) {
+            if (!pauseMenu.activeSelf)
                 PauseGame();
+            else
+                ResumeGame();
         }
     }
 

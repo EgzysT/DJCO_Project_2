@@ -45,8 +45,9 @@ public class WorldsController : MonoBehaviour {
         if (isChangingWorlds) {
             UpdateRadius();
         }
-        
+
         Shader.SetGlobalFloat("_Radius", radius);
+        Shader.SetGlobalFloat("_ScannerRadius", radius);
     }
 
     void changeWorlds() {
