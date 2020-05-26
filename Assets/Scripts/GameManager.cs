@@ -33,19 +33,24 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    private void PauseGame() {
+    public void PauseGame() {
         Time.timeScale = 0f;
         SetPlayerInteraction(false);
         SetCursorVisibility(true);
         pauseMenu.SetActive(true);
     }
 
-    private void ResumeGame() {
+    public void ResumeGame() {
         Time.timeScale = 1f;
         SetPlayerInteraction(true);
         SetCursorVisibility(false);
         pauseMenu.GetComponent<UITweener>().Disable();
         //pauseMenu.SetActive(false);
+    }
+
+    public void QuitGame() {
+        Debug.Log("Quit Game");
+        Application.Quit();
     }
 
     private void SetCursorVisibility(bool isVisible) {

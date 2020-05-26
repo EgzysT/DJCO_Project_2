@@ -14,6 +14,10 @@ public class WorldChangerEditor : Editor {
         }
         
         WorldChanger worldChanger = target as WorldChanger;
+
+        if (worldChanger.isParticleSystem)
+            return;
+
         Renderer rend = null;
         worldChanger.TryGetComponent(out rend);
 

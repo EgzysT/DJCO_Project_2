@@ -1,28 +1,89 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudioSettings : MonoBehaviour
 {
     //FMOD.Studio.EventInstance SFXVolumeTestEvent;
 
+    public GameObject MasterObject;
+    public GameObject MusicObject;
+    public GameObject VoiceObject;
+    public GameObject SFXObject;
+    public GameObject AmbienceObject;
+
     FMOD.Studio.Bus MasterBus;
-    //FMOD.Studio.Bus MusicBus;
-    //FMOD.Studio.Bus SFXBus;
+    FMOD.Studio.Bus MusicBus;
+    FMOD.Studio.Bus VoiceBus;
+    FMOD.Studio.Bus SFXBus;
+    FMOD.Studio.Bus AmbienceBus;
 
     float MasterVolume = 1f;
-    //float MusicVolume = 0.5f;
-    //float SFXVolume = 0.5f;
+    float MusicVolume = 0.5f;
+    float VoiceVolume = 0.5f;
+    float SFXVolume = 0.5f;
+    float AmbienceVolume = 0.5f;
 
     void Awake() {
-        //MasterBus = FMODUnity.RuntimeManager.GetBus("bus:/Master");
-        MasterBus = FMODUnity.RuntimeManager.GetBus("bus:/Music");
-        MasterBus = FMODUnity.RuntimeManager.GetBus("bus:/Voice");
-        MasterBus = FMODUnity.RuntimeManager.GetBus("bus:/SFX");
-        MasterBus = FMODUnity.RuntimeManager.GetBus("bus:/Ambience");
+        MasterBus = FMODUnity.RuntimeManager.GetBus("bus:/Master");
+        MusicBus = FMODUnity.RuntimeManager.GetBus("bus:/Master/Music");
+        VoiceBus = FMODUnity.RuntimeManager.GetBus("bus:/Master/Voice");
+        SFXBus = FMODUnity.RuntimeManager.GetBus("bus:/Master/SFX");
+        AmbienceBus = FMODUnity.RuntimeManager.GetBus("bus:/Master/Ambience");
+        //MasterBus = FMODUnity.RuntimeManager.GetBus("bus:/Master/Test Sounds");
+    }
+
+    void Start() {
+        SetSliderValue(MasterObject, MasterVolume);
+        SetSliderValue(MusicObject, MusicVolume);
+        SetSliderValue(VoiceObject, VoiceVolume);
+        SetSliderValue(SFXObject, SFXVolume);
+        SetSliderValue(AmbienceObject, AmbienceVolume);
+
+        SetMasterVolume(MasterVolume);
+        SetMusicVolume(MusicVolume);
+        SetVoiceVolume(VoiceVolume);
+        SetSFXVolume(SFXVolume);
+        SetAmbienceVolume(AmbienceVolume);
     }
 
     public void SetMasterVolume(float volume) {
+        MasterVolume = volume;
         MasterBus.setVolume(volume);
+        SetTMPText(MasterObject, volume);
     }
+    
+    public void SetMusicVolume(float volume) {
+        MusicVolume = volume;
+        MusicBus.setVolume(volume);
+        SetTMPText(MusicObject, volume);
+    }
+    
+    public void SetVoiceVolume(float volume) {
+        VoiceVolume = volume;
+        VoiceBus.setVolume(volume);
+        SetTMPText(VoiceObject, volume);
+    }
+    
+    public void SetSFXVolume(float volume) {
+        SFXVolume = volume;
+        SFXBus.setVolume(volume);
+        SetTMPText(SFXObject, volume);
+    }
+    
+    public void SetAmbienceVolume(float volume) {
+        AmbienceVolume = volume;
+        AmbienceBus.setVolume(volume);
+        SetTMPText(AmbienceObject, volume);
+    }
+    private void SetSliderValue(GameObject obj, float value) {
+        obj.transform.GetChild(0).GetComponent<Slider>().value = value;
+    }
+
+    private void SetTMPText(GameObject obj, float value) {
+        obj.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = (int)(value * 100) + "%";
+    }
+
 }

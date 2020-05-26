@@ -6,6 +6,8 @@ using UnityEngine;
 public class WorldChanger : MonoBehaviour
 {
     public World belongsTo;
+    public bool isParticleSystem;
+
     private Pickable pickableObject;
 
     // Start is called before the first frame update
@@ -48,6 +50,7 @@ public class WorldChanger : MonoBehaviour
                 gameObject.layer = LayerMask.NameToLayer("UninteractiveWorld");
                 CheckForObjectWorldChange(true);
             }
+            CheckParticleSystem(isEnteringNormal);
         }
         else if (belongsTo == World.ARCANE) {
             if (!isEnteringNormal) {
@@ -59,6 +62,7 @@ public class WorldChanger : MonoBehaviour
                 gameObject.layer = LayerMask.NameToLayer("UninteractiveWorld");
                 CheckForObjectWorldChange(false);
             }
+            CheckParticleSystem(!isEnteringNormal);
         }
         // If it belongs to both then the shader does the work
     }
@@ -80,6 +84,19 @@ public class WorldChanger : MonoBehaviour
 
             GetComponent<Renderer>().material.SetTexture("_MainTex", text);
             gameObject.layer = LayerMask.NameToLayer("InteractiveWorld");
+        }
+    }
+
+    void CheckParticleSystem(bool willAppear) {
+        if (!isParticleSystem)
+            return;
+
+        if (willAppear) {
+            gameObject.GetComponent<ParticleSystem>().Play();
+        }
+        else {
+            gameObject.GetComponent<ParticleSystem>().Stop();
+            gameObject.GetComponent<ParticleSystem>().Clear();
         }
     }
 
