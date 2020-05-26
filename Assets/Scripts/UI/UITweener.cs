@@ -91,8 +91,6 @@ public class UITweener : MonoBehaviour {
         if (gameObject.GetComponent<CanvasGroup>() == null)
             gameObject.AddComponent<CanvasGroup>();
 
-        //gameObject.GetComponent<CanvasGroup>().blocksRaycasts = false;
-
         if (startPositionOffset)
             objectToAnimate.GetComponent<CanvasGroup>().alpha = from.x;
 
