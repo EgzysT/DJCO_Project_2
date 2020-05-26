@@ -130,8 +130,17 @@
 		</relationship>
 	</object>
 	<object class="MultiSound" id="{188cf562-3d21-4fea-9506-21ef64d02e35}">
+		<property name="triggerProbabilityEnabled">
+			<value>true</value>
+		</property>
+		<property name="triggerProbability">
+			<value>40</value>
+		</property>
 		<property name="length">
 			<value>128.78367346938776</value>
+		</property>
+		<property name="looping">
+			<value>true</value>
 		</property>
 		<relationship name="sounds">
 			<destination>{217068d4-56da-4846-87a8-cca9f90b873e}</destination>
