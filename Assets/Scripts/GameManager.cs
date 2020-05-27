@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,10 +9,12 @@ public class GameManager : MonoBehaviour {
     public bool StartTimer { get; private set; }
     public GameObject pauseMenu;
 
+    private bool pauseMenuAvailable;
     private GameObject player;
 
     // Start is called before the first frame update
     void Start() {
+        pauseMenuAvailable = true;
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -25,15 +28,17 @@ public class GameManager : MonoBehaviour {
             StartTimer = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (pauseMenu.activeSelf)
-                ResumeGame();
-            else
+        if (Input.GetKeyDown(KeyCode.Escape) && pauseMenuAvailable) {
+            if (!pauseMenu.activeSelf)
                 PauseGame();
+            else
+                ResumeGame();
         }
     }
 
     public void PauseGame() {
+        StartCoroutine(PauseMenuTimer(0.4f));
+
         Time.timeScale = 0f;
         SetPlayerInteraction(false);
         SetCursorVisibility(true);
@@ -41,11 +46,12 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ResumeGame() {
+        StartCoroutine(PauseMenuTimer(0.4f));
+
         Time.timeScale = 1f;
         SetPlayerInteraction(true);
         SetCursorVisibility(false);
         pauseMenu.GetComponent<UITweener>().Disable();
-        //pauseMenu.SetActive(false);
     }
 
     public void QuitGame() {
@@ -66,6 +72,12 @@ public class GameManager : MonoBehaviour {
 
     private void SetPlayerInteraction(bool canInteract) {
         player.GetComponent<Interactor>().setInteract(canInteract);
+    }
+
+    IEnumerator PauseMenuTimer(float duration) {
+        pauseMenuAvailable = false;
+        yield return new WaitForSecondsRealtime(duration);
+        pauseMenuAvailable = true;
     }
 
     IEnumerator HoldTimer() {
