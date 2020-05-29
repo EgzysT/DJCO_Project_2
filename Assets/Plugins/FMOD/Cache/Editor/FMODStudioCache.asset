@@ -22,6 +22,24 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &-8260895960546039979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/TestBank.bank
+  m_EditorClassIdentifier: 
+  Path: Fmod/between_gears_sound/Build/Desktop/TestBank.bank
+  SubDir: 
+  lastModified: 637261035179889978
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-7986280766402110994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,7 +75,7 @@ MonoBehaviour:
   lastModified: 637261093171252546
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &-7621750766501282171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,11 +90,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Fmod/between_gears_sound/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637261093171112567
+  lastModified: 637262707649017129
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1254
+    Value: 1314
   Exists: 1
 --- !u!114 &-7572251787477703521
 MonoBehaviour:
@@ -169,7 +187,7 @@ MonoBehaviour:
   Path: event:/Test Sounds/Sound Test 3D Loop
   guid: f1773527ccd96549a1dfc59b59118a4b
   Banks:
-  - {fileID: -7681567154018396618}
+  - {fileID: -2379952396729271841}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -192,9 +210,9 @@ MonoBehaviour:
   Path: event:/Ambience/ambience1
   guid: abbf01599754ed46901bb2a505fe38dc
   Banks:
-  - {fileID: -7681567154018396618}
+  - {fileID: -2379952396729271841}
   IsStream: 1
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 0
   Parameters: []
   MinDistance: 0
@@ -218,6 +236,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-2379952396729271841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Fmod/between_gears_sound/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637262707649007157
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-1818679729906407436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,7 +271,7 @@ MonoBehaviour:
   lastModified: 637261093171132561
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &-1624957388669103490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,14 +287,14 @@ MonoBehaviour:
   Path: event:/SFX/Crystals
   guid: f743f320965ac04dbf92463d85515760
   Banks:
-  - {fileID: -7681567154018396618}
-  IsStream: 0
+  - {fileID: -2379952396729271841}
+  IsStream: 1
   Is3D: 1
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 13061
 --- !u!114 &-909792262524792186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,21 +345,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -7621750766501282171}
-  - {fileID: -7681567154018396618}
-  - {fileID: -1818679729906407436}
+  - {fileID: -2379952396729271841}
+  - {fileID: -8260895960546039979}
   EditorEvents:
   - {fileID: 8460421012021421853}
   - {fileID: 6101064339953828967}
   - {fileID: -4247678006022608637}
   - {fileID: -4567243617925589563}
   - {fileID: -1624957388669103490}
+  - {fileID: 683481165472222255}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -7681567154018396618}
+  - {fileID: -2379952396729271841}
   StringsBanks:
   - {fileID: -7621750766501282171}
-  stringsBankWriteTime: 637261093171112567
+  stringsBankWriteTime: 637262707649017129
   cacheVersion: 3
+--- !u!114 &683481165472222255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Footsteps_Arcane
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Footsteps_Arcane
+  guid: ab68b172c4b2c54bbe1ac61f3b6581da
+  Banks:
+  - {fileID: -2379952396729271841}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4000
 --- !u!114 &1350058458514954919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -433,8 +493,8 @@ MonoBehaviour:
   Path: event:/Test Sounds/Sound Test
   guid: 7cdcf323c6946a469b0cc12f86be0ef2
   Banks:
-  - {fileID: -7681567154018396618}
-  - {fileID: -1818679729906407436}
+  - {fileID: -2379952396729271841}
+  - {fileID: -8260895960546039979}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -457,7 +517,7 @@ MonoBehaviour:
   Path: event:/Test Sounds/Sound Test 3D
   guid: 2723eb3fcf31d64283b069fa238ee466
   Banks:
-  - {fileID: -7681567154018396618}
+  - {fileID: -2379952396729271841}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
