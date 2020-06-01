@@ -12,20 +12,22 @@ public class PressurePlate : MonoBehaviour {
     public float depth;
     public float animationDuration;
 
-    private bool isBeingPressured;
     private bool isDown;
     private Vector3 initialPosition;
 
+    private List<int> objectsApplyingPressure;
+
     // Start is called before the first frame update
     void Start() {
-        isBeingPressured = false;
+        objectsApplyingPressure = new List<int>();
+        //isBeingPressured = false;
         isDown = false;
         initialPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update() {
-        if (isBeingPressured) {
+        if (objectsApplyingPressure.Count > 0) {
             if (!isDown) {
                 isDown = true;
                 LeanTween.cancel(gameObject);
@@ -58,13 +60,13 @@ public class PressurePlate : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        Debug.Log("ontriggerENTER");
-        isBeingPressured = true;
+        //Debug.Log("ontriggerENTER");
+        objectsApplyingPressure.Add(other.gameObject.GetInstanceID());
     }
 
     private void OnTriggerExit(Collider other) {
-        Debug.Log("ontriggerEXIT");
-        isBeingPressured = false;
+        //Debug.Log("ontriggerEXIT");
+        objectsApplyingPressure.Remove(other.gameObject.GetInstanceID());
     }
 
 }
