@@ -14,9 +14,17 @@ public class EnemyMovement : MonoBehaviour
     private Transform raycastTargets;
     private Transform bodies;
     private GameObject currentBody;
-    private bool playerSawSeeMe;
+    private State currentState;
+    private float distanceToPlayer;
 
-    void Awake()
+    private enum State
+    {
+        IDLE,
+        CHASING,
+        DISABLED
+    }
+
+    void Start()
     {
         player = GameObject.Find("Player");
         cam = Camera.main;
@@ -24,24 +32,52 @@ public class EnemyMovement : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         raycastTargets = transform.Find("RaycastTargets");
         bodies = transform.Find("Body").transform;
+
         DisableAllBodies();
         ChooseBody();
-        StartChasing();
+
+        currentState = (WorldsController.instance.GetCurrentWorld() == World.NORMAL) ? State.DISABLED : State.IDLE;
+        GameEvents.instance.onNormalWorldEnter += (_) => currentState = State.DISABLED;
+        GameEvents.instance.onArcaneWorldEnter += (_) => currentState = State.IDLE;
     }
 
     void Update()
     {
-        if (playerSawSeeMe == PlayerCanSeeMe()) return;
-        else playerSawSeeMe ^= true;
+        distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
 
-        if (playerSawSeeMe)
+        if (currentState == State.DISABLED) return;
+
+        if (PlayerCanSeeMe())
         {
-            ChooseBody();
-            StopChasing();
-        } 
+            if (currentState != State.IDLE)
+            {
+                currentState = State.IDLE;
+                ChooseBody();
+                StopChasing();
+            }
+        }
         else
         {
-            StartChasing();
+            if (currentState != State.CHASING)
+            {
+                currentState = State.CHASING;
+                StartChasing();
+                agent.SetDestination(player.transform.position);
+            }
+        }
+
+        switch (currentState)
+        {
+            case State.CHASING:
+                agent.SetDestination(player.transform.position);
+                // Damage Player
+                break;
+
+            case State.IDLE:
+                break;
+
+            default:
+                break;
         }
     }
 
@@ -63,17 +99,16 @@ public class EnemyMovement : MonoBehaviour
 
     private void StopChasing()
     {
-        agent.isStopped = true;
         rigidBody.isKinematic = true;
-        rigidBody.constraints = RigidbodyConstraints.FreezeAll;
+        agent.isStopped = true;
+        currentState = State.IDLE;
     }
 
     private void StartChasing()
     {
         rigidBody.isKinematic = false;
-        rigidBody.constraints = RigidbodyConstraints.None;
-        agent.SetDestination(player.transform.position);
         agent.isStopped = false;
+        currentState = State.CHASING;
     }
 
     private bool PlayerCanSeeMe()
@@ -87,7 +122,7 @@ public class EnemyMovement : MonoBehaviour
                 continue;
 
             //Debug.DrawLine(cam.transform.position, raycastTarget.position, Color.white);
-            if (Physics.Linecast(cam.transform.position, raycastTarget.position, out hit))
+            if (Physics.Linecast(cam.transform.position, raycastTarget.position, out hit, ~(1 << LayerMask.NameToLayer("UninteractiveWorld"))))
             {
                 if (hit.transform.name == gameObject.name)
                 {

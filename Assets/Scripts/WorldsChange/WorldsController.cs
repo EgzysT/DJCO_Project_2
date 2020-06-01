@@ -118,4 +118,9 @@ public class WorldsController : MonoBehaviour {
         
         cam.fieldOfView = initialFov + fovTransitionCurve.Evaluate(cameraEffectsProgressionPercent);
     }
+
+    public World GetCurrentWorld()
+    {
+        return currentWorld;
+    }
 }
