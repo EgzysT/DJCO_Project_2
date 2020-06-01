@@ -36,9 +36,17 @@ public class EnemyMovement : MonoBehaviour
         DisableAllBodies();
         ChooseBody();
 
-        currentState = (WorldsController.instance.GetCurrentWorld() == World.NORMAL) ? State.DISABLED : State.IDLE;
-        GameEvents.instance.onNormalWorldEnter += (_) => currentState = State.DISABLED;
-        GameEvents.instance.onArcaneWorldEnter += (_) => currentState = State.IDLE;
+        if (WorldsController.instance.GetCurrentWorld() == World.NORMAL) 
+        {
+            BecomeDisabled();
+        } 
+        else
+        {
+            BecomeIdle();
+        }   
+
+        GameEvents.instance.onNormalWorldEnter += (_) => BecomeDisabled();
+        GameEvents.instance.onArcaneWorldEnter += (_) => BecomeIdle();
     }
 
     void Update()
@@ -53,7 +61,7 @@ public class EnemyMovement : MonoBehaviour
             {
                 currentState = State.IDLE;
                 ChooseBody();
-                StopChasing();
+                BecomeIdle();
             }
         }
         else
@@ -97,11 +105,17 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private void StopChasing()
+    private void BecomeIdle()
     {
         rigidBody.isKinematic = true;
         agent.isStopped = true;
         currentState = State.IDLE;
+    }
+
+    private void BecomeDisabled()
+    {
+        currentState = State.DISABLED;
+        rigidBody.isKinematic = true;
     }
 
     private void StartChasing()
