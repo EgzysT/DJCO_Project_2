@@ -3,15 +3,25 @@ using UnityEngine;
 
 public class Door : InteractableObject
 {
-    private new Rigidbody rigidbody;
-    private new Camera camera;
-    private Vector3 middleScreen;
+    [Header("Event react ID (negative to not react)")]
+    public int id;
+
+    [Header("Door Settings")]
     public float ThrowForce = 5f;
     public float MaxDistance = 3.8f;
     public float MinDistance = 0f;
 
+    private new Rigidbody rigidbody;
+    private new Camera camera;
+    private Vector3 middleScreen;
+
     private void Start()
     {
+        if (id >= 0) {
+            GameEvents.instance.onInteractableActivate += OpenDoor;
+            GameEvents.instance.onInteractableDeactivate += CloseDoor;
+        }
+
         rigidbody = GetComponent<Rigidbody>();
         camera = Camera.main;
         middleScreen = new Vector3(0.5f, 0.5f, 0);
@@ -57,4 +67,21 @@ public class Door : InteractableObject
     }
 
     public override void PressR() { }
+
+    private void OpenDoor(int id) {
+        if (id == this.id) {
+            // TODO Open Door
+        }
+    }
+    
+    private void CloseDoor(int id) {
+        if (id == this.id) {
+            // TODO Close Door
+        }
+    }
+
+    void OnDestroy() {
+        GameEvents.instance.onInteractableActivate -= OpenDoor;
+        GameEvents.instance.onInteractableDeactivate -= CloseDoor;
+    }
 }

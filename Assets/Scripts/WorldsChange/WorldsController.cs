@@ -14,19 +14,31 @@ public class WorldsController : MonoBehaviour {
     private ParticleSystem.EmissionModule dustEffectEmission;
     bool isChangingWorlds;
 
+    [Header("Shader Settings")]
     public ParticleSystem dustEffect;
 
     [SerializeField]
     float radius;
-    private float radiusPercent;
+    private float effectProgressionPercent;
     public float maxRadius;
     public float effectSpeed;
     private float effectSpeedPercent;
     public AnimationCurve effectTransitionCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
 
+    private Camera cam;
+
+    [Header("Camera Effects")]
+    private bool cameraEffectsActive;
+    private float initialFov;
+    private float cameraEffectsProgressionPercent;
+    public float cameraEffectsDuration;
+    public AnimationCurve fovTransitionCurve = AnimationCurve.Linear(0f, 0f, 1f, 0f);
+
     void Awake() {
         instance = this;
         effectSpeedPercent = effectSpeed / maxRadius;
+        cam = Camera.main;
+        initialFov = cam.fieldOfView;
 
         // Starts on the NORMAL world
         currentWorld = World.NORMAL;
@@ -42,9 +54,11 @@ public class WorldsController : MonoBehaviour {
             changeWorlds();
         }
 
-        if (isChangingWorlds) {
+        if (isChangingWorlds)
             UpdateRadius();
-        }
+
+        if (cameraEffectsActive)
+            UpdateCameraTransitionEffects();
 
         Shader.SetGlobalFloat("_Radius", radius);
         Shader.SetGlobalFloat("_ScannerRadius", radius);
@@ -52,7 +66,8 @@ public class WorldsController : MonoBehaviour {
 
     void changeWorlds() {
         isChangingWorlds = true;
-        
+        cameraEffectsActive = true;
+
         if (currentWorld == World.NORMAL) {
             dustEffectEmission.enabled = true;
             dustEffect.Play();
@@ -73,22 +88,34 @@ public class WorldsController : MonoBehaviour {
     void UpdateRadius() {
         if (currentWorld == World.NORMAL) {
             // Is changing to NORMAL world => radius decreasing
-            if (radiusPercent <= 0f) {
+            if (effectProgressionPercent <= 0f) {
                 isChangingWorlds = false;
-                radiusPercent = 0f;
+                effectProgressionPercent = 0f;
             }
             else
-                radiusPercent -= effectSpeedPercent * Time.deltaTime;
+                effectProgressionPercent -= effectSpeedPercent * Time.deltaTime;
         } else {
             // Is changing to ARCANE world => radius increasing
-            if (radiusPercent >= 1f) {
+            if (effectProgressionPercent >= 1f) {
                 isChangingWorlds = false;
-                radiusPercent = 1f;
+                effectProgressionPercent = 1f;
             }
             else
-                radiusPercent += effectSpeedPercent * Time.deltaTime;
+                effectProgressionPercent += effectSpeedPercent * Time.deltaTime;
         }
 
-        radius = effectTransitionCurve.Evaluate(radiusPercent) * maxRadius;
+        radius = effectTransitionCurve.Evaluate(effectProgressionPercent) * maxRadius;
+    }
+
+    void UpdateCameraTransitionEffects() {
+        if (cameraEffectsProgressionPercent >= 1f) {
+            // Curve initial and final values should be the same
+            cameraEffectsProgressionPercent = 0f;
+            cameraEffectsActive = false;
+        } else {
+            cameraEffectsProgressionPercent += Time.deltaTime / cameraEffectsDuration;
+        }
+        
+        cam.fieldOfView = initialFov + fovTransitionCurve.Evaluate(cameraEffectsProgressionPercent);
     }
 }

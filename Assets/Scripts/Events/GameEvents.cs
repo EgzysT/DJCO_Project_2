@@ -25,4 +25,19 @@ public class GameEvents : MonoBehaviour
         }
     }
 
+    public event Action<int> onInteractableActivate;
+    public void InteractableActivate(int id) {
+        if (onInteractableActivate != null) {
+            onInteractableActivate(id);
+        }
+    }
+
+    public event Action<int> onInteractableDeactivate;
+    public void InteractableDeactivate(int id) {
+        if (onInteractableDeactivate != null) {
+            onInteractableDeactivate(id);
+        }
+    }
+
+
 }

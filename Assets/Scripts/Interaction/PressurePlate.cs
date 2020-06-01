@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PressurePlate : MonoBehaviour {
 
+    [Header("Event trigger ID (negative to not trigger)")]
+    public int id;
+
+    [Header("Pressure plate Settings")]
     public float depth;
     public float animationDuration;
 
@@ -24,15 +29,31 @@ public class PressurePlate : MonoBehaviour {
             if (!isDown) {
                 isDown = true;
                 LeanTween.cancel(gameObject);
-                LeanTween.move(gameObject, new Vector3(transform.position.x, initialPosition.y - depth, transform.position.z), animationDuration).setEase(LeanTweenType.easeOutQuart);
+                LeanTween.move(gameObject, new Vector3(transform.position.x, initialPosition.y - depth, transform.position.z), animationDuration)
+                    .setEase(LeanTweenType.easeOutQuart)
+                    .setOnComplete(TriggerActivate);
             }
         }
         else {
             if (isDown) {
                 isDown = false;
+                TriggerDeactivate();
                 LeanTween.cancel(gameObject);
-                LeanTween.move(gameObject, initialPosition, animationDuration).setEase(LeanTweenType.easeOutQuart);
+                LeanTween.move(gameObject, initialPosition, animationDuration)
+                    .setEase(LeanTweenType.easeOutQuart);
             }
+        }
+    }
+
+    private void TriggerActivate() {
+        if (id >= 0) {
+            GameEvents.instance.InteractableActivate(id);
+        }
+    }
+    
+    private void TriggerDeactivate() {
+        if (id >= 0) {
+            GameEvents.instance.InteractableDeactivate(id);
         }
     }
 
