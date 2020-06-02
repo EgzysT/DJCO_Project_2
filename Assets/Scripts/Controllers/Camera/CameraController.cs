@@ -23,6 +23,7 @@ public class CameraController : MonoBehaviour
     private Transform m_pitchTranform;
     private Camera m_cam;
 
+    [SerializeField] 
     private bool m_canLook;
 
     private float m_yaw;

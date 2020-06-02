@@ -97,6 +97,14 @@ public class FirstPersonController : MonoBehaviour
 
     private float m_inAirTimer;
 
+    public bool CanMove
+    {
+        set => m_canMove = value;
+    }
+
+    [SerializeField] 
+    private bool m_canMove;
+
     protected virtual void Start()
     {
         GetComponents();
@@ -114,6 +122,7 @@ public class FirstPersonController : MonoBehaviour
             CheckIfGrounded();
             CheckIfWall();
 
+
             // Apply Smoothing
             SmoothInput();
             SmoothSpeed();
@@ -124,12 +133,15 @@ public class FirstPersonController : MonoBehaviour
             CalculateSpeed();
             CalculateFinalMovement();
 
-            // Handle Player Movement, Gravity, Jump, Crouch etc.
-            HandleCrouch();
-            HandleHeadBob();
-            HandleRunFOV();
-            HandleCameraSway();
-            HandleLanding();
+            if (m_canMove)
+            {
+                // Handle Player Movement, Gravity, Jump, Crouch etc.
+                HandleCrouch();
+                HandleHeadBob();
+                HandleRunFOV();
+                HandleCameraSway();
+                HandleLanding();
+            }
 
             ApplyGravity();
             ApplyMovement();
@@ -177,6 +189,7 @@ public class FirstPersonController : MonoBehaviour
 
     protected virtual void SmoothInput()
     {
+        if (!m_canMove) return;
         m_inputVector = movementInputData.InputVector.normalized;
         m_smoothInputVector = Vector2.Lerp(m_smoothInputVector, m_inputVector, Time.deltaTime * smoothInputSpeed);
     }
