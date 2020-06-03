@@ -73,12 +73,18 @@ public class WorldsController : MonoBehaviour {
             dustEffect.Play();
             currentWorld = World.ARCANE;
             GameEvents.instance.ArcaneWorldEnter(transform.position);
+
+            // Play Arcane World Ambient Sound
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Ambience/ambience1");
         }
         else if (currentWorld == World.ARCANE) {
             dustEffectEmission.enabled = false;
             dustEffect.Stop();
             currentWorld = World.NORMAL;
             GameEvents.instance.NormalWorldEnter(transform.position);
+
+            // Stop
+            //FMODUnity.RuntimeManager.("event:/Ambience/ambience1");
         }
         else {
             throw new Exception("[" + gameObject.name + "] Current World must be NORMAL or ARCANE");

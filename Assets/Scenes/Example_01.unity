@@ -1837,6 +1837,58 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 391600433, guid: e171885bcdc2d4b40878c72297f1f810, type: 3}
+      propertyPath: fovTransitionCurve.m_Curve.Array.data[1].time
+      value: 0.3398546
+      objectReference: {fileID: 0}
+    - target: {fileID: 391600433, guid: e171885bcdc2d4b40878c72297f1f810, type: 3}
+      propertyPath: fovTransitionCurve.m_Curve.Array.data[1].value
+      value: -14.792683
+      objectReference: {fileID: 0}
+    - target: {fileID: 391600433, guid: e171885bcdc2d4b40878c72297f1f810, type: 3}
+      propertyPath: fovTransitionCurve.m_Curve.Array.data[2].value
+      value: 1.1837635
+      objectReference: {fileID: 0}
+    - target: {fileID: 391600433, guid: e171885bcdc2d4b40878c72297f1f810, type: 3}
+      propertyPath: fovTransitionCurve.m_Curve.Array.data[2].time
+      value: 0.7831225
+      objectReference: {fileID: 0}
+    - target: {fileID: 391600433, guid: e171885bcdc2d4b40878c72297f1f810, type: 3}
+      propertyPath: fovTransitionCurve.m_Curve.Array.data[2].inSlope
+      value: 25.361555
+      objectReference: {fileID: 0}
+    - target: {fileID: 391600433, guid: e171885bcdc2d4b40878c72297f1f810, type: 3}
+      propertyPath: fovTransitionCurve.m_Curve.Array.data[2].outSlope
+      value: 25.361555
+      objectReference: {fileID: 0}
+    - target: {fileID: 391600433, guid: e171885bcdc2d4b40878c72297f1f810, type: 3}
+      propertyPath: fovTransitionCurve.m_Curve.Array.data[2].inWeight
+      value: 0.5635177
+      objectReference: {fileID: 0}
+    - target: {fileID: 391600433, guid: e171885bcdc2d4b40878c72297f1f810, type: 3}
+      propertyPath: cameraEffectsDuration
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 391600433, guid: e171885bcdc2d4b40878c72297f1f810, type: 3}
+      propertyPath: effectSpeed
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 391600433, guid: e171885bcdc2d4b40878c72297f1f810, type: 3}
+      propertyPath: fovTransitionCurve.m_Curve.Array.data[1].outSlope
+      value: 0.3553208
+      objectReference: {fileID: 0}
+    - target: {fileID: 391600433, guid: e171885bcdc2d4b40878c72297f1f810, type: 3}
+      propertyPath: fovTransitionCurve.m_Curve.Array.data[1].outWeight
+      value: 0.5458631
+      objectReference: {fileID: 0}
+    - target: {fileID: 391600433, guid: e171885bcdc2d4b40878c72297f1f810, type: 3}
+      propertyPath: fovTransitionCurve.m_Curve.Array.data[2].outWeight
+      value: 0.259461
+      objectReference: {fileID: 0}
+    - target: {fileID: 391600433, guid: e171885bcdc2d4b40878c72297f1f810, type: 3}
+      propertyPath: fovTransitionCurve.m_Curve.Array.data[2].weightedMode
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5503128409379037468, guid: e171885bcdc2d4b40878c72297f1f810,
         type: 3}
       propertyPath: m_Name
