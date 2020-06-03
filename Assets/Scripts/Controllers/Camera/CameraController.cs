@@ -42,10 +42,13 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
-        CalculateRotation();
-        SmoothRotation();
-        ApplyRotation();
-        HandleZoom();
+        if (m_canLook)
+        {
+            CalculateRotation();
+            SmoothRotation();
+            ApplyRotation();
+            HandleZoom();
+        }
     }
 
     void GetComponents()
@@ -70,14 +73,10 @@ public class CameraController : MonoBehaviour
 
     void CalculateRotation()
     {
-        // If camera is fixed, then ignore input
-        if (m_canLook)
-        {
-            m_desiredYaw += camInputData.InputVector.x * sensitivity.x * Time.deltaTime;
-            m_desiredPitch -= camInputData.InputVector.y * sensitivity.y * Time.deltaTime;
+        m_desiredYaw += camInputData.InputVector.x * sensitivity.x * Time.deltaTime;
+        m_desiredPitch -= camInputData.InputVector.y * sensitivity.y * Time.deltaTime;
 
-            m_desiredPitch = Mathf.Clamp(m_desiredPitch, lookAngleMinMax.x, lookAngleMinMax.y);
-        }
+        m_desiredPitch = Mathf.Clamp(m_desiredPitch, lookAngleMinMax.x, lookAngleMinMax.y);
     }
 
     void SmoothRotation()

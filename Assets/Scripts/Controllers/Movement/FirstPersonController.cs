@@ -185,6 +185,8 @@ public class FirstPersonController : MonoBehaviour
         m_headBob.CurrentStateHeight = m_initCamHeight;
 
         m_walkRunSpeedDifference = runSpeed - walkSpeed;
+
+        m_canMove = true;
     }
 
     protected virtual void SmoothInput()
@@ -472,7 +474,7 @@ public class FirstPersonController : MonoBehaviour
 
     protected virtual void HandleJump()
     {
-        if (m_duringLandingAnimation)
+        if (m_duringLandingAnimation || !m_canMove)
             return;
 
         if (movementInputData.JumpClicked && !movementInputData.IsCrouching)
