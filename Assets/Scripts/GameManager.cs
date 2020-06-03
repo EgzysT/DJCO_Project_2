@@ -55,11 +55,15 @@ public class GameManager : MonoBehaviour {
     }
 
     public void QuitGame() {
+#if UNITY_EDITOR
         Debug.Log("Quit Game");
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
         Application.Quit();
+#endif
     }
 
-    private void SetCursorVisibility(bool isVisible) {
+    public void SetCursorVisibility(bool isVisible) {
         if (isVisible) {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
