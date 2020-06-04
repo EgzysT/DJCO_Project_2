@@ -15,15 +15,15 @@ public class Pickable : InteractableObject
     public float MaxCollisionVelocity = 3.8f;
     public float MaxAngle = 35f;
 
-    private new Rigidbody rigidbody;
-    private new Camera camera;
+    private Rigidbody rb;
+    private Camera cam;
     private GameObject holdSpot;
 
     private void Start() 
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         holdSpot = GameObject.Find("HoldSpot");
-        camera = Camera.main;
+        cam = Camera.main;
 
         if (MaxDistance <= MaxZoomDistance || MinDistance >= MinZoomDistance)
             throw new Exception("[" + gameObject.name + "] MinDistance must be < than MinZoomDistance and MaxDistance must be > than MaxZoomDistance");
@@ -32,68 +32,68 @@ public class Pickable : InteractableObject
     private void Pick() 
     {
         isInteracting = true;
-        rigidbody.useGravity = false;
+        rb.useGravity = false;
 
         holdSpot.transform.position = transform.position;
         transform.SetParent(holdSpot.transform);
-        holdSpot.GetComponent<FixedJoint>().connectedBody = rigidbody;
+        holdSpot.GetComponent<FixedJoint>().connectedBody = rb;
 
-        rigidbody.freezeRotation = true;
+        rb.freezeRotation = true;
     }
 
     private void Drop() 
     {
         isInteracting = false;
-        rigidbody.useGravity = true;
-        rigidbody.detectCollisions = true;
+        rb.useGravity = true;
+        rb.detectCollisions = true;
 
         transform.SetParent(null);
         holdSpot.GetComponent<FixedJoint>().connectedBody = null;
 
-        rigidbody.freezeRotation = false;
+        rb.freezeRotation = false;
     }
 
     private void Rotate() 
     {
-        rigidbody.freezeRotation = false;
+        rb.freezeRotation = false;
 
         float xRotation = -Input.GetAxis("Mouse X") * RotationSpeed;
         float yRotation = Input.GetAxis("Mouse Y") * RotationSpeed;
 
-        holdSpot.transform.Rotate(camera.transform.up, xRotation, Space.World);
-        holdSpot.transform.Rotate(camera.transform.right, yRotation, Space.World);
+        holdSpot.transform.Rotate(cam.transform.up, xRotation, Space.World);
+        holdSpot.transform.Rotate(cam.transform.right, yRotation, Space.World);
 
-        rigidbody.freezeRotation = true;
+        rb.freezeRotation = true;
     }
 
     private void Zoom() 
     {
         float zoom = Input.GetAxis("Mouse ScrollWheel") * ZoomSpeed;
-        float distance = Mathf.Clamp(Vector3.Distance(holdSpot.transform.position, camera.transform.position), MinZoomDistance, MaxZoomDistance);
+        float distance = Mathf.Clamp(Vector3.Distance(holdSpot.transform.position, cam.transform.position), MinZoomDistance, MaxZoomDistance);
 
         if ((zoom < 0 && distance <= MinZoomDistance) || (zoom > 0 && distance >= MaxZoomDistance))
             return;
 
-        holdSpot.transform.Translate(camera.transform.forward * zoom * Time.deltaTime, Space.World);
+        holdSpot.transform.Translate(cam.transform.forward * zoom * Time.deltaTime, Space.World);
     }
 
     private void Throw() 
     {
         Drop();
 
-        rigidbody.AddForce(camera.transform.forward * ThrowForce, ForceMode.Impulse);
+        rb.AddForce(cam.transform.forward * ThrowForce, ForceMode.Impulse);
     }
 
     private void CheckDistance()
     {
-        float distance = Vector3.Distance(transform.position, camera.transform.position);
+        float distance = Vector3.Distance(transform.position, cam.transform.position);
         if (distance > MaxDistance || distance < MinDistance)
             Drop();
     }
 
     private void CheckAngle()
     {
-        float angle = Vector3.Angle(camera.transform.forward, transform.position - camera.transform.position);
+        float angle = Vector3.Angle(cam.transform.forward, transform.position - cam.transform.position);
         if (angle > MaxAngle)
             Drop();
     }

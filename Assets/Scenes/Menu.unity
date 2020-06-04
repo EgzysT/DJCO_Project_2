@@ -578,6 +578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 810738099}
   - component: {fileID: 810738100}
+  - component: {fileID: 810738101}
   m_Layer: 0
   m_Name: Timeline
   m_TagString: Untagged
@@ -616,10 +617,39 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: 7137954285518535977, guid: cc51fede92500644e8c82115b3ffee47, type: 2}
     value: {fileID: 1304360517}
-  - key: {fileID: -1062934129345054648, guid: cc51fede92500644e8c82115b3ffee47, type: 2}
-    value: {fileID: 1848648400}
+  - key: {fileID: 6291308113745104874, guid: cc51fede92500644e8c82115b3ffee47, type: 2}
+    value: {fileID: 810738101}
   m_ExposedReferences:
     m_References: []
+--- !u!114 &810738101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810738098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 268ed839ce697544687479db46a2ba34, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1848648398}
+          m_MethodName: LoadScene
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Level 1
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &836336790
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,6 +818,7 @@ GameObject:
   - component: {fileID: 863253458}
   - component: {fileID: 863253457}
   - component: {fileID: 863253460}
+  - component: {fileID: 863253461}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -874,6 +905,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attenuationObject: {fileID: 0}
   ListenerNumber: -1
+--- !u!114 &863253461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863253456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/SFX/Crystals
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1037847277
 GameObject:
   m_ObjectHideFlags: 0
@@ -12966,4 +13020,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 7414340396915252502}
+  volumeMenu: {fileID: 3211432806059728300}
   pauseMenuAvailable: 0

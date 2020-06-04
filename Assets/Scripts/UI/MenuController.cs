@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour
 {
     public GameObject menu;
+    public GameObject volumeMenu;
 
     public bool pauseMenuAvailable;
     private GameObject player;
@@ -14,6 +15,7 @@ public class MenuController : MonoBehaviour
     void Start() {
         //pauseMenuAvailable = true;
         player = GameObject.FindGameObjectWithTag("Player");
+        volumeMenu.GetComponent<AudioSettings>().InitializeVolumeSettings();
     }
 
     void Update() {

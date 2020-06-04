@@ -11,8 +11,8 @@ public class Door : InteractableObject
     public float MaxDistance = 3.8f;
     public float MinDistance = 0f;
 
-    private new Rigidbody rigidbody;
-    private new Camera camera;
+    private Rigidbody rb;
+    private Camera cam;
     private Vector3 middleScreen;
 
     private void Start()
@@ -22,25 +22,25 @@ public class Door : InteractableObject
             GameEvents.instance.onInteractableDeactivate += CloseDoor;
         }
 
-        rigidbody = GetComponent<Rigidbody>();
-        camera = Camera.main;
+        rb = GetComponent<Rigidbody>();
+        cam = Camera.main;
         middleScreen = new Vector3(0.5f, 0.5f, 0);
     }
 
     private void CheckDistance()
     {
-        float distance = Vector3.Distance(transform.position, camera.transform.position);
+        float distance = Vector3.Distance(transform.position, cam.transform.position);
         if (distance > MaxDistance || distance < MinDistance)
             isInteracting = false;
     }
 
     private void Drag()
     {
-        Ray playerAim = camera.ViewportPointToRay(middleScreen);
+        Ray playerAim = cam.ViewportPointToRay(middleScreen);
 
         Vector3 currPos = transform.position;
-        Vector3 nextPos = camera.transform.position + playerAim.direction * 2f;
-        rigidbody.velocity = (nextPos - currPos) * 10f;
+        Vector3 nextPos = cam.transform.position + playerAim.direction * 2f;
+        rb.velocity = (nextPos - currPos) * 10f;
     }
 
     // Implement InteractableObject methods
@@ -57,7 +57,7 @@ public class Door : InteractableObject
     public override void RightMouseButtonDown() 
     {
         isInteracting = false;
-        rigidbody.AddForce(camera.transform.forward * ThrowForce, ForceMode.Impulse);
+        rb.AddForce(cam.transform.forward * ThrowForce, ForceMode.Impulse);
     }
 
     public override void Interacting()

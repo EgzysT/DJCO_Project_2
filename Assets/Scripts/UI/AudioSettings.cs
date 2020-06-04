@@ -22,15 +22,13 @@ public class AudioSettings : MonoBehaviour
     float SFXVolume = 0.5f;
     float AmbienceVolume = 0.5f;
 
-    void Awake() {
+    public void InitializeVolumeSettings() {
         MasterBus = FMODUnity.RuntimeManager.GetBus("bus:/Master");
         MusicBus = FMODUnity.RuntimeManager.GetBus("bus:/Master/Music");
         VoiceBus = FMODUnity.RuntimeManager.GetBus("bus:/Master/Voice");
         SFXBus = FMODUnity.RuntimeManager.GetBus("bus:/Master/SFX");
         AmbienceBus = FMODUnity.RuntimeManager.GetBus("bus:/Master/Ambience");
-    }
 
-    void Start() {
         LoadVolumeSettings();
 
         SetSliderValue(MasterObject, MasterVolume);

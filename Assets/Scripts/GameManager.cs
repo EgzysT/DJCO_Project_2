@@ -20,7 +20,8 @@ public class GameManager : MonoBehaviour {
     }
 
     public void LoadScene(string sceneToLoad) {
-        Time.timeScale = 1f;
+        //PlayerPrefs.Save();
+        //Time.timeScale = 1f;
         SceneManager.LoadScene(sceneToLoad);
     }
 

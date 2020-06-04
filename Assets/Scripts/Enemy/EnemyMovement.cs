@@ -1,6 +1,4 @@
-﻿using NaughtyAttributes.Editor;
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]

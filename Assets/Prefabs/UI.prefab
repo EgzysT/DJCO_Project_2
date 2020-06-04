@@ -222,7 +222,7 @@ MonoBehaviour:
   animationType: 0
   easeType: 21
   duration: 0.3
-  delay: 0
+  delay: 0.05
   loop: 0
   pingpong: 0
   startPositionOffset: 0
@@ -3116,6 +3116,7 @@ GameObject:
   - component: {fileID: 5364994771333348171}
   - component: {fileID: 5364994771333348170}
   - component: {fileID: 5364994771333348173}
+  - component: {fileID: 1473928712452132188}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -3204,6 +3205,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1473928712452132188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5364994771333348172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 304375b18d46d0747b4d4373e6fd747c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menu: {fileID: 6773475460999714373}
+  volumeMenu: {fileID: 1473928713014417151}
+  pauseMenuAvailable: 1
 --- !u!1 &5888421559309332047
 GameObject:
   m_ObjectHideFlags: 0
@@ -3480,19 +3496,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1473928712452132188}
         m_MethodName: ResumeGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1473928711375457667}
-        m_MethodName: Disable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3834,6 +3839,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 437314718}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   onDisableCallback:
     m_PersistentCalls:
       m_Calls:
@@ -3882,6 +3898,28 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1473928711375457667}
+        m_MethodName: Disable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 437314720}
+        m_MethodName: Disable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6998018196433238343}
         m_MethodName: Disable
         m_Mode: 1
         m_Arguments:
@@ -4658,15 +4696,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5e737665b6066a48801f747813f1939, type: 3}
---- !u!224 &146901268373733451 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1620618250168792559, guid: a5e737665b6066a48801f747813f1939,
-    type: 3}
-  m_PrefabInstance: {fileID: 1473928711407138212}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &146901268373733450 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1620618250168792558, guid: a5e737665b6066a48801f747813f1939,
+    type: 3}
+  m_PrefabInstance: {fileID: 1473928711407138212}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &146901268373733451 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1620618250168792559, guid: a5e737665b6066a48801f747813f1939,
     type: 3}
   m_PrefabInstance: {fileID: 1473928711407138212}
   m_PrefabAsset: {fileID: 0}
@@ -4869,15 +4907,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5e737665b6066a48801f747813f1939, type: 3}
---- !u!224 &146901267010701162 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1620618250168792559, guid: a5e737665b6066a48801f747813f1939,
-    type: 3}
-  m_PrefabInstance: {fileID: 1473928712166126213}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &146901267010701163 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1620618250168792558, guid: a5e737665b6066a48801f747813f1939,
+    type: 3}
+  m_PrefabInstance: {fileID: 1473928712166126213}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &146901267010701162 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1620618250168792559, guid: a5e737665b6066a48801f747813f1939,
     type: 3}
   m_PrefabInstance: {fileID: 1473928712166126213}
   m_PrefabAsset: {fileID: 0}
