@@ -1,13 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class AudioSettings : MonoBehaviour
 {
-    //FMOD.Studio.EventInstance SFXVolumeTestEvent;
-
     public GameObject MasterObject;
     public GameObject MusicObject;
     public GameObject VoiceObject;
@@ -32,10 +28,11 @@ public class AudioSettings : MonoBehaviour
         VoiceBus = FMODUnity.RuntimeManager.GetBus("bus:/Master/Voice");
         SFXBus = FMODUnity.RuntimeManager.GetBus("bus:/Master/SFX");
         AmbienceBus = FMODUnity.RuntimeManager.GetBus("bus:/Master/Ambience");
-        //MasterBus = FMODUnity.RuntimeManager.GetBus("bus:/Master/Test Sounds");
     }
 
     void Start() {
+        LoadVolumeSettings();
+
         SetSliderValue(MasterObject, MasterVolume);
         SetSliderValue(MusicObject, MusicVolume);
         SetSliderValue(VoiceObject, VoiceVolume);
@@ -47,6 +44,14 @@ public class AudioSettings : MonoBehaviour
         SetVoiceVolume(VoiceVolume);
         SetSFXVolume(SFXVolume);
         SetAmbienceVolume(AmbienceVolume);
+    }
+
+    private void LoadVolumeSettings() {
+        MasterVolume = float.Parse(PlayerPrefs.GetString(MasterObject.name, MasterVolume.ToString()));
+        MusicVolume = float.Parse(PlayerPrefs.GetString(MusicObject.name, MusicVolume.ToString()));
+        VoiceVolume = float.Parse(PlayerPrefs.GetString(VoiceObject.name, VoiceVolume.ToString()));
+        SFXVolume = float.Parse(PlayerPrefs.GetString(SFXObject.name, SFXVolume.ToString()));
+        AmbienceVolume = float.Parse(PlayerPrefs.GetString(AmbienceObject.name, AmbienceVolume.ToString()));
     }
 
     public void SetMasterVolume(float volume) {
@@ -84,6 +89,9 @@ public class AudioSettings : MonoBehaviour
 
     private void SetTMPText(GameObject obj, float value) {
         obj.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = (int)(value * 100) + "%";
+
+        // Save volume settings
+        PlayerPrefs.SetString(obj.name, value.ToString());
     }
 
 }
