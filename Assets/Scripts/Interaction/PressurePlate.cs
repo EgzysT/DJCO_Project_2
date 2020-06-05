@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PressurePlate : MonoBehaviour {
-
-    [Header("Event trigger ID (negative to not trigger)")]
-    public int id;
+public class PressurePlate : EventTrigger {
 
     [Header("Pressure plate Settings")]
     public float depth;
@@ -14,15 +11,13 @@ public class PressurePlate : MonoBehaviour {
 
     private bool isDown;
     private Vector3 initialPosition;
-
     private List<int> objectsApplyingPressure;
 
     // Start is called before the first frame update
     void Start() {
-        objectsApplyingPressure = new List<int>();
-        //isBeingPressured = false;
         isDown = false;
         initialPosition = transform.position;
+        objectsApplyingPressure = new List<int>();
     }
 
     // Update is called once per frame
@@ -44,18 +39,6 @@ public class PressurePlate : MonoBehaviour {
                 LeanTween.move(gameObject, initialPosition, animationDuration)
                     .setEase(LeanTweenType.easeOutQuart);
             }
-        }
-    }
-
-    private void TriggerActivate() {
-        if (id >= 0) {
-            GameEvents.instance.InteractableActivate(id);
-        }
-    }
-    
-    private void TriggerDeactivate() {
-        if (id >= 0) {
-            GameEvents.instance.InteractableDeactivate(id);
         }
     }
 

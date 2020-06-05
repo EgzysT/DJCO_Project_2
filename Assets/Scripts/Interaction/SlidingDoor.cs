@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlidingDoor : MonoBehaviour
-{
-    [Header("Event react ID (negative to not react)")]
-    public int id;
+public class SlidingDoor : EventReactor {
 
     [Header("Sliding Door Settings")]
     public Vector3 finalPosition;
@@ -14,34 +11,19 @@ public class SlidingDoor : MonoBehaviour
     private Vector3 initialPosition;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    protected override void StartEvent() {
         initialPosition = transform.localPosition;
-
-        if (id >= 0) {
-            GameEvents.instance.onInteractableActivate += OpenDoor;
-            GameEvents.instance.onInteractableDeactivate += CloseDoor;
-        }
     }
 
-    private void OpenDoor(int id) {
-        if (id == this.id) {
-            LeanTween.moveLocal(gameObject, finalPosition, animationDuration)
-                .setEase(LeanTweenType.easeInOutCubic);
-        }
+    public override void Activate() {
+        // Open Door
+        LeanTween.moveLocal(gameObject, finalPosition, animationDuration)
+            .setEase(LeanTweenType.easeInOutCubic);
     }
 
-    private void CloseDoor(int id) {
-        if (id == this.id) {
-            LeanTween.moveLocal(gameObject, initialPosition, animationDuration)
-               .setEase(LeanTweenType.easeInOutCubic);
-        }
-    }
-
-    void OnDestroy() {
-        if (id >= 0) {
-            GameEvents.instance.onInteractableActivate -= OpenDoor;
-            GameEvents.instance.onInteractableDeactivate -= CloseDoor;
-        }
+    public override void Deactivate() {
+        // Close Door
+        LeanTween.moveLocal(gameObject, initialPosition, animationDuration)
+            .setEase(LeanTweenType.easeInOutCubic);
     }
 }

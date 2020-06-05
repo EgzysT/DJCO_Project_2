@@ -5,9 +5,6 @@ using UnityEngine.EventSystems;
 
 public class Lever : InteractableObject {
 
-    [Header("Event trigger ID (negative to not trigger)")]
-    public int id;
-
     [Header("Lever Settings")]
     public GameObject movingObject;
     public bool multipleInteractions;
@@ -19,18 +16,6 @@ public class Lever : InteractableObject {
     // Start is called before the first frame update
     void Start() {
         isActivated = false;
-    }
-
-    private void TriggerActivate() {
-        if (id >= 0) {
-            GameEvents.instance.InteractableActivate(id);
-        }
-    }
-
-    private void TriggerDeactivate() {
-        if (id >= 0) {
-            GameEvents.instance.InteractableDeactivate(id);
-        }
     }
 
     public override void LeftMouseButtonDown() {
