@@ -81,7 +81,9 @@ public class Door : InteractableObject
     }
 
     void OnDestroy() {
-        GameEvents.instance.onInteractableActivate -= OpenDoor;
-        GameEvents.instance.onInteractableDeactivate -= CloseDoor;
+        if (id >= 0) {
+            GameEvents.instance.onInteractableActivate -= OpenDoor;
+            GameEvents.instance.onInteractableDeactivate -= CloseDoor;
+        }
     }
 }
