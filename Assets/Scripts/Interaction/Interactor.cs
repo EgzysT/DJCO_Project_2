@@ -41,7 +41,10 @@ public class Interactor : MonoBehaviour
 
         if (!currentlyLooking.isInteracting)
         {
-            crosshairController.ShowInteract();
+            if (currentlyLooking.HasTrigger())
+                crosshairController.ShowClick();
+            else
+                crosshairController.ShowGrab();
 
             if (Input.GetMouseButtonDown(0))
             {

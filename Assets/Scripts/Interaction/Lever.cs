@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Lever : InteractableObject {
+public class Lever : InteractableObject
+{
 
     [Header("Lever Settings")]
     public GameObject movingObject;

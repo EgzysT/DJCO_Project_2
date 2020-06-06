@@ -7,6 +7,7 @@ public class CrosshairController : MonoBehaviour
 {
     public Sprite crosshairTexture;
     public Sprite interactTexture;
+    public Sprite clickTexture;
 
     public bool showCursor = true;
     private Image image;
@@ -16,10 +17,16 @@ public class CrosshairController : MonoBehaviour
         image = GameObject.Find("Crosshair").GetComponent<Image>();
     }
 
-    public void ShowInteract()
+    public void ShowGrab()
     {
         image.enabled = true;
         image.sprite = interactTexture;
+    }
+
+    public void ShowClick()
+    {
+        image.enabled = true;
+        image.sprite = clickTexture;
     }
 
     public void ShowNone()
