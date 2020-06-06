@@ -24,4 +24,9 @@ public abstract class EventTrigger : MonoBehaviour
             Debug.LogWarning("[" + gameObject.name + "] - Calling TriggerDeactivate without specifying valid id");
         }
     }
+
+    public bool HasTrigger()
+    {
+        return id >= 0;
+    }
 }
