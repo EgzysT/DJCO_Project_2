@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class InteractableObject : MonoBehaviour
+public abstract class InteractableObject : EventTrigger
 {
     [HideInInspector]
     public bool isInteracting = false;

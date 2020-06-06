@@ -42,13 +42,10 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
-        if (m_canLook)
-        {
-            CalculateRotation();
-            SmoothRotation();
-            ApplyRotation();
-            HandleZoom();
-        }
+        CalculateRotation();
+        SmoothRotation();
+        ApplyRotation();
+        HandleZoom();
     }
 
     void GetComponents()
@@ -73,10 +70,13 @@ public class CameraController : MonoBehaviour
 
     void CalculateRotation()
     {
-        m_desiredYaw += camInputData.InputVector.x * sensitivity.x * Time.deltaTime;
-        m_desiredPitch -= camInputData.InputVector.y * sensitivity.y * Time.deltaTime;
+        if (m_canLook)
+        {
+            m_desiredYaw += camInputData.InputVector.x * sensitivity.x * Time.deltaTime;
+            m_desiredPitch -= camInputData.InputVector.y * sensitivity.y * Time.deltaTime;
 
-        m_desiredPitch = Mathf.Clamp(m_desiredPitch, lookAngleMinMax.x, lookAngleMinMax.y);
+            m_desiredPitch = Mathf.Clamp(m_desiredPitch, lookAngleMinMax.x, lookAngleMinMax.y);
+        }
     }
 
     void SmoothRotation()
@@ -98,12 +98,16 @@ public class CameraController : MonoBehaviour
 
     void HandleZoom()
     {
+        if (!m_canLook) return;
+
         if (camInputData.ZoomClicked || camInputData.ZoomReleased)
             cameraZoom.ChangeFOV(this);
     }
 
     public void ChangeRunFOV(bool _returning)
     {
+        if (!m_canLook) return;
+
         cameraZoom.ChangeRunFOV(_returning, this);
     }
 

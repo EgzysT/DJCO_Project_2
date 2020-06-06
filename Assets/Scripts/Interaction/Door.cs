@@ -1,10 +1,9 @@
-using System;
 using UnityEngine;
 
 public class Door : InteractableObject
 {
-    [Header("Event react ID (negative to not react)")]
-    public int id;
+    //[Header("Event react ID (negative to not react)")]
+    //public int id;
 
     [Header("Door Settings")]
     public float ThrowForce = 5f;
@@ -17,10 +16,10 @@ public class Door : InteractableObject
 
     private void Start()
     {
-        if (id >= 0) {
-            GameEvents.instance.onInteractableActivate += OpenDoor;
-            GameEvents.instance.onInteractableDeactivate += CloseDoor;
-        }
+        //if (id >= 0) {
+        //    GameEvents.instance.onInteractableActivate += OpenDoor;
+        //    GameEvents.instance.onInteractableDeactivate += CloseDoor;
+        //}
 
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
@@ -68,20 +67,22 @@ public class Door : InteractableObject
 
     public override void PressR() { }
 
-    private void OpenDoor(int id) {
-        if (id == this.id) {
-            // TODO Open Door
-        }
-    }
+    //private void OpenDoor(int id) {
+    //    if (id == this.id) {
+    //        // TODO Open Door
+    //    }
+    //}
     
-    private void CloseDoor(int id) {
-        if (id == this.id) {
-            // TODO Close Door
-        }
-    }
+    //private void CloseDoor(int id) {
+    //    if (id == this.id) {
+    //        // TODO Close Door
+    //    }
+    //}
 
-    void OnDestroy() {
-        GameEvents.instance.onInteractableActivate -= OpenDoor;
-        GameEvents.instance.onInteractableDeactivate -= CloseDoor;
-    }
+    //void OnDestroy() {
+    //    if (id >= 0) {
+    //        GameEvents.instance.onInteractableActivate -= OpenDoor;
+    //        GameEvents.instance.onInteractableDeactivate -= CloseDoor;
+    //    }
+    //}
 }
