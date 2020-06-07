@@ -123,6 +123,23 @@ public class UITweener : MonoBehaviour {
         });
     }
 
+    public void DisableAfterDelay(float delay) {
+        float initialDelay = this.delay;
+        this.delay = delay;
+        SwapDirection();
+        HandleTween();
+        _tweenObject.setOnComplete(() => {
+            this.delay = initialDelay;
+            SwapDirection();
+            gameObject.SetActive(false);
+            onDisable();
+        });
+    }
+
+    public void SelfDestroy() {
+        Destroy(this);
+    }
+
     //public void Disable(Action onCompleteAction) {
     //    SwapDirection();
     //    HandleTween();

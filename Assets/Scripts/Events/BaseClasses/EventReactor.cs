@@ -21,7 +21,7 @@ public abstract class EventReactor : MonoBehaviour
         StartEvent();
     }
 
-    protected abstract void StartEvent();
+    protected virtual void StartEvent() { }
 
     private void Activate(int id) {
         if (id == this.id) {

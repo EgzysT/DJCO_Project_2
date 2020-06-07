@@ -52,4 +52,10 @@ public class GameManager : MonoBehaviour {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public static void createHint(string title, string text) {
+        HintScript hint = Instantiate(Resources.Load("Hint") as GameObject, GameObject.FindGameObjectWithTag("UI").transform).GetComponent<HintScript>();
+        hint.SetHintTitle(title);
+        hint.SetHintText(text);
+    }
+
 }
