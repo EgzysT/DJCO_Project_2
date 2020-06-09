@@ -251,26 +251,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f67f022cac8580c45b7c2ebf5ac22eab, type: 3}
---- !u!1 &74480861 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7684349436910161908, guid: 02eb82be946874b449fcde1e7461e825,
-    type: 3}
-  m_PrefabInstance: {fileID: 1502533108}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &74480871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 74480861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62da0a4c693f12444a8b1234504c6dd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  belongsTo: 1
-  isParticleSystem: 0
 --- !u!1 &98319868 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2284258107600505885, guid: a4c8ef9d4badde942a3565d7c6a0a84c,
@@ -2208,6 +2188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   belongsTo: 0
   isParticleSystem: 0
+  isLight: 0
 --- !u!1 &814249970
 GameObject:
   m_ObjectHideFlags: 0
@@ -4115,6 +4096,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   belongsTo: 0
   isParticleSystem: 1
+  isLight: 0
 --- !u!4 &1357197492 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 5a97962f7d5ba4df0823334b52c7c02c,

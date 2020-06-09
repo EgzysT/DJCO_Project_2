@@ -401,6 +401,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4681669096123630574}
   - component: {fileID: 4681669096123630573}
+  - component: {fileID: 1218171462}
   m_Layer: 0
   m_Name: REyeLight
   m_TagString: Untagged
@@ -483,6 +484,21 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1218171462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4681669096123630575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62da0a4c693f12444a8b1234504c6dd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  belongsTo: 1
+  isParticleSystem: 0
+  isLight: 1
 --- !u!1 &4681669096237901915
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,6 +539,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4681669096317760615}
   - component: {fileID: 4681669096317760614}
+  - component: {fileID: 555257382}
   m_Layer: 0
   m_Name: LEyeLight
   m_TagString: Untagged
@@ -605,6 +622,21 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &555257382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4681669096317760632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62da0a4c693f12444a8b1234504c6dd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  belongsTo: 1
+  isParticleSystem: 0
+  isLight: 1
 --- !u!1 &4681669096804063027
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,6 +677,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4681669096868574852}
   - component: {fileID: 4681669096868574851}
+  - component: {fileID: 1078878771}
   m_Layer: 0
   m_Name: LEyeLight
   m_TagString: Untagged
@@ -727,6 +760,21 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1078878771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4681669096868574853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62da0a4c693f12444a8b1234504c6dd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  belongsTo: 1
+  isParticleSystem: 0
+  isLight: 1
 --- !u!1 &4681669096982491110
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,6 +785,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4681669096982491109}
   - component: {fileID: 4681669096982491108}
+  - component: {fileID: 808908447}
   m_Layer: 0
   m_Name: center body light
   m_TagString: Untagged
@@ -819,6 +868,21 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &808908447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4681669096982491110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62da0a4c693f12444a8b1234504c6dd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  belongsTo: 1
+  isParticleSystem: 0
+  isLight: 1
 --- !u!1 &4681669097215575097
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,6 +893,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4681669097215575096}
   - component: {fileID: 4681669097215575079}
+  - component: {fileID: 63733742}
   m_Layer: 0
   m_Name: center body light
   m_TagString: Untagged
@@ -911,6 +976,21 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &63733742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4681669097215575097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62da0a4c693f12444a8b1234504c6dd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  belongsTo: 1
+  isParticleSystem: 0
+  isLight: 1
 --- !u!1 &4681669097639541474
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,6 +1001,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4681669097639541473}
   - component: {fileID: 4681669097639541472}
+  - component: {fileID: 1606054620}
   m_Layer: 0
   m_Name: REyeLight
   m_TagString: Untagged
@@ -1003,6 +1084,21 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1606054620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4681669097639541474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62da0a4c693f12444a8b1234504c6dd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  belongsTo: 1
+  isParticleSystem: 0
+  isLight: 1
 --- !u!1 &4681669097803133753
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,6 +1206,7 @@ GameObject:
   - component: {fileID: 7684349436910161918}
   - component: {fileID: 7684349436910161919}
   - component: {fileID: 7684349436910161909}
+  - component: {fileID: 6700745237332293435}
   m_Layer: 0
   m_Name: EnemyFinal
   m_TagString: Untagged
@@ -1249,3 +1346,18 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &6700745237332293435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7684349436910161908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62da0a4c693f12444a8b1234504c6dd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  belongsTo: 1
+  isParticleSystem: 0
+  isLight: 0

@@ -53,7 +53,6 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-
         if (currentState == State.DISABLED) return;
 
         if (PlayerCanSeeMe())
@@ -102,27 +101,6 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private void TurnOfLights()
-    {
-        foreach (Light light in lights)
-        {
-            if (light.gameObject.activeInHierarchy)
-            {
-                StartCoroutine(TurnOfLightSmoothly(light));
-            }
-        }
-    }
-
-
-    IEnumerator TurnOfLightSmoothly(Light light)
-    {
-        while(light.intensity > 0)
-        {
-            light.intensity -= 0.1f;
-            yield return new WaitForSeconds(0.1f);
-        }
-    }
-
     private void ChooseBody()
     {
         int nextBodyIndex = UnityEngine.Random.Range(0, bodies.childCount);
@@ -150,7 +128,6 @@ public class EnemyMovement : MonoBehaviour
     {
         currentState = State.DISABLED;
         rigidBody.isKinematic = true;
-        TurnOfLights();
     }
 
     private void StartChasing()
