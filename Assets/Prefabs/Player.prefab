@@ -1179,11 +1179,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DustParticleEffect
       objectReference: {fileID: 0}
-    - target: {fileID: 7276104530307423355, guid: f7e5ede21793c1d45a5cccac894e5bbd,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7276104530307423356, guid: f7e5ede21793c1d45a5cccac894e5bbd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1237,11 +1232,6 @@ PrefabInstance:
     - target: {fileID: 7276104530307423356, guid: f7e5ede21793c1d45a5cccac894e5bbd,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7276104530307423358, guid: f7e5ede21793c1d45a5cccac894e5bbd,
-        type: 3}
-      propertyPath: EmissionModule.enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
