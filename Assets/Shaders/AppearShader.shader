@@ -3,7 +3,9 @@
     Properties
     {
         _Color("Primary Color", Color) = (1,1,1,1)
+        _EmissionColor("Emission Color", Color) = (1,1,1,1)
         _MainTex("Primary (RGB)", 2D) = "white" {}
+        _EmissionTex("Emission Texture", 2D) = "white" {}
         _NoiseTex("Dissolve Noise", 2D) = "white"{}
         _NScale("Noise Scale", Range(0, 10)) = 1
         _DisAmount("Noise Texture Opacity", Range(0.01, 1)) = 0.01
@@ -29,12 +31,13 @@
         float3 _Position; // from script
         float _Radius; // from script
 
-        sampler2D _MainTex, _SecondTex;
+        sampler2D _MainTex, _SecondTex, _EmissionTex;
         float4 _Color, _Color2;
         sampler2D _NoiseTex;
         float _DisAmount, _NScale;
         float _DisLineWidth;
         float4 _DisLineColor;
+        float4 _EmissionColor;
 
         struct Input
         {
@@ -92,7 +95,9 @@
             c.a = step(_DisAmount, sphereNoise);
             o.Albedo = resultTex;
 
-            o.Emission = DissolveLine * _DisLineColor;
+            //o.Emission = DissolveLine * _DisLineColor;
+            //o.Emission = _EmissionColor;
+            o.Emission = tex2D(_EmissionTex, IN.uv_MainTex) * _EmissionColor;
 
             // Metallic and smoothness come from slider variables
             o.Metallic = _Metallic;
