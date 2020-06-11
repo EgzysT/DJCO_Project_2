@@ -105,13 +105,19 @@
 		<property name="length">
 			<value>13.061224489795919</value>
 		</property>
+		<property name="pitch">
+			<value>-3</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{d8b4de34-d40a-40c9-8743-20342acfbf87}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{5574b3d9-eb88-497d-aba8-257c452e1c94}">
+		<property name="volume">
+			<value>-6</value>
+		</property>
 		<property name="name">
-			<value>Audio 1</value>
+			<value>Crystal</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{c8a49d00-2e57-4fad-9ffa-97e23bc7fbea}</destination>

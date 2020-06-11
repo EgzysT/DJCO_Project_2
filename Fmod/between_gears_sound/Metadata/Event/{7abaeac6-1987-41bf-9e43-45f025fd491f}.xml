@@ -124,7 +124,7 @@
 			<value>-2</value>
 		</property>
 		<property name="name">
-			<value>Audio 2</value>
+			<value>Breathing</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{cae24a9c-c3ff-4eed-adb3-5972ac9b0fdc}</destination>
@@ -140,6 +140,9 @@
 		<property name="length">
 			<value>20.5</value>
 		</property>
+		<property name="pitch">
+			<value>2</value>
+		</property>
 		<property name="looping">
 			<value>true</value>
 		</property>
@@ -152,7 +155,7 @@
 			<value>-10</value>
 		</property>
 		<property name="name">
-			<value>Audio 1</value>
+			<value>Crystal</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{3203da0c-e8ed-4182-a96d-7cb2feca697f}</destination>
@@ -177,7 +180,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{9689ef4b-0bd9-4ff4-ac3a-eb2484220cee}">
 		<property name="volume">
-			<value>-7.5</value>
+			<value>-9</value>
 		</property>
 		<property name="name">
 			<value>Whispers</value>

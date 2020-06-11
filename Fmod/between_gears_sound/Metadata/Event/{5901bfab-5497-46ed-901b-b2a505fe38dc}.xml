@@ -205,6 +205,9 @@
 		<property name="length">
 			<value>92</value>
 		</property>
+		<property name="spawnRate">
+			<value>30</value>
+		</property>
 		<relationship name="sound">
 			<destination>{209d457f-920f-4b8a-8664-e0882130b64d}</destination>
 		</relationship>

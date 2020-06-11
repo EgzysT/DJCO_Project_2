@@ -110,8 +110,11 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{72abe4e2-2c09-4dfb-8b10-dd26b35ad751}">
+		<property name="volume">
+			<value>-7</value>
+		</property>
 		<property name="name">
-			<value>Audio 1</value>
+			<value>Crystal</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{dc22b194-9d4b-4139-9a4c-54000af28aee}</destination>

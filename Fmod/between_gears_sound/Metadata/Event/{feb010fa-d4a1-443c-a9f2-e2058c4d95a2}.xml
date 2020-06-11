@@ -70,6 +70,9 @@
 		<relationship name="modules">
 			<destination>{bcdaeebc-e46e-4fdc-938c-e3f192f6fa4e}</destination>
 		</relationship>
+		<relationship name="markers">
+			<destination>{d0ce4c6f-dee9-420b-9590-c768846cbd73}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{e1aa6233-2de5-4c96-b6e2-fd7f9178ffa7}">
 		<relationship name="effectChain">
@@ -89,12 +92,18 @@
 	</object>
 	<object class="MixerBusPanner" id="{3d5cc923-d865-4907-9fb2-38129df1bb2b}" />
 	<object class="MultiSound" id="{bcdaeebc-e46e-4fdc-938c-e3f192f6fa4e}">
+		<property name="length">
+			<value>0.80000000000000004</value>
+		</property>
 		<relationship name="sounds">
 			<destination>{bc688e10-03cd-4944-aae3-70065b6ef29e}</destination>
 			<destination>{72431119-2e6a-4e36-bf90-1f6d63e759eb}</destination>
 			<destination>{2a3a5aa6-3307-4ac9-bccc-ca05ff39002f}</destination>
 			<destination>{1ec4a0de-eb67-445d-aae7-d50199bb5f01}</destination>
 			<destination>{b73419d6-8de0-472b-bd30-8c891e72113c}</destination>
+		</relationship>
+		<relationship name="playPercentages">
+			<destination>{c0aabe20-8668-4f4f-aa69-8cf34839bc74}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{a8b19dd1-c309-468e-9e81-f74d44b4b810}">
@@ -109,6 +118,20 @@
 		</relationship>
 		<relationship name="output">
 			<destination>{e1aa6233-2de5-4c96-b6e2-fd7f9178ffa7}</destination>
+		</relationship>
+	</object>
+	<object class="LoopRegion" id="{d0ce4c6f-dee9-420b-9590-c768846cbd73}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="length">
+			<value>0.80000000000000004</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{e4d31c06-2a34-4937-b141-615e6d5bcaf5}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{dc1e70c8-1fb1-4350-b78b-e6d035829685}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{2750540a-f34d-4ca9-8510-eeb822e262c6}">
@@ -142,6 +165,14 @@
 	<object class="SingleSound" id="{b73419d6-8de0-472b-bd30-8c891e72113c}">
 		<relationship name="audioFile">
 			<destination>{a67045c7-82d3-4330-9782-4dbd92b2127c}</destination>
+		</relationship>
+	</object>
+	<object class="PlayPercentage" id="{c0aabe20-8668-4f4f-aa69-8cf34839bc74}">
+		<property name="percentage">
+			<value>2</value>
+		</property>
+		<relationship name="sound">
+			<destination>{bc688e10-03cd-4944-aae3-70065b6ef29e}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{53ca6741-1296-4027-8580-c2690e3fa107}">
