@@ -7,6 +7,7 @@ public class WorldChanger : MonoBehaviour
 {
     public World belongsTo;
     public bool isParticleSystem;
+    public bool isLight;
 
     private Pickable pickableObject;
 
@@ -30,12 +31,18 @@ public class WorldChanger : MonoBehaviour
 
     void NormalWorldEnter(Vector3 effectOrigin) {
         float timeUntilEffect = (WorldsController.instance.maxRadius - Vector3.Distance(transform.position, effectOrigin)) / WorldsController.instance.effectSpeed;
-        StartCoroutine(HoldEffect(timeUntilEffect, true));
+        if (gameObject.activeInHierarchy)
+        {
+            StartCoroutine(HoldEffect(timeUntilEffect, true));
+        }
     }
 
     void ArcaneWorldEnter(Vector3 effectOrigin) {
         float timeUntilEffect = Vector3.Distance(transform.position, effectOrigin) / WorldsController.instance.effectSpeed;
-        StartCoroutine(HoldEffect(timeUntilEffect, false));
+        if (gameObject.activeInHierarchy)
+        {
+            StartCoroutine(HoldEffect(timeUntilEffect, false));
+        }
     }
 
     IEnumerator HoldEffect(float timeToWait, bool isEnteringNormal) {
@@ -51,6 +58,7 @@ public class WorldChanger : MonoBehaviour
                 CheckForObjectWorldChange(true);
             }
             CheckParticleSystem(isEnteringNormal);
+            CheckLight(isEnteringNormal);
         }
         else if (belongsTo == World.ARCANE) {
             if (!isEnteringNormal) {
@@ -63,6 +71,7 @@ public class WorldChanger : MonoBehaviour
                 CheckForObjectWorldChange(false);
             }
             CheckParticleSystem(!isEnteringNormal);
+            CheckLight(!isEnteringNormal);
         }
         // If it belongs to both then the shader does the work
     }
@@ -98,6 +107,14 @@ public class WorldChanger : MonoBehaviour
             gameObject.GetComponent<ParticleSystem>().Stop();
             gameObject.GetComponent<ParticleSystem>().Clear();
         }
+    }
+
+    void CheckLight(bool willAppear)
+    {
+        if (!isLight)
+            return;
+
+        gameObject.GetComponent<Light>().enabled = willAppear;
     }
 
     void OnDestroy() {

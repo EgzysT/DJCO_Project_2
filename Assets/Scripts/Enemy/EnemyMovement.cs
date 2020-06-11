@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Linq;
+using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Rigidbody))]
 public class EnemyMovement : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class EnemyMovement : MonoBehaviour
     private Rigidbody rigidBody;
     private Transform raycastTargets;
     private Transform bodies;
+    private Light[] lights;
     private GameObject currentBody;
     private State currentState;
     private float distanceToPlayer;
@@ -30,6 +33,7 @@ public class EnemyMovement : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         raycastTargets = transform.Find("RaycastTargets");
         bodies = transform.Find("Body").transform;
+        lights = GetComponentsInChildren<Light>();
 
         DisableAllBodies();
         ChooseBody();
@@ -49,8 +53,6 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-
         if (currentState == State.DISABLED) return;
 
         if (PlayerCanSeeMe())
@@ -58,7 +60,6 @@ public class EnemyMovement : MonoBehaviour
             if (currentState != State.IDLE)
             {
                 currentState = State.IDLE;
-                ChooseBody();
                 BecomeIdle();
             }
         }
@@ -68,22 +69,35 @@ public class EnemyMovement : MonoBehaviour
             {
                 currentState = State.CHASING;
                 StartChasing();
+                ChooseBody();
                 agent.SetDestination(player.transform.position);
             }
         }
+
+        distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
 
         switch (currentState)
         {
             case State.CHASING:
                 agent.SetDestination(player.transform.position);
-                // Damage Player
+                UpdateLights();
                 break;
 
             case State.IDLE:
+                UpdateLights();
                 break;
 
             default:
                 break;
+        }
+    }
+
+    private void UpdateLights()
+    {
+        float lightIntensity = 3 - Mathf.Clamp(distanceToPlayer - 1, 0, 9) / 3;
+        foreach (Light light in lights)
+        {
+            light.intensity = lightIntensity;
         }
     }
 
