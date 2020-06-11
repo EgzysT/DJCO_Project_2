@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{14340b33-32af-42dd-ba92-5ca45739a606}">
+		<property name="assetPath">
+			<value>monster_breathing.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>21.693854166666668</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a0187e00-90b9-4375-8e5b-6c03e7900e61}</destination>
+		</relationship>
+	</object>
+</objects>

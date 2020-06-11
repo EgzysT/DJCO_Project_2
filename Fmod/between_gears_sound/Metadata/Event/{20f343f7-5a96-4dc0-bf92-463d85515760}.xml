@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{20f343f7-5a96-4dc0-bf92-463d85515760}">
 		<property name="name">
-			<value>Crystals</value>
+			<value>Good Crystals</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
 		</property>
 		<relationship name="folder">
-			<destination>{bde7d76a-ae24-4a00-ac64-8a7cbf53b7e9}</destination>
+			<destination>{3a182544-fa4a-4452-9f83-ecfb725c8fc6}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{a6c16c08-5010-43e5-b0cb-6acd4864cc42}</destination>
