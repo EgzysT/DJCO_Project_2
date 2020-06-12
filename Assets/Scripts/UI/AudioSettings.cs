@@ -92,4 +92,9 @@ public class AudioSettings : MonoBehaviour
         PlayerPrefs.SetString(obj.name, value.ToString());
     }
 
+    public void SetAudioPause(bool paused)
+    {
+        MasterBus.setPaused(paused);
+    }
+
 }

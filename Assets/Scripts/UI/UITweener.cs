@@ -23,6 +23,7 @@ public class UITweener : MonoBehaviour {
 
     public bool loop;
     public bool pingpong;
+    public bool considerTimeScale;
 
     public bool startPositionOffset;
     public Vector3 from;
@@ -77,7 +78,7 @@ public class UITweener : MonoBehaviour {
 
         _tweenObject.setDelay(delay);
         _tweenObject.setEase(easeType);
-        _tweenObject.setIgnoreTimeScale(true);
+        _tweenObject.setIgnoreTimeScale(!considerTimeScale);
         _tweenObject.setOnComplete(onCompleteEnable);
 
         if (loop)
@@ -109,7 +110,7 @@ public class UITweener : MonoBehaviour {
         _tweenObject = LeanTween.scale(objectToAnimate, to, duration);
     }
 
-    void SwapDirection() {
+    public void SwapDirection() {
         (from, to) = (to, from);
     }
 
@@ -131,13 +132,13 @@ public class UITweener : MonoBehaviour {
         _tweenObject.setOnComplete(() => {
             this.delay = initialDelay;
             SwapDirection();
-            gameObject.SetActive(false);
             onDisable();
+            gameObject.SetActive(false);
         });
     }
 
     public void SelfDestroy() {
-        Destroy(this);
+        Destroy(gameObject);
     }
 
     //public void Disable(Action onCompleteAction) {
