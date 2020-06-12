@@ -55,7 +55,7 @@
 			<destination>{24e8e5f5-b59c-4559-9b05-696dd34aed38}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{249d5f61-bc62-4be0-8d18-4359fa19d46c}</destination>
+			<destination>{a42c3ec4-9fa6-42af-95d2-dcebc83abb70}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{33e708e2-cc53-44e8-bd80-26e936d2da54}" />
@@ -121,7 +121,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{b0fea73c-6457-48b1-8427-e2c3074f2a30}">
 		<property name="volume">
-			<value>-2</value>
+			<value>-22.5</value>
 		</property>
 		<property name="name">
 			<value>Breathing</value>
@@ -152,7 +152,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{a6b4c1a0-f13d-457a-b04d-3f8e7179297f}">
 		<property name="volume">
-			<value>-10</value>
+			<value>-24.5</value>
 		</property>
 		<property name="name">
 			<value>Crystal</value>
@@ -172,7 +172,10 @@
 			<value>20.5</value>
 		</property>
 		<property name="spawnRate">
-			<value>50</value>
+			<value>40</value>
+		</property>
+		<property name="minimumScatterDistance">
+			<value>7.4000001</value>
 		</property>
 		<relationship name="sound">
 			<destination>{d114381b-e47a-4347-84d2-82f3b1f86e96}</destination>
@@ -253,7 +256,11 @@
 	</object>
 	<object class="MixerBusPanner" id="{e84343fb-257a-41ec-8d34-6da466edc500}" />
 	<object class="MixerBusFader" id="{046c6ff7-e0de-4d0e-81cb-e7b5fcee6d94}" />
-	<object class="SpatialiserEffect" id="{a9b9ada5-6e4b-4d46-bd6a-dc2c527cb0a4}" />
+	<object class="SpatialiserEffect" id="{a9b9ada5-6e4b-4d46-bd6a-dc2c527cb0a4}">
+		<property name="distanceRolloffType">
+			<value>3</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{fb64b585-c98b-4a2c-be9e-c755537e085c}" />
 	<object class="MixerBusFader" id="{7a183aa4-3707-4c3c-92cc-fb5aee48fbe5}" />
 	<object class="SingleSound" id="{a5591b8f-ed25-4982-af17-cc4d451162b5}">

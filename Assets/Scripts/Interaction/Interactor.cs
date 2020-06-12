@@ -41,8 +41,12 @@ public class Interactor : MonoBehaviour
 
         if (!currentlyLooking.isInteracting)
         {
-            if (currentlyLooking.HasTrigger())
-                crosshairController.ShowClick();
+            if (currentlyLooking.HasTrigger()) {
+                if (currentlyLooking.OnTimeout())
+                    crosshairController.ShowCurrentlyNotAvailable();
+                else
+                    crosshairController.ShowClick();
+            }
             else
                 crosshairController.ShowGrab();
 

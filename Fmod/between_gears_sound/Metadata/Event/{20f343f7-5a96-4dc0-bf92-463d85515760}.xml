@@ -54,7 +54,7 @@
 			<destination>{dd44fc38-a45c-4981-b5b4-f08987c1fa69}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{249d5f61-bc62-4be0-8d18-4359fa19d46c}</destination>
+			<destination>{440e77dd-3ea5-4fd2-921d-285ffa99221f}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{151f642f-6e40-4890-8504-e5966dce5c25}" />
@@ -114,7 +114,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{5574b3d9-eb88-497d-aba8-257c452e1c94}">
 		<property name="volume">
-			<value>-6</value>
+			<value>-20.5</value>
 		</property>
 		<property name="name">
 			<value>Crystal</value>
@@ -135,6 +135,9 @@
 		</property>
 		<property name="spawnRate">
 			<value>50</value>
+		</property>
+		<property name="minimumScatterDistance">
+			<value>0.900000036</value>
 		</property>
 		<relationship name="sound">
 			<destination>{8ddc1af7-634a-429c-a8f3-140a3eae3fe4}</destination>

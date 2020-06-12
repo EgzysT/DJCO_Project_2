@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+[RequireComponent(typeof(StudioEventEmitter))]
 public class Lever : InteractableObject
 {
 
@@ -49,8 +50,10 @@ public class Lever : InteractableObject
             //hint.GetComponent<HintScript>().SetHintText("I see you can use levers. You are so smart. BIG BRAIN");
             GameManager.createHint("SMARTASS", "I see you can use levers. You are so smart. BIG BRAIN");
 
-            if (!multipleInteractions)
+            if (!multipleInteractions) {
                 Destroy(this);
+                return;
+            }
         }
     }
 

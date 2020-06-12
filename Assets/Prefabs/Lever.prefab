@@ -1632,7 +1632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344d90a10ae9e6b46b2f8b00de06cf08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 2
+  id: -1
   isInteracting: 0
   movingObject: {fileID: 6514865948244480200}
   multipleInteractions: 1

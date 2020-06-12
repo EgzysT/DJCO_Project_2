@@ -54,7 +54,7 @@
 			<destination>{90cdb070-498b-4509-9ecf-8810e8d41877}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{249d5f61-bc62-4be0-8d18-4359fa19d46c}</destination>
+			<destination>{440e77dd-3ea5-4fd2-921d-285ffa99221f}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{7a8717d7-bbbc-4c1b-a1ce-23e6d1f97cd8}" />
@@ -111,7 +111,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{72abe4e2-2c09-4dfb-8b10-dd26b35ad751}">
 		<property name="volume">
-			<value>-7</value>
+			<value>-23.5</value>
 		</property>
 		<property name="name">
 			<value>Crystal</value>
@@ -142,8 +142,17 @@
 		<property name="maximumTimeBetweenSounds">
 			<value>5000</value>
 		</property>
+		<property name="spawnRate">
+			<value>150</value>
+		</property>
 		<property name="minimumScatterDistance">
-			<value>4</value>
+			<value>3.60000014</value>
+		</property>
+		<property name="maximumScatterDistance">
+			<value>25</value>
+		</property>
+		<property name="pitchRandomization">
+			<value>2.29999995</value>
 		</property>
 		<relationship name="sound">
 			<destination>{094758b7-49c3-4795-af9d-cf4b8bd4cc16}</destination>
@@ -204,7 +213,6 @@
 			<destination>{5a0bbba0-34ed-439f-9504-db38738359fd}</destination>
 			<destination>{727d028a-2506-438e-8ebe-d5e61b49a24e}</destination>
 			<destination>{2ddbac08-55dd-46cd-ae4c-a47c0834412f}</destination>
-			<destination>{6ed62367-80fa-45a2-92b3-d78ec3b7927f}</destination>
 			<destination>{904288c7-6e14-4455-83c8-1ea1657a4db9}</destination>
 			<destination>{b5ec8c12-ea46-4221-a75a-1212ff6bd151}</destination>
 			<destination>{fbd00e5d-a06d-405f-a622-e231195c5acc}</destination>
@@ -258,11 +266,6 @@
 	<object class="SingleSound" id="{2ddbac08-55dd-46cd-ae4c-a47c0834412f}">
 		<relationship name="audioFile">
 			<destination>{ec9ead2e-1e03-48cf-b090-495aadf5d055}</destination>
-		</relationship>
-	</object>
-	<object class="SingleSound" id="{6ed62367-80fa-45a2-92b3-d78ec3b7927f}">
-		<relationship name="audioFile">
-			<destination>{dc87e6a6-0b5d-4852-a65a-6430bba40728}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{904288c7-6e14-4455-83c8-1ea1657a4db9}">
