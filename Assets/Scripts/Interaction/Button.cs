@@ -5,56 +5,69 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(StudioEventEmitter))]
-public class Lever : InteractableObject
-{
+public class Button : InteractableObject {
 
-    [Header("Lever Settings")]
+    [Header("Button Settings")]
     public GameObject movingObject;
     public bool multipleInteractions;
-    public float rotationDegrees;
+
+    public float buttonTimeout;
+    public float buttonFinalZPosition;
     public float animationDuration;
 
     private bool isActivated;
     private StudioEventEmitter fmodEmitter;
+    private float initialZPosition;
 
     // Start is called before the first frame update
     void Start() {
         isActivated = false;
         fmodEmitter = GetComponent<StudioEventEmitter>();
+        initialZPosition = transform.localPosition.z;
     }
 
     public override void LeftMouseButtonDown() {
         if (LeanTween.isTweening(gameObject))
             return;
 
-        if (isActivated) {
-            // Go up (Deactivate)
-            fmodEmitter.Play();
-            LeanTween.rotateAroundLocal(movingObject, Vector3.right, -rotationDegrees, animationDuration)
-                .setEase(LeanTweenType.easeInOutCubic)
-                .setOnComplete(TriggerDeactivate);
-
-            isActivated = false;
-        }
-        else {
+        if (!isActivated) {
             // Go down (Activate)
             fmodEmitter.Play();
-            LeanTween.rotateAroundLocal(movingObject, Vector3.right, rotationDegrees, animationDuration)
+            LeanTween.moveLocalZ(movingObject, buttonFinalZPosition, animationDuration)
                 .setEase(LeanTweenType.easeInOutCubic)
-                .setOnComplete(TriggerActivate);
+                .setOnComplete(() => {
+                    TriggerActivate();
+                    // Only if it allows multiple interactions
+                    if (multipleInteractions)
+                        StartCoroutine(ButtonTimeout());
+                });
 
             isActivated = true;
 
-            //GameObject hint = Instantiate(Resources.Load("Hint") as GameObject, GameObject.FindGameObjectWithTag("UI").transform);
-            //hint.GetComponent<HintScript>().SetHintTitle("SMARTASS");
-            //hint.GetComponent<HintScript>().SetHintText("I see you can use levers. You are so smart. BIG BRAIN");
-            GameManager.createHint("SMARTASS", "I see you can use levers. You are so smart. BIG BRAIN");
+            GameManager.createHint("BUTTONS", "I see you can use buttons. You are so smart. BIG BRAIN");
 
             if (!multipleInteractions) {
                 Destroy(this);
                 return;
             }
         }
+    }
+
+    private IEnumerator ButtonTimeout() {
+        yield return new WaitForSeconds(buttonTimeout);
+
+        // Go up (Deactivate)
+        fmodEmitter.Play();
+        TriggerDeactivate();
+        LeanTween.moveLocalZ(movingObject, initialZPosition, animationDuration)
+            .setEase(LeanTweenType.easeInOutCubic)
+            .setOnComplete(() => {
+                isActivated = false;
+            });
+    }
+
+    public override bool OnTimeout() {
+        return isActivated;
     }
 
     public override void LeftMouseButtonUp() {

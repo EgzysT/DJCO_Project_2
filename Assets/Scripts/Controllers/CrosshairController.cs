@@ -8,6 +8,7 @@ public class CrosshairController : MonoBehaviour
     public Sprite crosshairTexture;
     public Sprite interactTexture;
     public Sprite clickTexture;
+    public Sprite notAvailableTexture;
 
     public bool showCursor = true;
     private Image image;
@@ -38,5 +39,11 @@ public class CrosshairController : MonoBehaviour
     {
         image.enabled = true;
         image.sprite = crosshairTexture;
+    }
+
+    public void ShowCurrentlyNotAvailable()
+    {
+        image.enabled = true;
+        image.sprite = notAvailableTexture;
     }
 }

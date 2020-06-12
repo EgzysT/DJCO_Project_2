@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EventTrigger : MonoBehaviour
-{
+public abstract class EventTrigger : MonoBehaviour {
     [Header("Event trigger ID (negative to not trigger)")]
     public int id = -1;
 
@@ -25,8 +24,11 @@ public abstract class EventTrigger : MonoBehaviour
         }
     }
 
-    public bool HasTrigger()
-    {
+    public bool HasTrigger() {
         return id >= 0;
+    }
+
+    public virtual bool OnTimeout() {
+        return false;
     }
 }
