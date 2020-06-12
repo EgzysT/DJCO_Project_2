@@ -1,4 +1,7 @@
-﻿using System.Collections;
+using FMODUnity;
+using System;
+using System.Collections;
+using TreeEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -60,7 +63,7 @@ public class FirstPersonController : MonoBehaviour
     private Transform m_camTransform;
 
     private HeadBob m_headBob;
-
+    private PlayerSoundController playerSoundController;
     private RaycastHit m_hitInfo;
     private IEnumerator m_CrouchRoutine;
     private IEnumerator m_LandRoutine;
@@ -147,6 +150,8 @@ public class FirstPersonController : MonoBehaviour
             ApplyMovement();
 
             m_previouslyGrounded = m_isGrounded;
+
+            HandleSound();
         }
     }
 
@@ -157,6 +162,7 @@ public class FirstPersonController : MonoBehaviour
         m_yawTransform = m_cameraController.transform;
         m_camTransform = GetComponentInChildren<Camera>().transform;
         m_headBob = new HeadBob(headBobData, moveBackwardsSpeedPercent, moveSideSpeedPercent);
+        playerSoundController = GetComponentInChildren<PlayerSoundController>();
     }
 
     protected virtual void InitVariables()
@@ -517,5 +523,28 @@ public class FirstPersonController : MonoBehaviour
         Quaternion _desiredRot = m_yawTransform.rotation;
 
         transform.rotation = Quaternion.Slerp(_currentRot, _desiredRot, Time.deltaTime * smoothRotateSpeed);
+    }
+
+    private void HandleSound()
+    {
+        bool playerMove = m_inputVector != Vector2.zero;
+
+        if (m_hitWall || !m_isGrounded || !playerMove)
+        {
+            playerSoundController.StopSound();
+            return;
+        }
+
+        if (playerMove)
+        {
+            if (movementInputData.IsRunning && CanRun())
+            {
+                playerSoundController.PlayRunningSound();
+            }
+            else
+            {
+                playerSoundController.PlayWalkSound();
+            }
+        }
     }
 }
