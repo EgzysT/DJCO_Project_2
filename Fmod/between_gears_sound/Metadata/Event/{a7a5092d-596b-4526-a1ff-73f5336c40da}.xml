@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{a7a5092d-596b-4526-a1ff-73f5336c40da}">
 		<property name="name">
-			<value>Grab Crystal</value>
+			<value>Break Crystal</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
