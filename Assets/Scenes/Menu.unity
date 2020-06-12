@@ -619,6 +619,8 @@ PlayableDirector:
     value: {fileID: 1304360517}
   - key: {fileID: 6291308113745104874, guid: cc51fede92500644e8c82115b3ffee47, type: 2}
     value: {fileID: 810738101}
+  - key: {fileID: 5926738607562068953, guid: cc51fede92500644e8c82115b3ffee47, type: 2}
+    value: {fileID: 863253456}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &810738101
@@ -918,7 +920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionTag: 
-  Event: event:/SFX/Crystals
+  Event: event:/Creature/Good Crystals
   PlayEvent: 1
   StopEvent: 2
   AllowFadeout: 1

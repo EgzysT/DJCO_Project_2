@@ -10,12 +10,14 @@ public class MenuController : MonoBehaviour
 
     public bool pauseMenuAvailable;
     private GameObject player;
+    private AudioSettings audioSettings;
 
     // Start is called before the first frame update
     void Start() {
         //pauseMenuAvailable = true;
         player = GameObject.FindGameObjectWithTag("Player");
-        volumeMenu.GetComponent<AudioSettings>().InitializeVolumeSettings();
+        audioSettings = volumeMenu.GetComponent<AudioSettings>();
+        audioSettings.InitializeVolumeSettings();
     }
 
     void Update() {
@@ -34,6 +36,7 @@ public class MenuController : MonoBehaviour
         SetPlayerInteraction(false);
         SetCursorVisibility(true);
         menu.SetActive(true);
+        audioSettings.SetAudioPause(true);
     }
 
     public void ResumeGame() {
@@ -43,6 +46,7 @@ public class MenuController : MonoBehaviour
         SetPlayerInteraction(true);
         SetCursorVisibility(false);
         menu.GetComponent<UITweener>().Disable();
+        audioSettings.SetAudioPause(false);
     }
 
 //    public void QuitGame() {

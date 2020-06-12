@@ -545,6 +545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   triggerAction: 1
+  multipleInteractions: 0
 --- !u!95 &189293402 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 189293402, guid: e171885bcdc2d4b40878c72297f1f810,
@@ -1375,6 +1376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   belongsTo: 0
   isParticleSystem: 0
+  isLight: 0
 --- !u!1 &814249970
 GameObject:
   m_ObjectHideFlags: 0
@@ -1482,6 +1484,8 @@ PlayableDirector:
     value: {fileID: 1577804352}
   - key: {fileID: 3571789786145208858, guid: 0c25f2846ecb17c49af3b0596bdf967e, type: 2}
     value: {fileID: 1577804352}
+  - key: {fileID: 8561828311598100442, guid: 0c25f2846ecb17c49af3b0596bdf967e, type: 2}
+    value: {fileID: 1549263955}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &825844293
@@ -2773,6 +2777,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   belongsTo: 0
   isParticleSystem: 1
+  isLight: 0
 --- !u!4 &1357197492 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 5a97962f7d5ba4df0823334b52c7c02c,
@@ -4427,6 +4432,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4558181, y: 6.7219825, z: 3.9348443}
   m_Center: {x: 0.087203965, y: 0.26007745, z: -0.000015556809}
+--- !u!114 &1992611198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992611195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/SFX/Door
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!114 &1992611200
 MonoBehaviour:
   m_ObjectHideFlags: 0

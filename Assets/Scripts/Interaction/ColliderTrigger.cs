@@ -7,6 +7,7 @@ public class ColliderTrigger : EventTrigger {
     public enum Trigger { Activate, Deactivate };
 
     public Trigger triggerAction;
+    public bool multipleInteractions;
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player")) {
@@ -15,6 +16,9 @@ public class ColliderTrigger : EventTrigger {
             else
                 TriggerDeactivate();
         }
+
+        if (!multipleInteractions)
+            Destroy(this);
     }
 
 }

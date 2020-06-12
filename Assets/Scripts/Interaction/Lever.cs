@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using FMODUnity;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,10 +14,12 @@ public class Lever : InteractableObject
     public float animationDuration;
 
     private bool isActivated;
+    private StudioEventEmitter fmodEmitter;
 
     // Start is called before the first frame update
     void Start() {
         isActivated = false;
+        fmodEmitter = GetComponent<StudioEventEmitter>();
     }
 
     public override void LeftMouseButtonDown() {
@@ -25,6 +28,7 @@ public class Lever : InteractableObject
 
         if (isActivated) {
             // Go up (Deactivate)
+            fmodEmitter.Play();
             LeanTween.rotateAroundLocal(movingObject, Vector3.right, -rotationDegrees, animationDuration)
                 .setEase(LeanTweenType.easeInOutCubic)
                 .setOnComplete(TriggerDeactivate);
@@ -33,6 +37,7 @@ public class Lever : InteractableObject
         }
         else {
             // Go down (Activate)
+            fmodEmitter.Play();
             LeanTween.rotateAroundLocal(movingObject, Vector3.right, rotationDegrees, animationDuration)
                 .setEase(LeanTweenType.easeInOutCubic)
                 .setOnComplete(TriggerActivate);
