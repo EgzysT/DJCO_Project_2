@@ -53,9 +53,18 @@ public class GameManager : MonoBehaviour {
     }
 
     public static void createHint(string title, string text) {
-        HintScript hint = Instantiate(Resources.Load("Hint") as GameObject, GameObject.FindGameObjectWithTag("UI").transform).GetComponent<HintScript>();
-        hint.SetHintTitle(title);
-        hint.SetHintText(text);
+        // Remove if a Hint already exists
+        if (GameObject.FindGameObjectWithTag("UI").transform.GetChild(1).CompareTag("Hint")) {
+            GameObject currentHint = GameObject.FindGameObjectWithTag("UI").transform.GetChild(1).gameObject;
+            LeanTween.cancel(currentHint.gameObject);
+            currentHint.GetComponent<UITweener>().SwapDirection();
+            currentHint.GetComponent<UITweener>().DisableAfterDelay(0f);
+        }
+
+        GameObject hint = Instantiate(Resources.Load("Hint") as GameObject, GameObject.FindGameObjectWithTag("UI").transform);
+        hint.transform.SetSiblingIndex(1);
+        hint.GetComponent<HintScript>().SetHintTitle(title);
+        hint.GetComponent<HintScript>().SetHintText(text);
     }
 
 }

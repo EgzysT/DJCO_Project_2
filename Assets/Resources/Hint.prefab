@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 9042895958335559205}
   m_Layer: 5
   m_Name: Hint
-  m_TagString: Untagged
+  m_TagString: Hint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -195,6 +195,7 @@ MonoBehaviour:
   delay: 0
   loop: 0
   pingpong: 0
+  considerTimeScale: 1
   startPositionOffset: 1
   from: {x: 0, y: 440, z: 0}
   to: {x: 0, y: -23, z: 0}
