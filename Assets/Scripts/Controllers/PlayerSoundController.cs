@@ -19,7 +19,15 @@ public class PlayerSoundController : MonoBehaviour
     [EventRef]
     public string runningArcaneSoundEventName = "";
     private FMOD.Studio.EventInstance runningArcaneSound;
+    [EventRef]
+    public string afraidSoundEventName = "";
+    private FMOD.Studio.EventInstance afraidSound;
+    [EventRef]
+    public string lastBreathSoundEventName = "";
+    private FMOD.Studio.EventInstance lastBreathSound;
 
+
+    private Transform cameraTransform;
     private FMOD.Studio.EventInstance walkingSound;
     private FMOD.Studio.EventInstance runningSound;
 
@@ -29,6 +37,12 @@ public class PlayerSoundController : MonoBehaviour
         runningNormalSound = RuntimeManager.CreateInstance(runningNormalSoundEventName);
         walkingArcaneSound = RuntimeManager.CreateInstance(walkingArcaneSoundEventName);
         runningArcaneSound = RuntimeManager.CreateInstance(runningArcaneSoundEventName);
+        runningArcaneSound = RuntimeManager.CreateInstance(runningArcaneSoundEventName);
+        afraidSound = RuntimeManager.CreateInstance(afraidSoundEventName);
+        lastBreathSound = RuntimeManager.CreateInstance(lastBreathSoundEventName);
+
+        cameraTransform = Camera.main.transform;
+
 
         if (WorldsController.instance.GetCurrentWorld() == World.NORMAL)
         {
@@ -102,8 +116,19 @@ public class PlayerSoundController : MonoBehaviour
 
         if (runningState != FMOD.Studio.PLAYBACK_STATE.PLAYING)
             runningSound.start();
-
-
     }
 
+    public void PlayAfraidSound()
+    {
+        afraidSound.set3DAttributes(RuntimeUtils.To3DAttributes(cameraTransform));
+        lastBreathSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        afraidSound.start();
+    }
+
+    public void StopAfraidSound()
+    {
+        lastBreathSound.set3DAttributes(RuntimeUtils.To3DAttributes(cameraTransform));
+        afraidSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        lastBreathSound.start();
+    }
 }

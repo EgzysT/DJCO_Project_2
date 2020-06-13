@@ -1061,28 +1061,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -4058067789661844169, guid: 77c59d9433320d74080850ce6be699b6, type: 3}
---- !u!1 &554401324 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1143948326, guid: e171885bcdc2d4b40878c72297f1f810,
-    type: 3}
-  m_PrefabInstance: {fileID: 1710699352}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &554401328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 554401324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8595ba1f2ca486468e71c0d52d69e69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkingNormalSoundEventName: event:/Player/Footsteps_Metal
-  runningNormalSoundEventName: event:/Player/Run_Metal
-  walkingArcaneSoundEventName: event:/Player/Footsteps_Arcane
-  runningArcaneSoundEventName: event:/Player/Footsteps_Arcane
 --- !u!95 &563601595 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 563601595, guid: e171885bcdc2d4b40878c72297f1f810,
@@ -3636,26 +3614,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5503128409379037467, guid: e171885bcdc2d4b40878c72297f1f810,
-        type: 3}
-      propertyPath: PlayerWalkingSoundEvent
-      value: event:/Player/Footsteps_Metal
-      objectReference: {fileID: 0}
-    - target: {fileID: 5503128409379037467, guid: e171885bcdc2d4b40878c72297f1f810,
-        type: 3}
-      propertyPath: PlayerRunningSoundEvent
-      value: event:/Player/Run_Metal
-      objectReference: {fileID: 0}
-    - target: {fileID: 5503128409379037467, guid: e171885bcdc2d4b40878c72297f1f810,
-        type: 3}
-      propertyPath: playerWalkingSoundEvent
-      value: event:/Player/Footsteps_Metal
-      objectReference: {fileID: 0}
-    - target: {fileID: 5503128409379037467, guid: e171885bcdc2d4b40878c72297f1f810,
-        type: 3}
-      propertyPath: playerRunningSoundEvent
-      value: event:/Player/Run_Metal
-      objectReference: {fileID: 0}
     - target: {fileID: 5503128409379037468, guid: e171885bcdc2d4b40878c72297f1f810,
         type: 3}
       propertyPath: m_Name

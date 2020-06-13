@@ -1,8 +1,5 @@
-using FMOD;
-using FMODUnity;
-using System;
+﻿using FMODUnity;
 using System.Collections;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -16,7 +13,7 @@ public class EnemyMovement : MonoBehaviour
     private Transform raycastTargets;
     private Transform bodies;
     private Light[] lights;
-    private CameraShake cameraShake;
+    private PlayerHealth playerHealth;
     private StudioEventEmitter[] sounds;
     private GameObject currentBody;
     private State currentState;
@@ -38,9 +35,8 @@ public class EnemyMovement : MonoBehaviour
         raycastTargets = transform.Find("RaycastTargets");
         bodies = transform.Find("Body").transform;
         lights = GetComponentsInChildren<Light>();
-        cameraShake = player.GetComponentInChildren<CameraShake>();
+        playerHealth = player.GetComponent<PlayerHealth>();
         sounds = GetComponentsInChildren<StudioEventEmitter>();
-        UnityEngine.Debug.Log(sounds[1].Event);
 
         DisableAllBodies();
         ChooseBody();
@@ -121,9 +117,12 @@ public class EnemyMovement : MonoBehaviour
     {
         if (distanceToPlayer - 1 < 2)
         {
-            //atirar esta responsabilidade para o player
-            //cameraShake.ShakeCamera(Time.deltaTime, 0.2f);
-            UnityEngine.Debug.Log("DIE");
+            playerHealth.StartAfraid();
+        }
+        else
+        {
+            playerHealth.StopAfraid();
+            
         }
     }
 
@@ -154,7 +153,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void BecomeIdle()
     {
-        //sounds[0].Stop();
+        playerHealth.StopAfraid();
         rigidBody.isKinematic = true;
         agent.isStopped = true;
         currentState = State.IDLE;

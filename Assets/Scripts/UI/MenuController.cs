@@ -82,4 +82,17 @@ public class MenuController : MonoBehaviour
         yield return new WaitForSecondsRealtime(duration);
         pauseMenuAvailable = true;
     }
+
+    void OnApplicationFocus(bool hasFocus)
+    {
+        if (!hasFocus) 
+            PauseGame();
+    }
+
+    void OnApplicationPause(bool pauseStatus)
+    {
+        if (pauseStatus) 
+            PauseGame();
+    }
+
 }
