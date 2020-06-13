@@ -65,12 +65,12 @@ public class PressurePlate : EventTrigger {
         //Debug.Log("ontriggerENTER");
         objectsApplyingPressure.Add(other.gameObject.GetInstanceID());
 
-        isInteracting = other.gameObject.GetComponent<InteractableObject>().isInteracting;
+        isInteracting = other.gameObject.GetComponent<InteractableObject>()?.isInteracting ?? false;
     }
 
     private void OnTriggerStay(Collider other) {
         //Debug.Log("ontriggerSTAY");
-        isInteracting = other.gameObject.GetComponent<InteractableObject>().isInteracting;
+        isInteracting = other.gameObject.GetComponent<InteractableObject>()?.isInteracting ?? false;
     }
 
     private void OnTriggerExit(Collider other) {
