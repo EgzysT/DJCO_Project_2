@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{a3592f21-02a9-46c2-bb1f-a0a8f448c563}">
+		<property name="assetPath">
+			<value>run_water07.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>1.8029375000000001</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a0187e00-90b9-4375-8e5b-6c03e7900e61}</destination>
+		</relationship>
+	</object>
+</objects>
