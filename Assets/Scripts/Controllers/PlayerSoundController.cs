@@ -94,14 +94,14 @@ public class PlayerSoundController : MonoBehaviour
 
     public void PlayRunningSound()
     {
-        /*walkingSound.getPlaybackState(out FMOD.Studio.PLAYBACK_STATE walkingState);
+        walkingSound.getPlaybackState(out FMOD.Studio.PLAYBACK_STATE walkingState);
         runningSound.getPlaybackState(out FMOD.Studio.PLAYBACK_STATE runningState);
 
         if (walkingState != FMOD.Studio.PLAYBACK_STATE.STOPPED)
             walkingSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
         if (runningState != FMOD.Studio.PLAYBACK_STATE.PLAYING)
-            runningSound.start();*/
+            runningSound.start();
 
 
     }

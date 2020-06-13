@@ -57,6 +57,10 @@ public class Lever : InteractableObject
         }
     }
 
+    public override bool OnTimeout() {
+        return LeanTween.isTweening(gameObject);
+    }
+
     public override void LeftMouseButtonUp() {
         // Do nothing
     }

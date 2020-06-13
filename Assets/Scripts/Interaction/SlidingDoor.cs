@@ -20,23 +20,27 @@ public class SlidingDoor : EventReactor {
     }
 
     public override void Activate() {
-        if (isOpen) return;
+        //if (isOpen) return;
+        if (!isOpen)
+            fmodEmitter.Play();
+
+        isOpen = true;
 
         // Open Door
-        fmodEmitter.Play();
         LeanTween.moveLocal(gameObject, finalPosition, animationDuration)
-            .setEase(LeanTweenType.easeInOutCubic)
-            .setOnComplete(() => isOpen = true);
+            .setEase(LeanTweenType.easeInOutCubic);
 
     }
 
     public override void Deactivate() {
-        if (!isOpen) return;
+        //if (!isOpen) return;
+        if (isOpen)
+            fmodEmitter.Play();
+
+        isOpen = false;
 
         // Close Door
-        fmodEmitter.Play();
         LeanTween.moveLocal(gameObject, initialPosition, animationDuration)
-            .setEase(LeanTweenType.easeInOutCubic)
-            .setOnComplete(() => isOpen = false);
+            .setEase(LeanTweenType.easeInOutCubic);
     }
 }

@@ -1,32 +1,45 @@
-﻿using System.Collections;
+﻿using FMODUnity;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
+[RequireComponent(typeof(StudioEventEmitter))]
 public class PressurePlate : EventTrigger {
 
     [Header("Pressure plate Settings")]
-    public float depth;
+    public GameObject movingObject;
+    public float ppFinalYPosition;
     public float animationDuration;
 
     private bool isDown;
-    private Vector3 initialPosition;
+    private float initialYPosition;
+    private StudioEventEmitter[] fmodEmitters;
     private List<int> objectsApplyingPressure;
+
+    private bool isInteracting;
 
     // Start is called before the first frame update
     void Start() {
+        isInteracting = true;
         isDown = false;
-        initialPosition = transform.position;
+        initialYPosition = transform.localPosition.y;
+        fmodEmitters = GetComponents<StudioEventEmitter>();
         objectsApplyingPressure = new List<int>();
     }
 
     // Update is called once per frame
     void Update() {
+        if (isInteracting)
+            return;
+
         if (objectsApplyingPressure.Count > 0) {
             if (!isDown) {
                 isDown = true;
-                LeanTween.cancel(gameObject);
-                LeanTween.move(gameObject, new Vector3(transform.position.x, initialPosition.y - depth, transform.position.z), animationDuration)
+                PlaySound(0);
+                LeanTween.cancel(movingObject);
+                LeanTween.moveLocalY(movingObject, ppFinalYPosition, animationDuration)
                     .setEase(LeanTweenType.easeOutQuart)
                     .setOnComplete(TriggerActivate);
             }
@@ -34,22 +47,36 @@ public class PressurePlate : EventTrigger {
         else {
             if (isDown) {
                 isDown = false;
-                TriggerDeactivate();
-                LeanTween.cancel(gameObject);
-                LeanTween.move(gameObject, initialPosition, animationDuration)
-                    .setEase(LeanTweenType.easeOutQuart);
+                PlaySound(1);
+                LeanTween.cancel(movingObject);
+                LeanTween.moveLocalY(movingObject, initialYPosition, animationDuration)
+                    .setEase(LeanTweenType.easeOutQuart)
+                    .setOnComplete(TriggerDeactivate);
             }
         }
+    }
+
+    private void PlaySound(int id) {
+        if (!fmodEmitters[id].IsPlaying())
+            fmodEmitters[id].Play();
     }
 
     private void OnTriggerEnter(Collider other) {
         //Debug.Log("ontriggerENTER");
         objectsApplyingPressure.Add(other.gameObject.GetInstanceID());
+
+        isInteracting = other.gameObject.GetComponent<InteractableObject>().isInteracting;
+    }
+
+    private void OnTriggerStay(Collider other) {
+        //Debug.Log("ontriggerSTAY");
+        isInteracting = other.gameObject.GetComponent<InteractableObject>().isInteracting;
     }
 
     private void OnTriggerExit(Collider other) {
         //Debug.Log("ontriggerEXIT");
         objectsApplyingPressure.Remove(other.gameObject.GetInstanceID());
+        isInteracting = false;
     }
 
 }
