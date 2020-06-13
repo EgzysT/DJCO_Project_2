@@ -1,4 +1,4 @@
-﻿using FMOD;
+using FMOD;
 using FMODUnity;
 using System;
 using System.Collections;
@@ -51,11 +51,16 @@ public class EnemyMovement : MonoBehaviour
         } 
         else
         {
+            sounds[0].Play();
             BecomeIdle();
         }   
 
         GameEvents.instance.onNormalWorldEnter += (_) => BecomeDisabled();
-        GameEvents.instance.onArcaneWorldEnter += (_) => BecomeIdle();
+        GameEvents.instance.onArcaneWorldEnter += (_) =>
+        {
+            sounds[0].Play();
+            BecomeIdle();
+        };
 
         StartCoroutine(GrowlRandomly());
     }
@@ -170,7 +175,6 @@ public class EnemyMovement : MonoBehaviour
 
     private void StartChasing()
     {
-        sounds[0].Play();
         rigidBody.isKinematic = false;
         agent.isStopped = false;
         currentState = State.CHASING;
