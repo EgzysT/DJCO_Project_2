@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FMOD;
+using FMODUnity;
+using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -14,6 +16,8 @@ public class EnemyMovement : MonoBehaviour
     private Transform raycastTargets;
     private Transform bodies;
     private Light[] lights;
+    private CameraShake cameraShake;
+    private StudioEventEmitter[] sounds;
     private GameObject currentBody;
     private State currentState;
     private float distanceToPlayer;
@@ -34,6 +38,9 @@ public class EnemyMovement : MonoBehaviour
         raycastTargets = transform.Find("RaycastTargets");
         bodies = transform.Find("Body").transform;
         lights = GetComponentsInChildren<Light>();
+        cameraShake = player.GetComponentInChildren<CameraShake>();
+        sounds = GetComponentsInChildren<StudioEventEmitter>();
+        UnityEngine.Debug.Log(sounds[1].Event);
 
         DisableAllBodies();
         ChooseBody();
@@ -49,6 +56,18 @@ public class EnemyMovement : MonoBehaviour
 
         GameEvents.instance.onNormalWorldEnter += (_) => BecomeDisabled();
         GameEvents.instance.onArcaneWorldEnter += (_) => BecomeIdle();
+
+        StartCoroutine(GrowlRandomly());
+    }
+
+    IEnumerator GrowlRandomly()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(UnityEngine.Random.Range(15f, 30f));
+            if (currentState == State.CHASING) 
+                sounds[1].Play();
+        }
     }
 
     void Update()
@@ -81,6 +100,7 @@ public class EnemyMovement : MonoBehaviour
             case State.CHASING:
                 agent.SetDestination(player.transform.position);
                 UpdateLights();
+                AttackIfClose();
                 break;
 
             case State.IDLE:
@@ -89,6 +109,16 @@ public class EnemyMovement : MonoBehaviour
 
             default:
                 break;
+        }
+    }
+
+    private void AttackIfClose()
+    {
+        if (distanceToPlayer - 1 < 2)
+        {
+            //atirar esta responsabilidade para o player
+            //cameraShake.ShakeCamera(Time.deltaTime, 0.2f);
+            UnityEngine.Debug.Log("DIE");
         }
     }
 
@@ -119,6 +149,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void BecomeIdle()
     {
+        //sounds[0].Stop();
         rigidBody.isKinematic = true;
         agent.isStopped = true;
         currentState = State.IDLE;
@@ -128,10 +159,18 @@ public class EnemyMovement : MonoBehaviour
     {
         currentState = State.DISABLED;
         rigidBody.isKinematic = true;
+        StartCoroutine(WaitForWorldChange());
+    }
+
+    IEnumerator WaitForWorldChange()
+    {
+        yield return new WaitWhile(() => gameObject.layer != 10);
+        sounds[0].Stop();
     }
 
     private void StartChasing()
     {
+        sounds[0].Play();
         rigidBody.isKinematic = false;
         agent.isStopped = false;
         currentState = State.CHASING;
