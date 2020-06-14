@@ -1,6 +1,4 @@
 ﻿using FMODUnity;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(StudioEventEmitter))]
@@ -21,6 +19,7 @@ public class Collectable : InteractableObject
 
     void OnDestroy()
     {
-        GetComponent<StudioEventEmitter>().Play();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        RuntimeManager.PlayOneShotAttached(GetComponent<StudioEventEmitter>().Event, player);
     }
 }
