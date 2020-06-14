@@ -74,12 +74,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8595ba1f2ca486468e71c0d52d69e69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkingNormalSoundEventName: event:/Player/Footsteps_Metal
-  runningNormalSoundEventName: event:/Player/Run_Metal
-  walkingArcaneSoundEventName: event:/Player/Footsteps_Arcane
-  runningArcaneSoundEventName: event:/Player/Footsteps_Arcane
+  walkingSoundEventName: event:/Player/Walking_Step
+  runningSoundEventName: event:/Player/Running_Step
   afraidSoundEventName: event:/Player/Respirar_medo
   lastBreathSoundEventName: event:/Player/LastBreath
+  walkFootstepSpeed: 0.5
+  runningFootstepSpeed: 0.4
 --- !u!1 &5503128408690334640
 GameObject:
   m_ObjectHideFlags: 0

@@ -531,7 +531,7 @@ public class FirstPersonController : MonoBehaviour
 
         if (m_hitWall || !m_isGrounded || !playerMove)
         {
-            playerSoundController.StopSound();
+            playerSoundController.StopMovementSound();
             return;
         }
 
@@ -543,7 +543,7 @@ public class FirstPersonController : MonoBehaviour
             }
             else
             {
-                playerSoundController.PlayWalkSound();
+                playerSoundController.PlayWalkingSound();
             }
         }
     }

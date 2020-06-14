@@ -8485,6 +8485,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1143948329, guid: e171885bcdc2d4b40878c72297f1f810, type: 3}
+      propertyPath: m_Constraints
+      value: 124
+      objectReference: {fileID: 0}
     - target: {fileID: 5503128409379037468, guid: e171885bcdc2d4b40878c72297f1f810,
         type: 3}
       propertyPath: m_Name
@@ -8574,6 +8578,11 @@ PrefabInstance:
         type: 3}
       propertyPath: runningStoneSoundEventName
       value: event:/Player/Run_Stone
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622839613751764203, guid: e171885bcdc2d4b40878c72297f1f810,
+        type: 3}
+      propertyPath: footstepSpeed
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e171885bcdc2d4b40878c72297f1f810, type: 3}

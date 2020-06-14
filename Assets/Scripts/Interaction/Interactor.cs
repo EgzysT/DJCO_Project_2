@@ -97,7 +97,6 @@ public class Interactor : MonoBehaviour
 
         // It checks everything except the UninteractiveWorld layer
         if (Physics.Raycast(cam.ScreenPointToRay(screenCenter), out hit, interactionMaxDistance, ~(1 << LayerMask.NameToLayer("UninteractiveWorld") | 1 << LayerMask.NameToLayer("Trigger")))) {
-            Debug.Log(hit.collider.gameObject.layer);
             currentlyLooking = hit.collider.GetComponent<InteractableObject>();
         }
         else
