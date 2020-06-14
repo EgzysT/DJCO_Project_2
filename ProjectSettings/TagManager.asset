@@ -11,6 +11,8 @@ TagManager:
   - Stone
   - Metal
   - Dirt
+  - Barrel
+  - Lever
   layers:
   - Default
   - TransparentFX

@@ -91,14 +91,17 @@ public class Interactor : MonoBehaviour
         }
     }
 
+    //public GameObject getCurrentlyInteractingObject() {
+    //    return (currentlyLooking.isInteracting) ? currentlyLooking.gameObject : null;
+    //}
+
     void CheckRaycast()
     {
         RaycastHit hit;
 
         // It checks everything except the UninteractiveWorld layer
-        if (Physics.Raycast(cam.ScreenPointToRay(screenCenter), out hit, interactionMaxDistance, ~(1 << LayerMask.NameToLayer("UninteractiveWorld") | 1 << LayerMask.NameToLayer("Trigger")))) {
+        if (Physics.Raycast(cam.ScreenPointToRay(screenCenter), out hit, interactionMaxDistance, ~(1 << LayerMask.NameToLayer("UninteractiveWorld") | 1 << LayerMask.NameToLayer("Trigger"))))
             currentlyLooking = hit.collider.GetComponent<InteractableObject>();
-        }
         else
             currentlyLooking = null;
     }
