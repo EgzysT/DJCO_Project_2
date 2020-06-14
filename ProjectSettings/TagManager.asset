@@ -7,6 +7,10 @@ TagManager:
   - Enemy
   - UI
   - Hint
+  - Ground
+  - Stone
+  - Metal
+  - Dirt
   layers:
   - Default
   - TransparentFX

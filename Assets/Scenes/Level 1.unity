@@ -8190,6 +8190,16 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 220cf8a8dda7f0d47b649aa7833654f6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Dirt
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 220cf8a8dda7f0d47b649aa7833654f6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 220cf8a8dda7f0d47b649aa7833654f6, type: 3}
 --- !u!1 &1571086790
@@ -8534,6 +8544,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622839613751764203, guid: e171885bcdc2d4b40878c72297f1f810,
+        type: 3}
+      propertyPath: walkingDirtSoundEventName
+      value: event:/Player/Footsteps_Dirt
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622839613751764203, guid: e171885bcdc2d4b40878c72297f1f810,
+        type: 3}
+      propertyPath: walkingMetalSoundEventName
+      value: event:/Player/Footsteps_Metal
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622839613751764203, guid: e171885bcdc2d4b40878c72297f1f810,
+        type: 3}
+      propertyPath: runningMetalSoundEventName
+      value: event:/Player/Run_Metal
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622839613751764203, guid: e171885bcdc2d4b40878c72297f1f810,
+        type: 3}
+      propertyPath: runningDirtSoundEventName
+      value: event:/Player/Run_Dirt
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622839613751764203, guid: e171885bcdc2d4b40878c72297f1f810,
+        type: 3}
+      propertyPath: walkingStoneSoundEventName
+      value: event:/Player/Footsteps_Stone
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622839613751764203, guid: e171885bcdc2d4b40878c72297f1f810,
+        type: 3}
+      propertyPath: runningStoneSoundEventName
+      value: event:/Player/Run_Stone
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e171885bcdc2d4b40878c72297f1f810, type: 3}
@@ -9285,6 +9325,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6854995569798542757, guid: f0cc8d49f808c2043b6ea9d00ad00aca,
+        type: 3}
+      propertyPath: m_TagString
+      value: Metal
+      objectReference: {fileID: 0}
+    - target: {fileID: -6854995569798542757, guid: f0cc8d49f808c2043b6ea9d00ad00aca,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: f0cc8d49f808c2043b6ea9d00ad00aca,
         type: 3}
@@ -12227,9 +12277,9 @@ GameObject:
   - component: {fileID: 3917708163147000459}
   - component: {fileID: 3030536371832166455}
   - component: {fileID: 552661518}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: floor_Material #46_0
-  m_TagString: Untagged
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
