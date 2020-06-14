@@ -63,15 +63,19 @@ public class PlayerSoundController : MonoBehaviour
 
     private void Update()
     {
-        ATTRIBUTES_3D feet3D = RuntimeUtils.To3DAttributes(transform);
-        runningSound.set3DAttributes(feet3D);
-        walkingSound.set3DAttributes(feet3D);
+        if (currentTerrain != CURRENT_TERRAIN.ARCANE)
+        {
+            DetermineTerrain();
+        }
         LoopFootsteps();
     }
 
 
     private void LoopFootsteps()
     {
+        ATTRIBUTES_3D feet3D = RuntimeUtils.To3DAttributes(transform);
+        runningSound.set3DAttributes(feet3D);
+        walkingSound.set3DAttributes(feet3D);
         if (timer > footstepSpeed)
         {
             PlayFootsteps();
@@ -99,20 +103,12 @@ public class PlayerSoundController : MonoBehaviour
 
     public void PlayWalkingSound()
     {
-        if (currentTerrain != CURRENT_TERRAIN.ARCANE)
-        {
-            DetermineTerrain();
-        }
         currentMovement = MOVEMENT.WALK;
         footstepSpeed = walkFootstepSpeed;
     }
 
     public void PlayRunningSound()
     {
-        if (currentTerrain != CURRENT_TERRAIN.ARCANE)
-        {
-            DetermineTerrain();
-        }
         currentMovement = MOVEMENT.RUN;
         footstepSpeed = runningFootstepSpeed;
     }
