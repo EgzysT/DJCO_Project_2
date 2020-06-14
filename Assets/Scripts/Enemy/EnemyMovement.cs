@@ -168,7 +168,7 @@ public class EnemyMovement : MonoBehaviour
 
     IEnumerator WaitForWorldChange()
     {
-        yield return new WaitWhile(() => gameObject.layer != 10);
+        yield return new WaitWhile(() => gameObject.layer == LayerMask.NameToLayer("UninteractiveWorld"));
         sounds[0].Stop();
     }
 
@@ -190,7 +190,7 @@ public class EnemyMovement : MonoBehaviour
                 continue;
 
             //Debug.DrawLine(cam.transform.position, raycastTarget.position, Color.white);
-            if (Physics.Linecast(cam.transform.position, raycastTarget.position, out hit, ~(1 << LayerMask.NameToLayer("UninteractiveWorld"))))
+            if (Physics.Linecast(cam.transform.position, raycastTarget.position, out hit, ~(1 << LayerMask.NameToLayer("UninteractiveWorld") | 1 << LayerMask.NameToLayer("Trigger"))))
             {
                 if (hit.transform.name == gameObject.name)
                 {

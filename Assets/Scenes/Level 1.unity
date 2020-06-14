@@ -296,6 +296,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f67f022cac8580c45b7c2ebf5ac22eab, type: 3}
+--- !u!1 &121477757 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3496894646084849120, guid: a4e3397e495967748b7df19327b0466d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3496894646082909444}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &121477758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121477757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62da0a4c693f12444a8b1234504c6dd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  belongsTo: 0
+  isParticleSystem: 0
+  isLight: 0
 --- !u!1 &143915933
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,6 +567,7 @@ MonoBehaviour:
   id: 2
   triggerAction: 1
   multipleInteractions: 0
+  shouldDestroyGameObject: 1
 --- !u!95 &189293402 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 189293402, guid: e171885bcdc2d4b40878c72297f1f810,
@@ -734,6 +756,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyFinal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8601369619528195236, guid: 02eb82be946874b449fcde1e7461e825,
+        type: 3}
+      propertyPath: OverrideAttenuation
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02eb82be946874b449fcde1e7461e825, type: 3}
@@ -2866,6 +2893,86 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1357197489}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1402839959
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3496894646084849120, guid: a4e3397e495967748b7df19327b0466d,
+        type: 3}
+      propertyPath: m_Name
+      value: barrel (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3496894646085079488, guid: a4e3397e495967748b7df19327b0466d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.611
+      objectReference: {fileID: 0}
+    - target: {fileID: 3496894646085079488, guid: a4e3397e495967748b7df19327b0466d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1558
+      objectReference: {fileID: 0}
+    - target: {fileID: 3496894646085079488, guid: a4e3397e495967748b7df19327b0466d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.5143
+      objectReference: {fileID: 0}
+    - target: {fileID: 3496894646085079488, guid: a4e3397e495967748b7df19327b0466d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000015454312
+      objectReference: {fileID: 0}
+    - target: {fileID: 3496894646085079488, guid: a4e3397e495967748b7df19327b0466d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 3496894646085079488, guid: a4e3397e495967748b7df19327b0466d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.00000001545431
+      objectReference: {fileID: 0}
+    - target: {fileID: 3496894646085079488, guid: a4e3397e495967748b7df19327b0466d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3496894646085079488, guid: a4e3397e495967748b7df19327b0466d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 3496894646085079488, guid: a4e3397e495967748b7df19327b0466d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3496894646085079488, guid: a4e3397e495967748b7df19327b0466d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3496894646085079488, guid: a4e3397e495967748b7df19327b0466d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3496894646086849312, guid: a4e3397e495967748b7df19327b0466d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1956241578}
+    - target: {fileID: 3496894647002344398, guid: a4e3397e495967748b7df19327b0466d,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3496894647002344392, guid: a4e3397e495967748b7df19327b0466d, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: a4e3397e495967748b7df19327b0466d, type: 3}
 --- !u!4 &1403203125 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: f67f022cac8580c45b7c2ebf5ac22eab,
@@ -3766,6 +3873,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f67f022cac8580c45b7c2ebf5ac22eab, type: 3}
+--- !u!1 &1778964300 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3496894646084849120, guid: a4e3397e495967748b7df19327b0466d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1402839959}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1778964301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778964300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62da0a4c693f12444a8b1234504c6dd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  belongsTo: 0
+  isParticleSystem: 0
+  isLight: 0
 --- !u!1001 &1785041724
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5516,7 +5644,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.041, y: 0.041, z: 0.009}
-  m_Center: {x: 0.0000000064028427, y: 0.00000007636844, z: -0.002}
+  m_Center: {x: 0.0000000064028427, y: 0.00000007636844, z: -0.0008}
 --- !u!64 &4246340881916936531
 MeshCollider:
   m_ObjectHideFlags: 0

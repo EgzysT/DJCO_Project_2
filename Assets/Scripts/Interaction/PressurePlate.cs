@@ -16,22 +16,19 @@ public class PressurePlate : EventTrigger {
     private bool isDown;
     private float initialYPosition;
     private StudioEventEmitter[] fmodEmitters;
-    private List<int> objectsApplyingPressure;
-
-    private bool isInteracting;
+    private Dictionary<int, bool> objectsApplyingPressure;
 
     // Start is called before the first frame update
     void Start() {
-        isInteracting = true;
         isDown = false;
         initialYPosition = transform.localPosition.y;
         fmodEmitters = GetComponents<StudioEventEmitter>();
-        objectsApplyingPressure = new List<int>();
+        objectsApplyingPressure = new Dictionary<int, bool>();
     }
 
     // Update is called once per frame
     void Update() {
-        if (isInteracting)
+        if (objectsApplyingPressure.ContainsValue(true))
             return;
 
         if (objectsApplyingPressure.Count > 0) {
@@ -62,21 +59,15 @@ public class PressurePlate : EventTrigger {
     }
 
     private void OnTriggerEnter(Collider other) {
-        //Debug.Log("ontriggerENTER");
-        objectsApplyingPressure.Add(other.gameObject.GetInstanceID());
-
-        isInteracting = other.gameObject.GetComponent<InteractableObject>()?.isInteracting ?? false;
+        objectsApplyingPressure.Add(other.gameObject.GetInstanceID(), other.gameObject.GetComponent<InteractableObject>()?.isInteracting ?? false);
     }
 
     private void OnTriggerStay(Collider other) {
-        //Debug.Log("ontriggerSTAY");
-        isInteracting = other.gameObject.GetComponent<InteractableObject>()?.isInteracting ?? false;
+        objectsApplyingPressure[other.gameObject.GetInstanceID()] = other.gameObject.GetComponent<InteractableObject>()?.isInteracting ?? false;
     }
 
     private void OnTriggerExit(Collider other) {
-        //Debug.Log("ontriggerEXIT");
         objectsApplyingPressure.Remove(other.gameObject.GetInstanceID());
-        isInteracting = false;
     }
 
 }
