@@ -121,7 +121,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{b0fea73c-6457-48b1-8427-e2c3074f2a30}">
 		<property name="volume">
-			<value>-22.5</value>
+			<value>-15.5</value>
 		</property>
 		<property name="name">
 			<value>Breathing</value>
@@ -152,7 +152,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{a6b4c1a0-f13d-457a-b04d-3f8e7179297f}">
 		<property name="volume">
-			<value>-24.5</value>
+			<value>-19.5</value>
 		</property>
 		<property name="name">
 			<value>Crystal</value>

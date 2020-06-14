@@ -111,7 +111,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{72abe4e2-2c09-4dfb-8b10-dd26b35ad751}">
 		<property name="volume">
-			<value>-23.5</value>
+			<value>-14.5</value>
 		</property>
 		<property name="name">
 			<value>Crystal</value>
@@ -134,7 +134,7 @@
 			<value>-7</value>
 		</property>
 		<property name="polyphony">
-			<value>10</value>
+			<value>4</value>
 		</property>
 		<property name="minimumTimeBetweenSounds">
 			<value>600</value>
@@ -159,6 +159,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{95cf2ad9-479f-4e29-b43f-de4f9f170e2c}">
+		<property name="volume">
+			<value>-4</value>
+		</property>
 		<property name="name">
 			<value>Songs</value>
 		</property>
@@ -201,9 +204,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{5bdd3279-2ef8-45db-b04f-7c3140e471f2}" />
 	<object class="MultiSound" id="{094758b7-49c3-4795-af9d-cf4b8bd4cc16}">
-		<property name="playlistMode">
-			<value>1</value>
-		</property>
 		<relationship name="sounds">
 			<destination>{f04dc5ce-015e-40b0-a182-114e17939800}</destination>
 			<destination>{1c53c022-b95a-462e-a56f-e583ef70ca8b}</destination>
