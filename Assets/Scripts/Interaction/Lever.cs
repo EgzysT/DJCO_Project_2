@@ -45,9 +45,7 @@ public class Lever : InteractableObject
 
             isActivated = true;
 
-            //GameObject hint = Instantiate(Resources.Load("Hint") as GameObject, GameObject.FindGameObjectWithTag("UI").transform);
-            //hint.GetComponent<HintScript>().SetHintTitle("SMARTASS");
-            //hint.GetComponent<HintScript>().SetHintText("I see you can use levers. You are so smart. BIG BRAIN");
+            // TODO Remove
             GameManager.createHint("SMARTASS", "I see you can use levers. You are so smart. BIG BRAIN");
 
             if (!multipleInteractions) {

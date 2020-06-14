@@ -16,13 +16,13 @@ public class Button : InteractableObject {
     public float animationDuration;
 
     private bool isActivated;
-    private StudioEventEmitter fmodEmitter;
+    private StudioEventEmitter[] fmodEmitters;
     private float initialZPosition;
 
     // Start is called before the first frame update
     void Start() {
         isActivated = false;
-        fmodEmitter = GetComponent<StudioEventEmitter>();
+        fmodEmitters = GetComponents<StudioEventEmitter>();
         initialZPosition = transform.localPosition.z;
     }
 
@@ -32,7 +32,11 @@ public class Button : InteractableObject {
 
         if (!isActivated) {
             // Go down (Activate)
-            fmodEmitter.Play();
+            PlaySound(0);
+
+            //Play timer sound
+            PlaySound(1);
+
             LeanTween.moveLocalZ(movingObject, buttonFinalZPosition, animationDuration)
                 .setEase(LeanTweenType.easeInOutCubic)
                 .setOnComplete(() => {
@@ -57,13 +61,28 @@ public class Button : InteractableObject {
         yield return new WaitForSeconds(buttonTimeout);
 
         // Go up (Deactivate)
-        fmodEmitter.Play();
+        PlaySound(0);
+
+        // Stop time sound and play end timer sound 
+        StopSound(1);
+        PlaySound(2);
+
         TriggerDeactivate();
         LeanTween.moveLocalZ(movingObject, initialZPosition, animationDuration)
             .setEase(LeanTweenType.easeInOutCubic)
             .setOnComplete(() => {
                 isActivated = false;
             });
+    }
+
+    private void PlaySound(int id) {
+        if (!fmodEmitters[id].IsPlaying())
+            fmodEmitters[id].Play();
+    }
+
+    private void StopSound(int id) {
+        if (fmodEmitters[id].IsPlaying())
+            fmodEmitters[id].Stop();
     }
 
     public override bool OnTimeout() {
