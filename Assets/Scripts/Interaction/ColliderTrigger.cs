@@ -18,6 +18,9 @@ public class ColliderTrigger : EventTrigger {
     [Header("Subtitle Settings")]
     public string subtitleText = "";
 
+    [Header("Checkpoint Settings")]
+    public bool saveCheckpoint;
+
     void Start() {
         gameObject.layer = LayerMask.NameToLayer("Trigger");
     }
@@ -29,6 +32,12 @@ public class ColliderTrigger : EventTrigger {
 
             if (subtitleText != "")
                 GameManager.createSubtitle(subtitleText);
+
+            if (saveCheckpoint) {
+                PlayerPrefs.SetFloat("player_position.x", other.transform.position.x);
+                PlayerPrefs.SetFloat("player_position.y", other.transform.position.y);
+                PlayerPrefs.SetFloat("player_position.z", other.transform.position.z);
+            }
 
             if (id >= 0) {
                 if (triggerAction == Trigger.Activate)

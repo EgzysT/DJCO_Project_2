@@ -14,7 +14,8 @@ TagManager:
   - Barrel
   - Lever
   - Subtitle
-  - HintSubtitleHolder
+  - SubtitleHolder
+  - HintHolder
   layers:
   - Default
   - TransparentFX

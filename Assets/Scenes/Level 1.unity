@@ -571,6 +571,7 @@ MonoBehaviour:
   hintTitle: 
   hintText: 
   subtitleText: I have to find a new way out...
+  saveCheckpoint: 1
 --- !u!95 &189293402 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 189293402, guid: e171885bcdc2d4b40878c72297f1f810,
@@ -3323,6 +3324,7 @@ MonoBehaviour:
   hintTitle: 
   hintText: 
   subtitleText: I probably could pick up that barrel.
+  saveCheckpoint: 0
 --- !u!65 &1460845462
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3413,7 +3415,15 @@ Material:
         m_Texture: {fileID: 2800000, guid: 0b0f49687bda32249b1de6a19526d4b4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MetallicMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _NoiseTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -4859,7 +4869,15 @@ Material:
         m_Texture: {fileID: 2800000, guid: 0b0f49687bda32249b1de6a19526d4b4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MetallicMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _NoiseTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -5276,6 +5294,7 @@ MonoBehaviour:
   hintText: 
   subtitleText: To get through the decontamination chamber, the suit will come in
     handy.
+  saveCheckpoint: 0
 --- !u!65 &2091795360
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5425,6 +5444,7 @@ MonoBehaviour:
   hintText: Left-click to pick up nearby objects. Right-click to throw. Hold 'R'
     to rotate.
   subtitleText: 
+  saveCheckpoint: 0
 --- !u!65 &2125704515
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7790,6 +7810,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6773475460999714374, guid: 88f10fb1dd605e14cbd61b0f5a36bb43,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6773475461416030487, guid: 88f10fb1dd605e14cbd61b0f5a36bb43,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -8054,6 +8079,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077036381739206715, guid: 88f10fb1dd605e14cbd61b0f5a36bb43,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88f10fb1dd605e14cbd61b0f5a36bb43, type: 3}

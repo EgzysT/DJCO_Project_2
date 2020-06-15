@@ -54,28 +54,26 @@ public class GameManager : MonoBehaviour {
 
     public static void createHint(string title, string text) {
         // Remove if a Hint already exists
-        Transform tmp = GameObject.FindGameObjectWithTag("HintSubtitleHolder").transform.Find("Hint(Clone)");
+        Transform tmp = GameObject.FindGameObjectWithTag("HintHolder").transform.Find("Hint(Clone)");
         if (tmp != null) {
             LeanTween.cancel(tmp.gameObject);
             tmp.gameObject.GetComponent<UITweener>().SwapDirection();
             tmp.gameObject.GetComponent<UITweener>().DisableAfterDelay(0f);
         }
 
-        GameObject hint = Instantiate(Resources.Load("Hint") as GameObject, GameObject.FindGameObjectWithTag("HintSubtitleHolder").transform);
+        GameObject hint = Instantiate(Resources.Load("Hint") as GameObject, GameObject.FindGameObjectWithTag("HintHolder").transform);
         hint.GetComponent<HintScript>().SetHintTitle(title);
         hint.GetComponent<HintScript>().SetHintText(text);
     }
 
     public static void createSubtitle(string text) {
         //Remove if a Subtitle already exists
-        Transform tmp = GameObject.FindGameObjectWithTag("HintSubtitleHolder").transform.Find("Subtitle(Clone)");
-        if (tmp != null) {
-            LeanTween.cancel(tmp.gameObject);
-            tmp.gameObject.GetComponent<UITweener>().SwapDirection();
-            tmp.gameObject.GetComponent<UITweener>().DisableAfterDelay(0f);
+        GameObject subtitleHolder = GameObject.FindGameObjectWithTag("SubtitleHolder");
+        for (int i = 0; i < subtitleHolder.transform.childCount; i++) {
+            subtitleHolder.transform.GetChild(i).GetComponent<UITweener>().MoveSubtitleUp(40f, 0.3f);
         }
 
-        GameObject subtitle = Instantiate(Resources.Load("Subtitle") as GameObject, GameObject.FindGameObjectWithTag("HintSubtitleHolder").transform);
+        GameObject subtitle = Instantiate(Resources.Load("Subtitle") as GameObject, subtitleHolder.transform);
         subtitle.GetComponent<HintScript>().SetHintText(text);
     }
 

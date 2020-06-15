@@ -103,6 +103,11 @@ public class UITweener : MonoBehaviour {
         _tweenObject = LeanTween.move(objectToAnimate.GetComponent<RectTransform>(), to, duration);
     }
 
+    public void MoveSubtitleUp(float deltaUp, float duration) {
+        //objectToAnimate.GetComponent<RectTransform>().anchoredPosition = from;
+        _tweenObject = LeanTween.moveY(objectToAnimate.GetComponent<RectTransform>(), objectToAnimate.GetComponent<RectTransform>().anchoredPosition.y + deltaUp, duration);
+    }
+
     public void Scale() {
         if (startPositionOffset)
             objectToAnimate.GetComponent<RectTransform>().localScale = from;
