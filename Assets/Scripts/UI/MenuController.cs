@@ -14,10 +14,10 @@ public class MenuController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
-        //pauseMenuAvailable = true;
         player = GameObject.FindGameObjectWithTag("Player");
         audioSettings = volumeMenu.GetComponent<AudioSettings>();
         audioSettings.InitializeVolumeSettings();
+        audioSettings.SetAudioPause(false);
     }
 
     void Update() {
@@ -74,7 +74,8 @@ public class MenuController : MonoBehaviour
     }
 
     private void SetPlayerInteraction(bool canInteract) {
-        player.GetComponent<Interactor>().setInteract(canInteract);
+        if (player != null)
+            player.GetComponent<Interactor>().setInteract(canInteract);
     }
 
     IEnumerator PauseMenuTimer(float duration) {

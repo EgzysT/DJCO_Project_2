@@ -13,6 +13,8 @@ TagManager:
   - Dirt
   - Barrel
   - Lever
+  - Subtitle
+  - HintSubtitleHolder
   layers:
   - Default
   - TransparentFX

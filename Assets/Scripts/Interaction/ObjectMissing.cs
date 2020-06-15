@@ -12,7 +12,6 @@ public class ObjectMissing : MonoBehaviour {
     [Header("Particle System Settings")]
     public float particleSystemRadius = -1.0f;
 
-    //private Interactor playerInteractor;
     private ParticleSystem initialParticleSystem;
 
     // Start is called before the first frame update
@@ -26,13 +25,23 @@ public class ObjectMissing : MonoBehaviour {
         initialParticleSystem.Play();
     }
 
-    private void OnTriggerEnter(Collider other) {
+    //private void OnTriggerEnter(Collider other) {
+    //    EvaluateObject(other);
+    //}
+
+    private void OnTriggerStay(Collider other) {
+        EvaluateObject(other);
+    }
+
+     private void EvaluateObject(Collider other) {
+        if (other.gameObject.transform.up.y <= 0)
+            return;
+
         if (other.gameObject.CompareTag(objectNeeded.tag)) {
             initialParticleSystem.Stop();
 
             Destroy(other.gameObject);
 
-            //TODO Add sound effect
             FMOD.Studio.EventInstance sound = RuntimeManager.CreateInstance("event:/SFX/Achievement");
             sound.set3DAttributes(RuntimeUtils.To3DAttributes(transform));
             sound.start();

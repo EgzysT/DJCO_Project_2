@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour {
 
     public void LoadScene(string sceneToLoad) {
         //PlayerPrefs.Save();
-        //Time.timeScale = 1f;
+        Time.timeScale = 1f;
         SceneManager.LoadScene(sceneToLoad);
     }
 
@@ -54,17 +54,29 @@ public class GameManager : MonoBehaviour {
 
     public static void createHint(string title, string text) {
         // Remove if a Hint already exists
-        if (GameObject.FindGameObjectWithTag("UI").transform.GetChild(1).CompareTag("Hint")) {
-            GameObject currentHint = GameObject.FindGameObjectWithTag("UI").transform.GetChild(1).gameObject;
-            LeanTween.cancel(currentHint.gameObject);
-            currentHint.GetComponent<UITweener>().SwapDirection();
-            currentHint.GetComponent<UITweener>().DisableAfterDelay(0f);
+        Transform tmp = GameObject.FindGameObjectWithTag("HintSubtitleHolder").transform.Find("Hint(Clone)");
+        if (tmp != null) {
+            LeanTween.cancel(tmp.gameObject);
+            tmp.gameObject.GetComponent<UITweener>().SwapDirection();
+            tmp.gameObject.GetComponent<UITweener>().DisableAfterDelay(0f);
         }
 
-        GameObject hint = Instantiate(Resources.Load("Hint") as GameObject, GameObject.FindGameObjectWithTag("UI").transform);
-        hint.transform.SetSiblingIndex(1);
+        GameObject hint = Instantiate(Resources.Load("Hint") as GameObject, GameObject.FindGameObjectWithTag("HintSubtitleHolder").transform);
         hint.GetComponent<HintScript>().SetHintTitle(title);
         hint.GetComponent<HintScript>().SetHintText(text);
+    }
+
+    public static void createSubtitle(string text) {
+        //Remove if a Subtitle already exists
+        Transform tmp = GameObject.FindGameObjectWithTag("HintSubtitleHolder").transform.Find("Subtitle(Clone)");
+        if (tmp != null) {
+            LeanTween.cancel(tmp.gameObject);
+            tmp.gameObject.GetComponent<UITweener>().SwapDirection();
+            tmp.gameObject.GetComponent<UITweener>().DisableAfterDelay(0f);
+        }
+
+        GameObject subtitle = Instantiate(Resources.Load("Subtitle") as GameObject, GameObject.FindGameObjectWithTag("HintSubtitleHolder").transform);
+        subtitle.GetComponent<HintScript>().SetHintText(text);
     }
 
 }

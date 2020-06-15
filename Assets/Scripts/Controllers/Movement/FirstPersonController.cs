@@ -1,7 +1,7 @@
 using FMODUnity;
 using System;
 using System.Collections;
-using TreeEditor;
+//using TreeEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
