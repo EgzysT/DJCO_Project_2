@@ -178,4 +178,12 @@ public class PlayerSoundController : MonoBehaviour
         StopMovementSound();
         DetermineTerrain();
     }
+
+    private void OnDestroy()
+    {
+        walkingSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        runningSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        afraidSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        lastBreathSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+    }
 }

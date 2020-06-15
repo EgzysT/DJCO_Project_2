@@ -25,7 +25,7 @@ public class CameraShake : MonoBehaviour
     {
         if (afraidEffectCoroutine == null)
         {
-            afraidEffectCoroutine = StartCoroutine(AfraidEffect());
+            afraidEffectCoroutine = StartCoroutine(Shake(afraidDuration, afraidMagnitude));
         }
     }
 
@@ -51,21 +51,6 @@ public class CameraShake : MonoBehaviour
             {
                 transform.localPosition = originalPos;
             }
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-
-        transform.localPosition = originalPos;
-    }
-
-    IEnumerator AfraidEffect()
-    {
-        Vector3 originalPos = transform.localPosition;
-
-        float elapsed = 0f;
-        while (elapsed < afraidDuration)
-        {
-            transform.localPosition = originalPos + new Vector3(Random.Range(-1f, 1f) * afraidMagnitude, Random.Range(-1f, 1f) * afraidMagnitude, 0f);
             elapsed += Time.deltaTime;
             yield return null;
         }

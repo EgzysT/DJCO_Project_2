@@ -25,6 +25,13 @@ public class GameManager : MonoBehaviour {
         SceneManager.LoadScene(sceneToLoad);
     }
 
+    public void ReloadScene()
+    {
+        //PlayerPrefs.Save();
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void QuitGame() {
 #if UNITY_EDITOR
         Debug.Log("Quit Game");
