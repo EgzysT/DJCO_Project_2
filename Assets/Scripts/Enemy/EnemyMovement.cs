@@ -43,7 +43,8 @@ public class EnemyMovement : MonoBehaviour
 
         if (WorldsController.instance.GetCurrentWorld() == World.NORMAL) 
         {
-            BecomeDisabled();
+            currentState = State.DISABLED;
+            rigidBody.isKinematic = true;
         } 
         else
         {
