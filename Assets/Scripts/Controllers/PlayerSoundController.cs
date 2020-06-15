@@ -129,9 +129,9 @@ public class PlayerSoundController : MonoBehaviour
 
     public void StopAfraidSound()
     {
-        lastBreathSound.set3DAttributes(RuntimeUtils.To3DAttributes(cameraTransform));
+        //lastBreathSound.set3DAttributes(RuntimeUtils.To3DAttributes(cameraTransform));
         afraidSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        lastBreathSound.start();
+        //lastBreathSound.start();
     }
 
     private void DetermineTerrain()
@@ -179,11 +179,17 @@ public class PlayerSoundController : MonoBehaviour
         DetermineTerrain();
     }
 
+    private void StopAllSounds()
+    {
+        StopMovementSound();
+        walkingSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        runningSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        afraidSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        lastBreathSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
+
     private void OnDestroy()
     {
-        walkingSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-        runningSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-        afraidSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-        lastBreathSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        StopAllSounds();
     }
 }
