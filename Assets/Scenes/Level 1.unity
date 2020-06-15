@@ -4127,6 +4127,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 124
       objectReference: {fileID: 0}
+    - target: {fileID: 1772223604, guid: e171885bcdc2d4b40878c72297f1f810, type: 3}
+      propertyPath: timeUntilDeath
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5503128409379037468, guid: e171885bcdc2d4b40878c72297f1f810,
         type: 3}
       propertyPath: m_Name
