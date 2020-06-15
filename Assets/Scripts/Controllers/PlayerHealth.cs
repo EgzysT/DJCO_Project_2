@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
@@ -21,9 +22,9 @@ public class PlayerHealth : MonoBehaviour
         if (!float.IsNaN(newPositionX) && !float.IsNaN(newPositionY) && !float.IsNaN(newPositionZ))
         {
             transform.position = new Vector3(newPositionX, newPositionY, newPositionZ);
+            GameObject.Find("---Cutscene Stuff---").SetActive(false);
         }
 
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         cameraShake = GetComponentInChildren<CameraShake>();
         playerSoundController = GetComponentInChildren<PlayerSoundController>();
         currentAfraidState = AFRAID_STATE.NOT_AFRAID;
@@ -65,7 +66,7 @@ public class PlayerHealth : MonoBehaviour
     private void Die()
     {
         died = true;
-        gameManager.ReloadScene();
+        GameObject.Find("DeathCutscene").GetComponent<PlayableDirector>().Play();
     }
 
     private void OnDestroy()
