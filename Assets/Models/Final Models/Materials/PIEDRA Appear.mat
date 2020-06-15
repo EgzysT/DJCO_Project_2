@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: human1
+  m_Name: PIEDRA Appear
   m_Shader: {fileID: 4800000, guid: 8b24792e687d290478dc07539b0e915d, type: 3}
-  m_ShaderKeywords: ALPHA _NORMALMAP _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+  m_ShaderKeywords: ALPHA _METALLICGLOSSMAP _NORMALMAP _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 5d5f45c8e029e284b98c589659ed2cbc, type: 3}
+        m_Texture: {fileID: 2800000, guid: 32a81791c5da0f64789d43e11f68be0d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -44,23 +44,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: a83bb813de7694e4c9704b479e49abd1, type: 3}
+        m_Texture: {fileID: 2800000, guid: eb93fea86f1fc3441b40e3a24510d4d0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MetallicMap:
-        m_Texture: {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
+        m_Texture: {fileID: 2800000, guid: f5863001596055c4486de45c6df0dde0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: a7d2e44af7c8a604fb9494b76df75788, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -73,16 +65,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _ALPHA: 1
-    - _BumpScale: 0.26
+    - _BumpScale: -0.75
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DisAmount: 0.01
     - _DisLineWidth: 0
     - _DstBlend: 0
-    - _GlossMapScale: 0.943
+    - _GlossMapScale: 0.207
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _Metallic: 0.426
+    - _Metallic: 0
     - _Mode: 0
     - _NScale: 1
     - _OcclusionStrength: 1
@@ -93,6 +85,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.8867924, g: 0.30535775, b: 0.30535775, a: 1}
+    - _Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
     - _DisLineColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0.05660379, g: 0.009344964, b: 0.009344964, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

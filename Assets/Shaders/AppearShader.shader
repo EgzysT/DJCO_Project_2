@@ -6,13 +6,15 @@
         _EmissionColor("Emission Color", Color) = (1,1,1,1)
         _MainTex("Primary (RGB)", 2D) = "white" {}
         _EmissionTex("Emission Texture", 2D) = "white" {}
+        _NormalMap("Normal Map", 2D) = "white" {}
+        _MetallicMap("Metalic Map", 2D) = "white" {}
         _NoiseTex("Dissolve Noise", 2D) = "white"{}
         _NScale("Noise Scale", Range(0, 10)) = 1
         _DisAmount("Noise Texture Opacity", Range(0.01, 1)) = 0.01
         _DisLineWidth("Line Width", Range(0, 2)) = 0
         _DisLineColor("Line Tint", Color) = (1,1,1,1)
         _Glossiness("Smoothness", Range(0,1)) = 0.5
-        _Metallic("Metallic", Range(0,1)) = 0.0
+        _Metallic("Metallic", Range(0,1)) = 1.0
         [Toggle(ALPHA)] _ALPHA("No Shadows on Transparent", Float) = 1
     }
     SubShader
@@ -31,7 +33,7 @@
         float3 _Position; // from script
         float _Radius; // from script
 
-        sampler2D _MainTex, _SecondTex, _EmissionTex;
+        sampler2D _MainTex, _SecondTex, _EmissionTex, _NormalMap, _MetallicMap;
         float4 _Color, _Color2;
         sampler2D _NoiseTex;
         float _DisAmount, _NScale;
@@ -41,7 +43,7 @@
 
         struct Input
         {
-            float2 uv_MainTex;
+            float2 uv_MainTex; INTERNAL_DATA
             float3 worldPos;    // built in value to use the world space position
             float3 worldNormal; // built in value for world normal
         };
@@ -95,12 +97,12 @@
             c.a = step(_DisAmount, sphereNoise);
             o.Albedo = resultTex;
 
-            //o.Emission = DissolveLine * _DisLineColor;
-            //o.Emission = _EmissionColor;
+            o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_MainTex));
+
             o.Emission = tex2D(_EmissionTex, IN.uv_MainTex) * _EmissionColor;
 
             // Metallic and smoothness come from slider variables
-            o.Metallic = _Metallic;
+            o.Metallic = tex2D(_MetallicMap, IN.uv_MainTex) * _Metallic;
             o.Smoothness = _Glossiness;
             o.Alpha = c.a;
         }
