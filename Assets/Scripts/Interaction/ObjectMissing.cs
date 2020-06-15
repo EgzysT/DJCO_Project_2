@@ -8,6 +8,7 @@ public class ObjectMissing : MonoBehaviour {
     [Header("Event trigger ID (negative to not trigger)")]
     public int id = -1;
     public GameObject objectNeeded;
+    public GameObject subtitleObjectToDestroy;
 
     [Header("Particle System Settings")]
     public float particleSystemRadius = -1.0f;
@@ -39,6 +40,11 @@ public class ObjectMissing : MonoBehaviour {
 
         if (other.gameObject.CompareTag(objectNeeded.tag)) {
             initialParticleSystem.Stop();
+
+            if (subtitleObjectToDestroy != null) {
+                Destroy(subtitleObjectToDestroy.GetComponent<SubtitleTrigger>());
+                Destroy(subtitleObjectToDestroy.GetComponent<Collider>());
+            }
 
             Destroy(other.gameObject);
 

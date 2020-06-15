@@ -29,6 +29,7 @@ public class PlayerHealth : MonoBehaviour
         float newPositionX = PlayerPrefs.GetFloat("player_position.x", float.NaN);
         float newPositionY = PlayerPrefs.GetFloat("player_position.y", float.NaN);
         float newPositionZ = PlayerPrefs.GetFloat("player_position.z", float.NaN);
+
         if (!float.IsNaN(newPositionX) && !float.IsNaN(newPositionY) && !float.IsNaN(newPositionZ))
         {
             transform.position = new Vector3(newPositionX, newPositionY, newPositionZ);
@@ -86,13 +87,4 @@ public class PlayerHealth : MonoBehaviour
         afraidTimeOut = false;
     }
 
-    private void OnDestroy()
-    {
-        if (!died)
-        {
-            PlayerPrefs.DeleteKey("player_position.x");
-            PlayerPrefs.DeleteKey("player_position.y");
-            PlayerPrefs.DeleteKey("player_position.z");
-        }
-    }
 }

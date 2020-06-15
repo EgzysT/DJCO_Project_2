@@ -37,6 +37,7 @@ public class ColliderTrigger : EventTrigger {
                 PlayerPrefs.SetFloat("player_position.x", other.transform.position.x);
                 PlayerPrefs.SetFloat("player_position.y", other.transform.position.y);
                 PlayerPrefs.SetFloat("player_position.z", other.transform.position.z);
+                PlayerPrefs.Save();
             }
 
             if (id >= 0) {

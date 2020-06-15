@@ -645,6 +645,7 @@ MonoBehaviour:
   id: -1
   objectNeeded: {fileID: 3496894646084849120, guid: a4e3397e495967748b7df19327b0466d,
     type: 3}
+  subtitleObjectToDestroy: {fileID: 0}
   particleSystemRadius: 0.4
 --- !u!65 &273404005
 BoxCollider:
@@ -2909,6 +2910,7 @@ MonoBehaviour:
   id: -1
   objectNeeded: {fileID: 3496894646084849120, guid: a4e3397e495967748b7df19327b0466d,
     type: 3}
+  subtitleObjectToDestroy: {fileID: 0}
   particleSystemRadius: 0.4
 --- !u!65 &1237836843
 BoxCollider:
@@ -4403,6 +4405,7 @@ MonoBehaviour:
   id: -1
   objectNeeded: {fileID: 3496894646084849120, guid: a4e3397e495967748b7df19327b0466d,
     type: 3}
+  subtitleObjectToDestroy: {fileID: 0}
   particleSystemRadius: 0.4
 --- !u!65 &1681911132
 BoxCollider:
@@ -6757,6 +6760,7 @@ MonoBehaviour:
   id: -1
   objectNeeded: {fileID: 3496894646084849120, guid: a4e3397e495967748b7df19327b0466d,
     type: 3}
+  subtitleObjectToDestroy: {fileID: 0}
   particleSystemRadius: 0.4
 --- !u!65 &3496894645926162876
 BoxCollider:
@@ -8009,26 +8013,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3193938589777590199, guid: 88f10fb1dd605e14cbd61b0f5a36bb43,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3193938589777590199, guid: 88f10fb1dd605e14cbd61b0f5a36bb43,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3193938589777590199, guid: 88f10fb1dd605e14cbd61b0f5a36bb43,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3193938589777590199, guid: 88f10fb1dd605e14cbd61b0f5a36bb43,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3193938589840250301, guid: 88f10fb1dd605e14cbd61b0f5a36bb43,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -8184,11 +8168,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5364994771333348171, guid: 88f10fb1dd605e14cbd61b0f5a36bb43,
-        type: 3}
-      propertyPath: m_PixelPerfect
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5364994771333348172, guid: 88f10fb1dd605e14cbd61b0f5a36bb43,
         type: 3}
       propertyPath: m_Name
@@ -8298,6 +8277,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329794864525543720, guid: 88f10fb1dd605e14cbd61b0f5a36bb43,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6773475460999714373, guid: 88f10fb1dd605e14cbd61b0f5a36bb43,
         type: 3}
@@ -8577,7 +8561,7 @@ PrefabInstance:
     - target: {fileID: 9077036381739206715, guid: 88f10fb1dd605e14cbd61b0f5a36bb43,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88f10fb1dd605e14cbd61b0f5a36bb43, type: 3}
