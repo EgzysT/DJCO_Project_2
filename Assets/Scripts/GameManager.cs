@@ -20,14 +20,20 @@ public class GameManager : MonoBehaviour {
     }
 
     public void LoadScene(string sceneToLoad) {
-        //PlayerPrefs.Save();
+        PlayerPrefs.Save();
         Time.timeScale = 1f;
         SceneManager.LoadScene(sceneToLoad);
     }
 
-    public void ReloadScene()
-    {
-        //PlayerPrefs.Save();
+    public void RemoveLastCheckpoint() {
+        PlayerPrefs.DeleteKey("player_position.x");
+        PlayerPrefs.DeleteKey("player_position.y");
+        PlayerPrefs.DeleteKey("player_position.z");
+        PlayerPrefs.Save();
+    }
+
+    public void ReloadScene() {
+        PlayerPrefs.Save();
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

@@ -36,6 +36,7 @@ public class Interactor : MonoBehaviour
         if (currentlyLooking == null)
         {
             crosshairController.ShowNormal();
+            cameraController.CanLook = true;
             return;
         }
 

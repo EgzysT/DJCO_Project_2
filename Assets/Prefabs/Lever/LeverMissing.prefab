@@ -331,6 +331,7 @@ MonoBehaviour:
   id: 2
   objectNeeded: {fileID: 6269245162413470713, guid: 9fb6f3d1bfd170e4781fc98b2c9361a6,
     type: 3}
+  subtitleObjectToDestroy: {fileID: 7038276979503441235}
   particleSystemRadius: 0.3
 --- !u!1 &4985556658468810087
 GameObject:

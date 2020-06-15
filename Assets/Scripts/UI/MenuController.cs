@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
@@ -12,12 +13,20 @@ public class MenuController : MonoBehaviour
     private GameObject player;
     private AudioSettings audioSettings;
 
+    public Image checkpointOverlay;
+
     // Start is called before the first frame update
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
         audioSettings = volumeMenu.GetComponent<AudioSettings>();
         audioSettings.InitializeVolumeSettings();
         audioSettings.SetAudioPause(false);
+        if (checkpointOverlay != null)
+        {
+            float newPositionX = PlayerPrefs.GetFloat("player_position.x", float.NaN);
+            if (float.IsNaN(newPositionX))
+                checkpointOverlay.enabled = true;
+        }
     }
 
     void Update() {
