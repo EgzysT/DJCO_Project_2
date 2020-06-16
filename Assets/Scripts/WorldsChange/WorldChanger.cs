@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Shader))]
 public class WorldChanger : MonoBehaviour {
     public World belongsTo;
+    public bool shouldApplyTextures;
     public bool isParticleSystem;
     public bool isLight;
 
@@ -16,10 +17,21 @@ public class WorldChanger : MonoBehaviour {
         pickableObject = GetComponent<Pickable>();
 
         // Alter layer at the start
-        if (belongsTo == World.ARCANE)
+        if (belongsTo == World.ARCANE) {
+            if (shouldApplyTextures)
+                ChangeAllTextures(true);
+
             gameObject.layer = LayerMask.NameToLayer("UninteractiveWorld");
-        else
+        }
+        else if (belongsTo == World.NORMAL) {
+            if (shouldApplyTextures)
+                ChangeAllTextures(false);
+
             gameObject.layer = LayerMask.NameToLayer("InteractiveWorld");
+        }
+        else {
+            gameObject.layer = LayerMask.NameToLayer("InteractiveWorld");
+        }
 
         // It only subscribes to events if it is going to change worlds
         if (belongsTo != World.BOTH) {
@@ -77,12 +89,14 @@ public class WorldChanger : MonoBehaviour {
         // Will change worlds if it is a pickable object and the world changer is interacting with it
         if (pickableObject != null && pickableObject.isInteracting) {
 
-            Renderer[] allChildren = GetComponentsInChildren<Renderer>();
-            foreach (Renderer childRenderer in allChildren) {
-                ChangeTexture(childRenderer, belongsToNormal);
-            }
+            ChangeAllTextures(belongsToNormal);
 
-            ChangeTexture(GetComponent<Renderer>(), belongsToNormal);
+            //Renderer[] allChildren = GetComponentsInChildren<Renderer>();
+            //foreach (Renderer childRenderer in allChildren) {
+            //    ChangeTexture(childRenderer, belongsToNormal);
+            //}
+
+            //ChangeTexture(GetComponent<Renderer>(), belongsToNormal);
             //Texture textParent = GetComponent<Renderer>().material.mainTexture;
 
             //// If it belongs to the Normal world then it will change to the Arcane world, and vice-versa
@@ -98,6 +112,15 @@ public class WorldChanger : MonoBehaviour {
             //GetComponent<Renderer>().material.SetTexture("_MainTex", textParent);
             gameObject.layer = LayerMask.NameToLayer("InteractiveWorld");
         }
+    }
+
+    void ChangeAllTextures(bool belongsToNormal) {
+        Renderer[] allChildren = GetComponentsInChildren<Renderer>();
+        foreach (Renderer childRenderer in allChildren) {
+            ChangeTexture(childRenderer, belongsToNormal);
+        }
+
+        ChangeTexture(GetComponent<Renderer>(), belongsToNormal);
     }
 
     private void ChangeTexture(Renderer rend, bool belongsToNormal) {
