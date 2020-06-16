@@ -1,7 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.Remoting.Messaging;
+﻿using FMOD;
+using System.Collections;
+using TreeEditor;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 [RequireComponent(typeof(Shader))]
 public class WorldChanger : MonoBehaviour {
@@ -9,6 +10,7 @@ public class WorldChanger : MonoBehaviour {
     public bool shouldApplyTextures;
     public bool isParticleSystem;
     public bool isLight;
+    public bool shouldDisableChild;
 
     private Pickable pickableObject;
 
@@ -21,16 +23,19 @@ public class WorldChanger : MonoBehaviour {
             if (shouldApplyTextures)
                 ChangeAllTextures(true);
 
-            gameObject.layer = LayerMask.NameToLayer("UninteractiveWorld");
+            ChangeAllLayers("UninteractiveWorld");
+            //gameObject.layer = LayerMask.NameToLayer("UninteractiveWorld");
         }
         else if (belongsTo == World.NORMAL) {
             if (shouldApplyTextures)
                 ChangeAllTextures(false);
 
-            gameObject.layer = LayerMask.NameToLayer("InteractiveWorld");
+            ChangeAllLayers("InteractiveWorld");
+            //gameObject.layer = LayerMask.NameToLayer("InteractiveWorld");
         }
         else {
-            gameObject.layer = LayerMask.NameToLayer("InteractiveWorld");
+            ChangeAllLayers("InteractiveWorld");
+            //gameObject.layer = LayerMask.NameToLayer("InteractiveWorld");
         }
 
         // It only subscribes to events if it is going to change worlds
@@ -59,11 +64,13 @@ public class WorldChanger : MonoBehaviour {
         if (belongsTo == World.NORMAL) {
             if (isEnteringNormal) {
                 // Will appear
-                gameObject.layer = LayerMask.NameToLayer("InteractiveWorld");
+                //gameObject.layer = LayerMask.NameToLayer("InteractiveWorld");
+                ChangeAllLayers("InteractiveWorld");
             }
             else {
                 // Will disappear (can change worlds)
-                gameObject.layer = LayerMask.NameToLayer("UninteractiveWorld");
+                //gameObject.layer = LayerMask.NameToLayer("UninteractiveWorld");
+                ChangeAllLayers("UninteractiveWorld");
                 CheckForObjectWorldChange(true);
             }
             CheckParticleSystem(isEnteringNormal);
@@ -72,11 +79,13 @@ public class WorldChanger : MonoBehaviour {
         else if (belongsTo == World.ARCANE) {
             if (!isEnteringNormal) {
                 // Will appear
-                gameObject.layer = LayerMask.NameToLayer("InteractiveWorld");
+                //gameObject.layer = LayerMask.NameToLayer("InteractiveWorld");
+                ChangeAllLayers("InteractiveWorld");
             }
             else {
                 // Will disappear (can change worlds)
-                gameObject.layer = LayerMask.NameToLayer("UninteractiveWorld");
+                //gameObject.layer = LayerMask.NameToLayer("UninteractiveWorld");
+                ChangeAllLayers("UninteractiveWorld");
                 CheckForObjectWorldChange(false);
             }
             CheckParticleSystem(!isEnteringNormal);
@@ -89,7 +98,7 @@ public class WorldChanger : MonoBehaviour {
         // Will change worlds if it is a pickable object and the world changer is interacting with it
         if (pickableObject != null && pickableObject.isInteracting) {
 
-            ChangeAllTextures(belongsToNormal);
+            ChangeEntireObjectWorld(belongsToNormal, "InteractiveWorld");
 
             //Renderer[] allChildren = GetComponentsInChildren<Renderer>();
             //foreach (Renderer childRenderer in allChildren) {
@@ -110,17 +119,51 @@ public class WorldChanger : MonoBehaviour {
             //}
 
             //GetComponent<Renderer>().material.SetTexture("_MainTex", textParent);
-            gameObject.layer = LayerMask.NameToLayer("InteractiveWorld");
+
+            //gameObject.layer = LayerMask.NameToLayer("InteractiveWorld");
         }
     }
 
-    void ChangeAllTextures(bool belongsToNormal) {
-        Renderer[] allChildren = GetComponentsInChildren<Renderer>();
-        foreach (Renderer childRenderer in allChildren) {
-            ChangeTexture(childRenderer, belongsToNormal);
+    void ChangeEntireObjectWorld(bool belongsToNormal, string layer) {
+        //Renderer[] allChildren = GetComponentsInChildren<Renderer>();
+        Transform[] allChildren = GetComponentsInChildren<Transform>();
+        foreach (Transform child in allChildren) {
+            ChangeTexture(child.GetComponent<Renderer>(), belongsToNormal);
+            ChangeLayer(child, layer);
         }
 
         ChangeTexture(GetComponent<Renderer>(), belongsToNormal);
+        ChangeLayer(transform, layer);
+    }
+
+    void ChangeAllTextures(bool belongsToNormal) {
+        //Renderer[] allChildren = GetComponentsInChildren<Renderer>();
+        Transform[] allChildren = GetComponentsInChildren<Transform>();
+        foreach (Transform child in allChildren) {
+            ChangeTexture(child.GetComponent<Renderer>(), belongsToNormal);
+            //ChangeLayer(child, layer);
+        }
+
+        ChangeTexture(GetComponent<Renderer>(), belongsToNormal);
+        //ChangeLayer(transform, layer);
+    }
+
+    void ChangeAllLayers(string layer) {
+        //Renderer[] allChildren = GetComponentsInChildren<Renderer>();
+
+        if (shouldDisableChild) {
+            transform.GetChild(0).gameObject.SetActive(layer == "InteractiveWorld");
+            return;
+        }
+
+        Transform[] allChildren = GetComponentsInChildren<Transform>();
+        foreach (Transform child in allChildren) {
+            //ChangeTexture(child.GetComponent<Renderer>(), belongsToNormal);
+            ChangeLayer(child, layer);
+        }
+
+        //ChangeTexture(GetComponent<Renderer>(), belongsToNormal);
+        ChangeLayer(transform, layer);
     }
 
     private void ChangeTexture(Renderer rend, bool belongsToNormal) {
@@ -151,6 +194,10 @@ public class WorldChanger : MonoBehaviour {
         rend.material.SetTexture("_NormalMap", normalMap);
         rend.material.SetTexture("_MetallicMap", metallicMap);
         rend.material.SetFloat("_Metallic", metallic);
+    }
+
+    private void ChangeLayer(Transform transf, string layer) {
+        transf.gameObject.layer = LayerMask.NameToLayer(layer);
     }
 
     void CheckParticleSystem(bool willAppear) {

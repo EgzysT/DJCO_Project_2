@@ -12,6 +12,7 @@ public class PressurePlate : EventTrigger {
     public GameObject movingObject;
     public float ppFinalYPosition;
     public float animationDuration;
+    public World belongsTo;
 
     private bool isDown;
     private float initialYPosition;
@@ -59,15 +60,39 @@ public class PressurePlate : EventTrigger {
     }
 
     private void OnTriggerEnter(Collider other) {
-        objectsApplyingPressure.Add(other.gameObject.GetInstanceID(), other.gameObject.GetComponent<InteractableObject>()?.isInteracting ?? false);
+        World otherWorld = other.gameObject.GetComponent<WorldChanger>()?.belongsTo ?? belongsTo;
+
+        if (belongsTo == World.BOTH || belongsTo == otherWorld)
+            objectsApplyingPressure[other.gameObject.GetInstanceID()] = other.gameObject.GetComponent<InteractableObject>()?.isInteracting ?? false;
+
+        //if (belongsTo == World.BOTH || (belongsTo == World.NORMAL && other.gameObject.layer != LayerMask.NameToLayer("UninteractiveWorld")) || (belongsTo == World.ARCANE && other.gameObject.layer == LayerMask.NameToLayer("UninteractiveWorld")))
+        //    objectsApplyingPressure[other.gameObject.GetInstanceID()] = other.gameObject.GetComponent<InteractableObject>()?.isInteracting ?? false;
+
+        //if (other.gameObject.layer != LayerMask.NameToLayer("UninteractiveWorld"))
+        //    objectsApplyingPressure.Add(other.gameObject.GetInstanceID(), other.gameObject.GetComponent<InteractableObject>()?.isInteracting ?? false);
     }
 
     private void OnTriggerStay(Collider other) {
-        objectsApplyingPressure[other.gameObject.GetInstanceID()] = other.gameObject.GetComponent<InteractableObject>()?.isInteracting ?? false;
+        World otherWorld = other.gameObject.GetComponent<WorldChanger>()?.belongsTo ?? belongsTo;
+
+        if (belongsTo == World.BOTH || belongsTo == otherWorld)
+            objectsApplyingPressure[other.gameObject.GetInstanceID()] = other.gameObject.GetComponent<InteractableObject>()?.isInteracting ?? false;
+        else
+            objectsApplyingPressure.Remove(other.gameObject.GetInstanceID());
+
+        //if (belongsTo == World.BOTH || (belongsTo == World.NORMAL && other.gameObject.layer != LayerMask.NameToLayer("UninteractiveWorld")) || (belongsTo == World.ARCANE && other.gameObject.layer == LayerMask.NameToLayer("UninteractiveWorld")))
+        //    objectsApplyingPressure[other.gameObject.GetInstanceID()] = other.gameObject.GetComponent<InteractableObject>()?.isInteracting ?? false;
+        //else
+        //    objectsApplyingPressure.Remove(other.gameObject.GetInstanceID());
+
+        //else if (belongsTo == World.ARCANE && other.gameObject.layer == LayerMask.NameToLayer("UninteractiveWorld"))
+        //    objectsApplyingPressure[other.gameObject.GetInstanceID()] = other.gameObject.GetComponent<InteractableObject>()?.isInteracting ?? false;
+
     }
 
     private void OnTriggerExit(Collider other) {
-        objectsApplyingPressure.Remove(other.gameObject.GetInstanceID());
+        //if (other.gameObject.layer != LayerMask.NameToLayer("UninteractiveWorld"))
+            objectsApplyingPressure.Remove(other.gameObject.GetInstanceID());
     }
 
 }

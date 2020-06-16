@@ -35,6 +35,9 @@ public class ObjectMissing : MonoBehaviour {
     }
 
      private void EvaluateObject(Collider other) {
+        if (other.gameObject.layer == LayerMask.NameToLayer("UninteractiveWorld"))
+            return;
+
         if (other.gameObject.transform.up.y <= 0)
             return;
 
