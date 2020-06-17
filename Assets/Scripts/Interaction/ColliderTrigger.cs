@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class ColliderTrigger : EventTrigger {
 
@@ -21,6 +22,9 @@ public class ColliderTrigger : EventTrigger {
     [Header("Checkpoint Settings")]
     public bool saveCheckpoint;
 
+    [Header("Timeline Settings")]
+    public PlayableDirector timeline;
+
     void Start() {
         gameObject.layer = LayerMask.NameToLayer("Trigger");
     }
@@ -40,6 +44,9 @@ public class ColliderTrigger : EventTrigger {
                 PlayerPrefs.SetFloat("player_position.z", other.transform.position.z);
                 PlayerPrefs.Save();
             }
+
+            if (timeline != null)
+                timeline.Play();
 
             if (id >= 0) {
                 if (triggerAction == Trigger.Activate)

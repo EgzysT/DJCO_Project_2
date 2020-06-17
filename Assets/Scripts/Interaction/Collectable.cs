@@ -15,6 +15,7 @@ public class Collectable : InteractableObject
         if (subtitleText != "")
             GameManager.createSubtitle(subtitleText);
 
+        TriggerActivate();
         Destroy(gameObject);
     }
 
