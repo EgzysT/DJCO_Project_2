@@ -64,7 +64,7 @@ public class Interactor : MonoBehaviour
             crosshairController.ShowNone();
             currentlyLooking.Interacting();
 
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(0) || !Input.GetMouseButton(0))
             {
                 currentlyLooking.LeftMouseButtonUp();
                 currentlyLooking = null;
