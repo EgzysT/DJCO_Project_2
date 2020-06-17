@@ -45,7 +45,7 @@ public class CameraController : MonoBehaviour
         CalculateRotation();
         SmoothRotation();
         ApplyRotation();
-        HandleZoom();
+        //HandleZoom();
     }
 
     void GetComponents()
@@ -96,13 +96,13 @@ public class CameraController : MonoBehaviour
         cameraSway.SwayPlayer(_inputVector, _rawXInput);
     }
 
-    void HandleZoom()
-    {
-        if (!m_canLook) return;
+    //void HandleZoom()
+    //{
+    //    if (!m_canLook) return;
 
-        if (camInputData.ZoomClicked || camInputData.ZoomReleased)
-            cameraZoom.ChangeFOV(this);
-    }
+    //    if (camInputData.ZoomClicked || camInputData.ZoomReleased)
+    //        cameraZoom.ChangeFOV(this);
+    //}
 
     public void ChangeRunFOV(bool _returning)
     {
