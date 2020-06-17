@@ -16,6 +16,7 @@ TagManager:
   - Subtitle
   - SubtitleHolder
   - HintHolder
+  - SaveIcon
   layers:
   - Default
   - TransparentFX
