@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -35,6 +36,8 @@ public class PlayerHealth : MonoBehaviour
             transform.position = new Vector3(newPositionX, newPositionY, newPositionZ);
             GameObject.Find("---Cutscene Stuff---")?.SetActive(false);
         }
+
+        GameEvents.instance.onNormalWorldEnter += (_) => StopAfraid();
     }
 
     public void StartAfraid()
@@ -51,12 +54,17 @@ public class PlayerHealth : MonoBehaviour
     {
         StartCoroutine(WaitToBeAfraid());
         cameraShake.StopAfraidEffect();
+        playerSoundController.StopAfraidSound();
         currentAfraidState = AFRAID_STATE.NOT_AFRAID;
     }
 
     private void Update()
     {
-        if (died) return;
+        if (died)
+        {
+            StopAfraid();
+            return;
+        }
 
         if (currentAfraidState == AFRAID_STATE.AFRAID)
         {
@@ -76,6 +84,8 @@ public class PlayerHealth : MonoBehaviour
     private void Die()
     {
         died = true;
+        currentAfraidState = AFRAID_STATE.NOT_AFRAID;
+        playerSoundController.StopAllSounds();
         GameObject.Find("DeathCutscene").GetComponent<PlayableDirector>().Play();
     }
 

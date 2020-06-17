@@ -76,7 +76,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkingSoundEventName: event:/Player/Walking_Step
   runningSoundEventName: event:/Player/Running_Step
-  afraidSoundEventName: event:/Player/Respirar_medo
+  afraidSoundEventName: event:/Player/Death is close
   lastBreathSoundEventName: event:/Player/LastBreath
   walkFootstepSpeed: 0.5
   runningFootstepSpeed: 0.4
@@ -1011,6 +1011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secondsUntilDeath: 4
+  secondsTimeOut: 6
 --- !u!1 &5503128409805545562
 GameObject:
   m_ObjectHideFlags: 0

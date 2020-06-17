@@ -121,10 +121,10 @@ public class PlayerSoundController : MonoBehaviour
     public void PlayAfraidSound()
     {
         afraidSound.set3DAttributes(RuntimeUtils.To3DAttributes(cameraTransform));
-        lastBreathSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         afraidSound.getPlaybackState(out FMOD.Studio.PLAYBACK_STATE afraidSoundState);
         if(afraidSoundState != FMOD.Studio.PLAYBACK_STATE.PLAYING)
             afraidSound.start();
+        //lastBreathSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
 
     public void StopAfraidSound()
@@ -179,7 +179,7 @@ public class PlayerSoundController : MonoBehaviour
         DetermineTerrain();
     }
 
-    private void StopAllSounds()
+    public void StopAllSounds()
     {
         StopMovementSound();
         walkingSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);

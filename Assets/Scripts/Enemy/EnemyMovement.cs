@@ -207,9 +207,10 @@ public class EnemyMovement : MonoBehaviour
 
     private void StopSounds()
     {
+        if (sounds == null) return;
         foreach(StudioEventEmitter sound in sounds)
         {
-            sound.Stop();
+            sound?.Stop();
         }
     }
 
