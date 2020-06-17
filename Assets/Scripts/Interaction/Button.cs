@@ -48,7 +48,7 @@ public class Button : InteractableObject {
 
             isActivated = true;
 
-            GameManager.createHint("BUTTONS", "I see you can use buttons. You are so smart. BIG BRAIN");
+            GameManager.CreateHint("BUTTONS", "I see you can use buttons. You are so smart. BIG BRAIN");
 
             if (!multipleInteractions) {
                 Destroy(this);

@@ -46,7 +46,7 @@ public class Lever : InteractableObject
             isActivated = true;
 
             // TODO Remove
-            GameManager.createHint("SMARTASS", "I see you can use levers. You are so smart. BIG BRAIN");
+            GameManager.CreateHint("SMARTASS", "I see you can use levers. You are so smart. BIG BRAIN");
 
             if (!multipleInteractions) {
                 Destroy(this);

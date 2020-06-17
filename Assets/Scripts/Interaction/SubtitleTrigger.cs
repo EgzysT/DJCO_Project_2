@@ -12,7 +12,7 @@ public class SubtitleTrigger : MonoBehaviour
     }
 
     public void DisplaySubtitle() {
-        GameManager.createSubtitle(subtitleText);
+        GameManager.CreateSubtitle(subtitleText);
         Destroy(this);
     }
 

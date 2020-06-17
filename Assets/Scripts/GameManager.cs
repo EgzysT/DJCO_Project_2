@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -65,7 +62,7 @@ public class GameManager : MonoBehaviour {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public static void createHint(string title, string text) {
+    public static void CreateHint(string title, string text) {
         // Remove if a Hint already exists
         Transform tmp = GameObject.FindGameObjectWithTag("HintHolder").transform.Find("Hint(Clone)");
         if (tmp != null) {
@@ -79,7 +76,7 @@ public class GameManager : MonoBehaviour {
         hint.GetComponent<HintScript>().SetHintText(text);
     }
 
-    public static void createSubtitle(string text) {
+    public static void CreateSubtitle(string text) {
         //Remove if a Subtitle already exists
         GameObject subtitleHolder = GameObject.FindGameObjectWithTag("SubtitleHolder");
         for (int i = 0; i < subtitleHolder.transform.childCount; i++) {
@@ -88,6 +85,11 @@ public class GameManager : MonoBehaviour {
 
         GameObject subtitle = Instantiate(Resources.Load("Subtitle") as GameObject, subtitleHolder.transform);
         subtitle.GetComponent<HintScript>().SetHintText(text);
+    }
+
+    public void SubtitleNoStatic(string text)
+    {
+        CreateSubtitle(text);
     }
 
 }

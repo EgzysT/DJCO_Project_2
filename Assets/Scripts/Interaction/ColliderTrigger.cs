@@ -32,10 +32,10 @@ public class ColliderTrigger : EventTrigger {
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player")) {
             if (hintTitle != "" && hintText != "")
-                GameManager.createHint(hintTitle, hintText);
+                GameManager.CreateHint(hintTitle, hintText);
 
             if (subtitleText != "")
-                GameManager.createSubtitle(subtitleText);
+                GameManager.CreateSubtitle(subtitleText);
 
             if (saveCheckpoint) {
                 foreach(UITweener uit in GameObject.FindGameObjectWithTag("SaveIcon").GetComponents<UITweener>()) {

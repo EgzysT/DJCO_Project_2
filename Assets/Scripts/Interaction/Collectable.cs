@@ -13,7 +13,7 @@ public class Collectable : InteractableObject
         RuntimeManager.PlayOneShotAttached(GetComponent<StudioEventEmitter>().Event, player);
 
         if (subtitleText != "")
-            GameManager.createSubtitle(subtitleText);
+            GameManager.CreateSubtitle(subtitleText);
 
         TriggerActivate();
         Destroy(gameObject);
