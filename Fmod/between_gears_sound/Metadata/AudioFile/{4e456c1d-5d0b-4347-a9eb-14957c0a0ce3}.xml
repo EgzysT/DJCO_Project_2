@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{4e456c1d-5d0b-4347-a9eb-14957c0a0ce3}">
+		<property name="assetPath">
+			<value>run_arcane05.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.3714375000000001</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a0187e00-90b9-4375-8e5b-6c03e7900e61}</destination>
+		</relationship>
+	</object>
+</objects>
