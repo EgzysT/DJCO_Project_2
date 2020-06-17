@@ -9,7 +9,8 @@ public enum UIAnimationTypes {
     Scale,
     ScaleX,
     ScaleY,
-    Fade
+    Fade,
+    Rotate
 }
 //[ExecuteInEditMode]
 public class UITweener : MonoBehaviour {
@@ -74,6 +75,9 @@ public class UITweener : MonoBehaviour {
             case UIAnimationTypes.ScaleY:
                 Scale();
                 break;
+            case UIAnimationTypes.Rotate:
+                Rotate();
+                break;
         }
 
         _tweenObject.setDelay(delay);
@@ -114,6 +118,13 @@ public class UITweener : MonoBehaviour {
         _tweenObject = LeanTween.scale(objectToAnimate, to, duration);
     }
 
+    public void Rotate() {
+        if (startPositionOffset)
+            objectToAnimate.GetComponent<RectTransform>().rotation = new Quaternion(from.x, from.y, from.z, 0);
+
+        _tweenObject = LeanTween.rotate(objectToAnimate, to, duration);
+    }
+
     public void SwapDirection() {
         (from, to) = (to, from);
     }
@@ -138,6 +149,18 @@ public class UITweener : MonoBehaviour {
             SwapDirection();
             onDisable();
             gameObject.SetActive(false);
+        });
+    }
+
+    public void ReverseAfterDelay(float delay) {
+        float initialDelay = this.delay;
+        this.delay = delay;
+        SwapDirection();
+        HandleTween();
+        _tweenObject.setOnComplete(() => {
+            this.delay = initialDelay;
+            SwapDirection();
+            onDisable();
         });
     }
 

@@ -38,7 +38,10 @@ public class ColliderTrigger : EventTrigger {
                 GameManager.createSubtitle(subtitleText);
 
             if (saveCheckpoint) {
-                GameObject.FindGameObjectWithTag("SaveIcon").GetComponent<UITweener>().enabled = true;
+                foreach(UITweener uit in GameObject.FindGameObjectWithTag("SaveIcon").GetComponents<UITweener>()) {
+                    uit.enabled = false;
+                    uit.enabled = true;
+                }
                 PlayerPrefs.SetFloat("player_position.x", other.transform.position.x);
                 PlayerPrefs.SetFloat("player_position.y", other.transform.position.y);
                 PlayerPrefs.SetFloat("player_position.z", other.transform.position.z);
