@@ -33044,6 +33044,7 @@ GameObject:
   - component: {fileID: 3025213238904746442}
   - component: {fileID: 3025213238904746443}
   - component: {fileID: 3025213238904746448}
+  - component: {fileID: 3025213238904746449}
   m_Layer: 0
   m_Name: door_Material #1_0.008
   m_TagString: Untagged
@@ -33064,6 +33065,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.004558192, y: 0.039348472, z: 0.06721985}
   m_Center: {x: 0.0008720399, y: 0.00000021205234, z: 0.002600813}
+--- !u!114 &3025213238904746449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3025213238904746447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62da0a4c693f12444a8b1234504c6dd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  belongsTo: 0
+  shouldApplyTextures: 0
+  isParticleSystem: 0
+  isLight: 0
+  shouldDisableChild: 0
 --- !u!1001 &3025213238909704909
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38672,6 +38690,7 @@ GameObject:
   - component: {fileID: 3025213240577084933}
   - component: {fileID: 3025213240577084954}
   - component: {fileID: 3025213240577084953}
+  - component: {fileID: 3025213240577084956}
   m_Layer: 0
   m_Name: door_Material #1_0.008
   m_TagString: Untagged
@@ -38745,6 +38764,23 @@ Transform:
   m_Father: {fileID: 3025213240460977245}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3025213240577084956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3025213240577084952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62da0a4c693f12444a8b1234504c6dd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  belongsTo: 1
+  shouldApplyTextures: 0
+  isParticleSystem: 0
+  isLight: 0
+  shouldDisableChild: 0
 --- !u!64 &3025213240590471290
 MeshCollider:
   m_ObjectHideFlags: 0
