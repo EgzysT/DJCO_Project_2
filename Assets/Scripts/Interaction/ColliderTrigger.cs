@@ -49,6 +49,7 @@ public class ColliderTrigger : EventTrigger {
                 PlayerPrefs.SetFloat("player_position.x", other.transform.position.x);
                 PlayerPrefs.SetFloat("player_position.y", other.transform.position.y);
                 PlayerPrefs.SetFloat("player_position.z", other.transform.position.z);
+                PlayerPrefs.SetInt("player_changeWorlds", WorldsController.instance.canChangeWorlds ? 1 : 0);
                 PlayerPrefs.Save();
 
                 if (enemySpawn != null)

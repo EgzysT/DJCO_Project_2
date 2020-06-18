@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour {
         PlayerPrefs.DeleteKey("player_position.x");
         PlayerPrefs.DeleteKey("player_position.y");
         PlayerPrefs.DeleteKey("player_position.z");
+        PlayerPrefs.DeleteKey("player_changeWorlds");
         PlayerPrefs.Save();
     }
 

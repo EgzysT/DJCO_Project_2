@@ -60,11 +60,20 @@ public class WorldsController : MonoBehaviour {
         currentWorld = World.NORMAL;
         dustEffectEmission = dustEffect.emission;
         dustEffect.Stop();
+
+        int canChange = PlayerPrefs.GetInt("player_changeWorlds", -1);
+        if(canChange != -1)
+        {
+            canChangeWorlds = canChange == 1 ? true : false;
+            if(canChangeWorlds)
+            {
+                GameObject.FindGameObjectWithTag("CrystalIcon").GetComponent<UITweener>().enabled = true;
+            }
+        }
     }
 
     // Update is called once per frame
     void Update() {
-
         if (Input.GetKeyDown(KeyCode.Q) && !isChangingWorlds && canChangeWorlds) {
             Shader.SetGlobalVector("_Position", transform.position);
             changeWorlds();
