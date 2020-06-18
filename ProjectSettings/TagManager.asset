@@ -18,6 +18,7 @@ TagManager:
   - HintHolder
   - SaveIcon
   - CrystalIcon
+  - Button
   layers:
   - Default
   - TransparentFX

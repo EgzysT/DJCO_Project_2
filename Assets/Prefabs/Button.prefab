@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6da0906878437a44fa58315e5161a458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: -1
+  id: 2
   isInteracting: 0
   movingObject: {fileID: 4595128414100498928}
   multipleInteractions: 1
@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 4987254357683742335}
   m_Layer: 0
   m_Name: Button
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

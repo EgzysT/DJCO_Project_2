@@ -17,7 +17,7 @@ public class ObjectMissing : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        objectNeeded.GetComponent<InteractableObject>().id = id;
+        objectNeeded.GetComponentInChildren<InteractableObject>().id = id;
         initialParticleSystem = Instantiate(Resources.Load("MissingObjectParticleSystem") as GameObject, gameObject.transform).GetComponent<ParticleSystem>();
         if (particleSystemRadius >= 0) {
             ParticleSystem.ShapeModule shapeModule = initialParticleSystem.shape;

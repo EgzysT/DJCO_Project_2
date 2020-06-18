@@ -191,7 +191,7 @@ public class EnemyMovement : MonoBehaviour
                 continue;
 
             //Debug.DrawLine(cam.transform.position, raycastTarget.position, Color.white);
-            if (Physics.Linecast(cam.transform.position, raycastTarget.position, out hit, ~(1 << LayerMask.NameToLayer("UninteractiveWorld") | 1 << LayerMask.NameToLayer("Trigger"))))
+            if (Physics.Linecast(cam.transform.position, raycastTarget.position, out hit, ~(1 << LayerMask.NameToLayer("UninteractiveWorld") | 1 << LayerMask.NameToLayer("Trigger") | 1 << LayerMask.NameToLayer("StopObjectsLayer"))))
             {
                 if (hit.transform.name == gameObject.name)
                 {
