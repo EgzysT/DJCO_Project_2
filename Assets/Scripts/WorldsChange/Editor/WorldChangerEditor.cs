@@ -7,33 +7,34 @@ public class WorldChangerEditor : Editor {
 
     public override void OnInspectorGUI() {
 
+
         DrawDefaultInspector();
 
-        if (!GUI.changed) {
-            return;
-        }
+        //if (!GUI.changed) {
+        //    return;
+        //}
         
-        WorldChanger worldChanger = target as WorldChanger;
+        //WorldChanger worldChanger = target as WorldChanger;
 
-        if (worldChanger.isParticleSystem)
-            return;
+        //if (worldChanger.isParticleSystem)
+        //    return;
 
-        Renderer rend = null;
-        worldChanger.TryGetComponent(out rend);
+        //Renderer rend = null;
+        //worldChanger.TryGetComponent(out rend);
 
-        if (rend != null) {
-            GUILayout.Label(worldChanger.belongsTo.ToString());
-            switch(worldChanger.belongsTo) {
-                case World.NORMAL:
-                    rend.material = new Material(Shader.Find("Custom/DisappearShader"));
-                    break;
-                case World.ARCANE:
-                    rend.material = new Material(Shader.Find("Custom/AppearShader"));
-                    break;
-                case World.BOTH:
-                    rend.material = new Material(Shader.Find("Custom/SwitchShader"));
-                    break;
-            }
-        }
+        //if (rend != null) {
+        //    GUILayout.Label(worldChanger.belongsTo.ToString());
+        //    switch(worldChanger.belongsTo) {
+        //        case World.NORMAL:
+        //            rend.material = new Material(Shader.Find("Custom/DisappearShader"));
+        //            break;
+        //        case World.ARCANE:
+        //            rend.material = new Material(Shader.Find("Custom/AppearShader"));
+        //            break;
+        //        case World.BOTH:
+        //            rend.material = new Material(Shader.Find("Custom/SwitchShader"));
+        //            break;
+        //    }
+        //}
     }
 }

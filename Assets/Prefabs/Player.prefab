@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1143948328}
   - component: {fileID: 1143948329}
   - component: {fileID: 6622839613751764203}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -908,6 +908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0529d8de6d2bf764eb23c7e0ff79c020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canChangeWorlds: 0
   dustEffect: {fileID: 1809259584290229023}
   radius: 0
   maxRadius: 50

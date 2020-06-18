@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Barrel_material Appear
+  m_Name: Concrete_fence_arcane
   m_Shader: {fileID: 4800000, guid: 8b24792e687d290478dc07539b0e915d, type: 3}
-  m_ShaderKeywords: ALPHA _EMISSION _METALLICGLOSSMAP _NORMALMAP
+  m_ShaderKeywords: ALPHA _EMISSION
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: db74622a99917134981ada49d18d1f01, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -44,15 +44,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 0b0f49687bda32249b1de6a19526d4b4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 93e807151f1087645acc598b36650d92, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 4a9b89f1bc04fae45a53eddb9f83bad9, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicMap:
-        m_Texture: {fileID: 2800000, guid: 4a9b89f1bc04fae45a53eddb9f83bad9, type: 3}
+        m_Texture: {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
@@ -60,11 +60,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: db74622a99917134981ada49d18d1f01, type: 3}
+        m_Texture: {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: eeacd07e96cf3c7459508c35e722a269, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
@@ -72,7 +72,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SecondTex:
-        m_Texture: {fileID: 2800000, guid: 0b0f49687bda32249b1de6a19526d4b4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 93e807151f1087645acc598b36650d92, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -84,25 +84,22 @@ Material:
     - _DisLineWidth: 0
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.3
+    - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Metallic: 1
+    - _Metallic: 0
     - _Mode: 0
     - _NScale: 1
     - _OcclusionStrength: 1
-    - _Outline: 0.005
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Thickness: 4
-    - _UVSec: 1
+    - _UVSec: 0
     - _UseMetallicMap: 1
-    - _UseNormalMap: 1
+    - _UseNormalMap: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
+    - _Color: {r: 0.588, g: 0.588, b: 0.588, a: 1}
     - _Color2: {r: 1, g: 1, b: 1, a: 1}
     - _DisLineColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}

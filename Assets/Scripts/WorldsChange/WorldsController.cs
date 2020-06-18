@@ -42,7 +42,8 @@ public class WorldsController : MonoBehaviour {
         instance = this;
 
         // Icon
-        canChangeWorlds = false;
+        //TODO CHANGE
+        //canChangeWorlds = false;
         crystalIcon = GameObject.FindGameObjectWithTag("CrystalIcon").GetComponent<CrystalIcon>();
 
         // Sounds
