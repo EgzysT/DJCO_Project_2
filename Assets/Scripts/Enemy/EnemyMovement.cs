@@ -1,4 +1,5 @@
 ﻿using FMODUnity;
+using NaughtyAttributes.Test;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -214,8 +215,14 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    public void MoveToPosition(Vector3 position)
+    {
+        transform.position = position;
+    }
+
     private void OnDestroy()
     {
         StopSounds();
+        
     }
 }

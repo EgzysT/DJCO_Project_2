@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Playables;
 
 public class ColliderTrigger : EventTrigger {
@@ -21,6 +22,9 @@ public class ColliderTrigger : EventTrigger {
 
     [Header("Checkpoint Settings")]
     public bool saveCheckpoint;
+
+    [Header("Enemy Spawn Settings")]
+    public GameObject enemySpawn;
 
     [Header("Timeline Settings")]
     public PlayableDirector timeline;
@@ -46,6 +50,14 @@ public class ColliderTrigger : EventTrigger {
                 PlayerPrefs.SetFloat("player_position.y", other.transform.position.y);
                 PlayerPrefs.SetFloat("player_position.z", other.transform.position.z);
                 PlayerPrefs.Save();
+
+                if (enemySpawn != null)
+                {
+                    GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
+                    enemy.GetComponent<NavMeshAgent>().enabled = false;
+                    enemy.transform.position = enemySpawn.transform.position;
+                    enemy.GetComponent<NavMeshAgent>().enabled = true;
+                }
             }
 
             if (timeline != null)
