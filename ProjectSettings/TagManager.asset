@@ -31,8 +31,8 @@ TagManager:
   - InteractiveWorld
   - UninteractiveWorld
   - Trigger
-  - 
-  - 
+  - PlayerLayer
+  - StopObjectsLayer
   - 
   - 
   - 
