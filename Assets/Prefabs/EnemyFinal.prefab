@@ -545,8 +545,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   belongsTo: 1
+  shouldApplyTextures: 0
   isParticleSystem: 0
   isLight: 1
+  shouldDisableChild: 0
 --- !u!1 &4681669096237901915
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,8 +685,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   belongsTo: 1
+  shouldApplyTextures: 0
   isParticleSystem: 0
   isLight: 1
+  shouldDisableChild: 0
 --- !u!1 &4681669096804063027
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,8 +825,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   belongsTo: 1
+  shouldApplyTextures: 0
   isParticleSystem: 0
   isLight: 1
+  shouldDisableChild: 0
 --- !u!1 &4681669096982491110
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,8 +935,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   belongsTo: 1
+  shouldApplyTextures: 0
   isParticleSystem: 0
   isLight: 1
+  shouldDisableChild: 0
 --- !u!1 &4681669097215575097
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,8 +1045,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   belongsTo: 1
+  shouldApplyTextures: 0
   isParticleSystem: 0
   isLight: 1
+  shouldDisableChild: 0
 --- !u!1 &4681669097639541474
 GameObject:
   m_ObjectHideFlags: 0
@@ -1145,8 +1155,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   belongsTo: 1
+  shouldApplyTextures: 0
   isParticleSystem: 0
   isLight: 1
+  shouldDisableChild: 0
 --- !u!1 &4681669097803133753
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,7 +1283,7 @@ Transform:
   m_GameObject: {fileID: 7684349436910161908}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.053, y: 0.75, z: -35.49}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children:
   - {fileID: 4396596425677157958}
   - {fileID: 7720106283888910991}
@@ -1407,5 +1419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   belongsTo: 1
+  shouldApplyTextures: 0
   isParticleSystem: 0
   isLight: 0
+  shouldDisableChild: 0

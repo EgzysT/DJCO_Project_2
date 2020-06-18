@@ -38,6 +38,8 @@ public class WorldChanger : MonoBehaviour {
             //gameObject.layer = LayerMask.NameToLayer("InteractiveWorld");
         }
 
+        CheckParticleSystem(belongsTo != World.ARCANE);
+
         // It only subscribes to events if it is going to change worlds
         if (belongsTo != World.BOTH) {
             GameEvents.instance.onNormalWorldEnter += NormalWorldEnter;
@@ -227,5 +229,4 @@ public class WorldChanger : MonoBehaviour {
             GameEvents.instance.onArcaneWorldEnter -= ArcaneWorldEnter;
         }
     }
-
 }
