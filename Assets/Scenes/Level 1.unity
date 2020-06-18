@@ -1143,6 +1143,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &357600358 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5503128408718045848, guid: e171885bcdc2d4b40878c72297f1f810,
+    type: 3}
+  m_PrefabInstance: {fileID: 1710699352}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &361638369
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4113,7 +4119,7 @@ PlayableDirector:
   - key: {fileID: -8593723154878179294, guid: 823cb31edf926d74ba7d268e0c6f8368, type: 2}
     value: {fileID: 1429489057}
   - key: {fileID: 2945232126098019625, guid: 823cb31edf926d74ba7d268e0c6f8368, type: 2}
-    value: {fileID: 2115248449}
+    value: {fileID: 357600358}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1344151038
@@ -5173,7 +5179,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1710699352}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 357600358}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2c0c1aa093963648bf1a29c89224dd5, type: 3}
@@ -7669,6 +7675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   isInteracting: 0
+  giveChangeWorldsAbility: 0
   subtitleText: This one is tight and it doesn't look good, but it will do.
 --- !u!114 &308053111437704985
 MonoBehaviour:
@@ -12370,6 +12377,21 @@ PrefabInstance:
     - target: {fileID: 1473928711639657053, guid: 88f10fb1dd605e14cbd61b0f5a36bb43,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 352619262}
+    - target: {fileID: 3580367736210311376, guid: 88f10fb1dd605e14cbd61b0f5a36bb43,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580367736210311376, guid: 88f10fb1dd605e14cbd61b0f5a36bb43,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814734973194639606, guid: 88f10fb1dd605e14cbd61b0f5a36bb43,
+        type: 3}
+      propertyPath: onCompleteEnableCallback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 352619262}
     - target: {fileID: 5364994771333348168, guid: 88f10fb1dd605e14cbd61b0f5a36bb43,

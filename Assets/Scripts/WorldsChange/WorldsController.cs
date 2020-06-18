@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using FMODUnity;
+using System;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public enum World { NORMAL, ARCANE, BOTH }
 
@@ -13,6 +11,9 @@ public class WorldsController : MonoBehaviour {
     World currentWorld;
     private ParticleSystem.EmissionModule dustEffectEmission;
     bool isChangingWorlds;
+
+    public bool canChangeWorlds;
+    private CrystalIcon crystalIcon;
 
     [Header("Shader Settings")]
     public ParticleSystem dustEffect;
@@ -34,8 +35,23 @@ public class WorldsController : MonoBehaviour {
     public float cameraEffectsDuration;
     public AnimationCurve fovTransitionCurve = AnimationCurve.Linear(0f, 0f, 1f, 0f);
 
+    private FMOD.Studio.EventInstance soundTransition;
+    private FMOD.Studio.EventInstance soundArcane;
+
     void Awake() {
         instance = this;
+
+        // Icon
+        canChangeWorlds = false;
+        crystalIcon = GameObject.FindGameObjectWithTag("CrystalIcon").GetComponent<CrystalIcon>();
+
+        // Sounds
+        soundTransition = RuntimeManager.CreateInstance("event:/SFX/Transition");
+        soundTransition.set3DAttributes(RuntimeUtils.To3DAttributes(transform));
+        soundArcane = RuntimeManager.CreateInstance("event:/Ambience/Arcane");
+        soundArcane.set3DAttributes(RuntimeUtils.To3DAttributes(transform));
+
+        // Effects
         effectSpeedPercent = effectSpeed / maxRadius;
         cam = Camera.main;
         initialFov = cam.fieldOfView;
@@ -49,7 +65,7 @@ public class WorldsController : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        if (Input.GetKeyDown(KeyCode.Q) && !isChangingWorlds) {
+        if (Input.GetKeyDown(KeyCode.Q) && !isChangingWorlds && canChangeWorlds) {
             Shader.SetGlobalVector("_Position", transform.position);
             changeWorlds();
         }
@@ -68,6 +84,9 @@ public class WorldsController : MonoBehaviour {
         isChangingWorlds = true;
         cameraEffectsActive = true;
 
+        soundTransition.set3DAttributes(RuntimeUtils.To3DAttributes(transform));
+        soundTransition.start();
+
         if (currentWorld == World.NORMAL) {
             dustEffectEmission.enabled = true;
             dustEffect.Play();
@@ -75,7 +94,8 @@ public class WorldsController : MonoBehaviour {
             GameEvents.instance.ArcaneWorldEnter(transform.position);
 
             // Play Arcane World Ambient Sound
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Ambience/ambience1");
+            soundArcane.set3DAttributes(RuntimeUtils.To3DAttributes(transform));
+            soundArcane.start();
         }
         else if (currentWorld == World.ARCANE) {
             dustEffectEmission.enabled = false;
@@ -83,12 +103,14 @@ public class WorldsController : MonoBehaviour {
             currentWorld = World.NORMAL;
             GameEvents.instance.NormalWorldEnter(transform.position);
 
-            // Stop
-            //FMODUnity.RuntimeManager.("event:/Ambience/ambience1");
+            // Stop Arcane World Ambient Sound
+            soundArcane.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
         else {
             throw new Exception("[" + gameObject.name + "] Current World must be NORMAL or ARCANE");
         }
+
+        crystalIcon.ChangeWorlds(currentWorld, cameraEffectsDuration);
     }
 
     void UpdateRadius() {

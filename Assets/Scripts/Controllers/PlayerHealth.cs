@@ -83,6 +83,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
+        GameManager.ClearHintsAndSubtitles();
         died = true;
         currentAfraidState = AFRAID_STATE.NOT_AFRAID;
         playerSoundController.StopAllSounds();

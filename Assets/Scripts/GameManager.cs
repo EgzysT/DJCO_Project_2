@@ -62,6 +62,11 @@ public class GameManager : MonoBehaviour {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public static void ClearHintsAndSubtitles() {
+        Destroy(GameObject.FindGameObjectWithTag("HintHolder"));
+        Destroy(GameObject.FindGameObjectWithTag("SubtitleHolder"));
+    }
+
     public static void CreateHint(string title, string text) {
         // Remove if a Hint already exists
         Transform tmp = GameObject.FindGameObjectWithTag("HintHolder").transform.Find("Hint(Clone)");
