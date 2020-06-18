@@ -937,7 +937,7 @@ Transform:
   - {fileID: 1344151038}
   - {fileID: 897058520}
   m_Father: {fileID: 0}
-  m_RootOrder: 60
+  m_RootOrder: 59
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &273404003
 GameObject:
@@ -1141,7 +1141,7 @@ Transform:
   - {fileID: 1726212188}
   - {fileID: 1172500464}
   m_Father: {fileID: 0}
-  m_RootOrder: 58
+  m_RootOrder: 57
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &339600299
 GameObject:
@@ -1233,7 +1233,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 64
+  m_RootOrder: 63
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &352619261
 GameObject:
@@ -1731,7 +1731,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 47
+  m_RootOrder: 46
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &506553856
 PrefabInstance:
@@ -1922,7 +1922,7 @@ Transform:
   - {fileID: 2125704516}
   - {fileID: 2091795361}
   m_Father: {fileID: 0}
-  m_RootOrder: 59
+  m_RootOrder: 58
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &550481228
 GameObject:
@@ -2016,7 +2016,7 @@ Transform:
   m_LocalScale: {x: 0.020160882, y: 4.377189, z: 10.308487}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 61
+  m_RootOrder: 60
   m_LocalEulerAnglesHint: {x: 270, y: 180, z: 90.002}
 --- !u!64 &552661511
 MeshCollider:
@@ -4504,7 +4504,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 63
+  m_RootOrder: 62
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1237836841
 GameObject:
@@ -7184,72 +7184,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 45
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1844861538
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1844861541}
-  - component: {fileID: 1844861540}
-  - component: {fileID: 1844861539}
-  m_Layer: 0
-  m_Name: CloseDoorTrigger (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1844861539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1844861538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f77a1d1c197aeb4799f74355dc78337, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 12
-  triggerAction: 1
-  multipleInteractions: 0
-  shouldDestroyGameObject: 1
-  hintTitle: 
-  hintText: 
-  subtitleText: I have to push forward... there's only one way out of this.
-  saveCheckpoint: 1
-  timeline: {fileID: 0}
---- !u!65 &1844861540
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1844861538}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.08, y: 4.13, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &1844861541
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1844861538}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.79, y: 2.71, z: -88.99}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 57
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1855685062
 GameObject:
   m_ObjectHideFlags: 0
@@ -8174,7 +8108,7 @@ Transform:
   m_LocalScale: {x: 0.009350617, y: 4.377189, z: 10.308487}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 62
+  m_RootOrder: 61
   m_LocalEulerAnglesHint: {x: 270, y: 180, z: 90.002}
 --- !u!1 &2105328512
 GameObject:
@@ -39944,7 +39878,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7889580062851069076}
   m_LocalRotation: {x: -0.23413296, y: -0.6672347, z: 0.23412341, w: -0.6672075}
-  m_LocalPosition: {x: -182.74, y: 1.14, z: -127.12}
+  m_LocalPosition: {x: -182.718, y: 1.148, z: -127.12}
   m_LocalScale: {x: 1, y: 0.8, z: 1}
   m_Children:
   - {fileID: 8573584533347723608}
@@ -47928,7 +47862,7 @@ PrefabInstance:
     - target: {fileID: 2872046254613680728, guid: 2d7b4c901d1e6ff42aa5d5f7e08aad75,
         type: 3}
       propertyPath: m_RootOrder
-      value: 46
+      value: 47
       objectReference: {fileID: 0}
     - target: {fileID: 2872046254613680728, guid: 2d7b4c901d1e6ff42aa5d5f7e08aad75,
         type: 3}
