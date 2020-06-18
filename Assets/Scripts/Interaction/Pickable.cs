@@ -45,7 +45,7 @@ public class Pickable : InteractableObject
     IEnumerator StartCollisionTimeout()
     {
         inCollisionTimeout = true;
-        yield return new WaitForSeconds(.25f);
+        yield return new WaitForSeconds(.5f);
         inCollisionTimeout = false;
     }
 
