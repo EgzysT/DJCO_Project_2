@@ -1,5 +1,8 @@
+using FMODUnity;
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Jobs;
 
 public class Pickable : InteractableObject
 {
@@ -18,6 +21,7 @@ public class Pickable : InteractableObject
     private Rigidbody rb;
     private Camera cam;
     private GameObject holdSpot;
+    private bool inCollisionTimeout;
 
     private void Start() 
     {
@@ -27,6 +31,22 @@ public class Pickable : InteractableObject
 
         if (MaxDistance <= MaxZoomDistance || MinDistance >= MinZoomDistance)
             throw new Exception("[" + gameObject.name + "] MinDistance must be < than MinZoomDistance and MaxDistance must be > than MaxZoomDistance");
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!inCollisionTimeout)
+        {
+            RuntimeManager.PlayOneShot("event:/SFX/Collision", transform.position);
+            StartCoroutine(StartCollisionTimeout());
+        }
+    }
+
+    IEnumerator StartCollisionTimeout()
+    {
+        inCollisionTimeout = true;
+        yield return new WaitForSeconds(.25f);
+        inCollisionTimeout = false;
     }
 
     private void Pick() 
