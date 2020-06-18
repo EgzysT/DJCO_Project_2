@@ -27,6 +27,9 @@ public class MenuController : MonoBehaviour
             if (float.IsNaN(newPositionX))
                 checkpointOverlay.enabled = true;
         }
+
+        if (menu.name == "MainMenu")
+            SetCursorVisibility(true);
     }
 
     void Update() {
