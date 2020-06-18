@@ -1364,10 +1364,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: 
-  m_Time: 12.016666666666667
+  m_Time: 8.6
   m_Retroactive: 0
   m_EmitOnce: 0
-  m_Asset: {fileID: 11400000, guid: f3c83a19b29feb447a4431eed08c254b, type: 2}
+  m_Asset: {fileID: 11400000, guid: 162d5dcfe90d0594d8c6faa862f74981, type: 2}
 --- !u!114 &-2006538427887769226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1592,7 +1592,7 @@ MonoBehaviour:
   m_Version: 3
   m_AnimClip: {fileID: 0}
   m_Locked: 0
-  m_Muted: 0
+  m_Muted: 1
   m_CustomPlayableFullTypename: 
   m_Curves: {fileID: 0}
   m_Parent: {fileID: -72524076936968962}

@@ -60,6 +60,8 @@ public class ObjectMissing : MonoBehaviour {
             // Set parent to null to be child of root
             GameObject newObject = Instantiate(objectNeeded, null);
 
+            newObject.GetComponentInChildren<InteractableObject>().id = id;
+
             newObject.transform.position = gameObject.transform.position;
             newObject.transform.forward = gameObject.transform.forward;
 
