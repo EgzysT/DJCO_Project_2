@@ -66,3 +66,5 @@ Assets/StreamingAssets/Master.strings.bank
 Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset.meta
 
 Assets/StreamingAssets/Master.bank
+
+*.meta

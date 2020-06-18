@@ -175,7 +175,11 @@ public class WorldChanger : MonoBehaviour {
         Texture mainTexture = rend.material.GetTexture("_MainTex");
         Texture normalMap = rend.material.GetTexture("_NormalMap");
         Texture metallicMap = rend.material.GetTexture("_MetallicMap");
+        Color color = rend.material.GetColor("_Color");
+        float useNormal = rend.material.GetFloat("_UseNormalMap");
+        float useMetallic = rend.material.GetFloat("_UseMetallicMap");
         float metallic = rend.material.GetFloat("_Metallic");
+        float smoothness = rend.material.GetFloat("_Glossiness");
 
         Debug.Log(mainTexture);
         Debug.Log(normalMap);
@@ -195,7 +199,11 @@ public class WorldChanger : MonoBehaviour {
         rend.material.SetTexture("_MainTex", mainTexture);
         rend.material.SetTexture("_NormalMap", normalMap);
         rend.material.SetTexture("_MetallicMap", metallicMap);
+        rend.material.SetColor("_Color", color);
+        rend.material.SetFloat("_UseNormalMap", useNormal);
+        rend.material.SetFloat("_UseMetallicMap", useMetallic);
         rend.material.SetFloat("_Metallic", metallic);
+        rend.material.SetFloat("_Glossiness", smoothness);
     }
 
     private void ChangeLayer(Transform transf, string layer) {

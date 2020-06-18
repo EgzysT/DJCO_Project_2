@@ -7,7 +7,9 @@
         _Color2("Secondary Color", Color) = (1,1,1,1)
         _SecondTex("Secondary (RGB)", 2D) = "white" {}
         _NormalMap("Normal Map", 2D) = "white" {}
+        _UseNormalMap("Use Normal Map", Range(0, 1)) = 1.0
         _MetallicMap("Metalic Map", 2D) = "white" {}
+        _UseMetallicMap("Use Metallic Map", Range(0, 1)) = 1.0
         _NoiseTex("Dissolve Noise", 2D) = "white"{}
         _NScale("Noise Scale", Range(0, 10)) = 1
         _DisAmount("Noise Texture Opacity", Range(0.01, 1)) = 0.01
@@ -36,6 +38,7 @@
         sampler2D _NoiseTex;
         float _DisAmount, _NScale;
         float _DisLineWidth;
+        float _UseNormalMap, _UseMetallicMap;
         float4 _DisLineColor;
 
         struct Input
@@ -86,12 +89,22 @@
             float3 resultTex = primaryTex + secondaryTex + DissolveLine;
             o.Albedo = resultTex;
 
-            o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_MainTex));
+            //o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_MainTex));
+            if (_UseNormalMap > 0.5) {
+                o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_MainTex));
+            }
 
             o.Emission = DissolveLine;
 
             // Metallic and smoothness come from slider variables
-            o.Metallic = tex2D(_MetallicMap, IN.uv_MainTex) * _Metallic;
+            //o.Metallic = tex2D(_MetallicMap, IN.uv_MainTex) * _Metallic;
+            if (_UseMetallicMap > 0.5) {
+                o.Metallic = tex2D(_MetallicMap, IN.uv_MainTex) * _Metallic;
+            }
+            else {
+                o.Metallic = _Metallic;
+            }
+
             o.Smoothness = _Glossiness;
             o.Alpha = c.a;
         }
