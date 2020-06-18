@@ -61,6 +61,7 @@ public class ObjectMissing : MonoBehaviour {
             GameObject newObject = Instantiate(objectNeeded, null);
 
             newObject.GetComponentInChildren<InteractableObject>().id = id;
+            Debug.Log(newObject.GetComponentInChildren<InteractableObject>().id);
 
             newObject.transform.position = gameObject.transform.position;
             newObject.transform.forward = gameObject.transform.forward;
