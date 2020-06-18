@@ -76,7 +76,7 @@ public class Interactor : MonoBehaviour
             {
                 currentlyLooking.RightMouseButtonDown();
                 currentlyLooking = null;
-                crosshairController.ShowNormal()    ;
+                crosshairController.ShowNormal();
                 return;
             }
 
