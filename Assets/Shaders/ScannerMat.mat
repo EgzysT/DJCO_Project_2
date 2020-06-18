@@ -32,7 +32,7 @@ Material:
     - _ScanDistance: 0
     - _ScanWidth: 3
     m_Colors:
-    - _HBarColor: {r: 0.04705883, g: 0.3647059, b: 0.6431373, a: 1}
-    - _LeadColor: {r: 1, g: 1, b: 1, a: 1}
-    - _MidColor: {r: 0.31764707, g: 0.5647059, b: 0.41960788, a: 1}
-    - _TrailColor: {r: 0.14509805, g: 0.6, b: 0.7058824, a: 1}
+    - _HBarColor: {r: 0.53333336, g: 0.11764707, b: 0.09019608, a: 1}
+    - _LeadColor: {r: 1, g: 0, b: 0, a: 1}
+    - _MidColor: {r: 0.53333336, g: 0.11764707, b: 0.09019608, a: 1}
+    - _TrailColor: {r: 0.3584906, g: 0.07138086, b: 0.05242079, a: 1}

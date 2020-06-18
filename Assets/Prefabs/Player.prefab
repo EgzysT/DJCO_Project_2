@@ -911,8 +911,8 @@ MonoBehaviour:
   canChangeWorlds: 0
   dustEffect: {fileID: 1809259584290229023}
   radius: 0
-  maxRadius: 50
-  effectSpeed: 15
+  maxRadius: 100
+  effectSpeed: 35
   effectTransitionCurve:
     serializedVersion: 2
     m_Curve:
