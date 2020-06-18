@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5264474384510342849}
   - component: {fileID: 65000012831585980}
   - component: {fileID: 3308249992900364335}
+  - component: {fileID: 1248801010}
   m_Layer: 0
   m_Name: Wooden_box_v1_LD2
   m_TagString: Untagged
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1a087c65608607042accf116f4319d39, type: 2}
+  - {fileID: 2100000, guid: 69218f6ce13268b48bf32f93a14d6632, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -134,3 +135,20 @@ MonoBehaviour:
   MinDistance: 0.8
   MaxCollisionVelocity: 3.8
   MaxAngle: 35
+--- !u!114 &1248801010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013580012832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62da0a4c693f12444a8b1234504c6dd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  belongsTo: 0
+  shouldApplyTextures: 0
+  isParticleSystem: 0
+  isLight: 0
+  shouldDisableChild: 0
