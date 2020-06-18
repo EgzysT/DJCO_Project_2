@@ -11,7 +11,7 @@ public class GameEvents : MonoBehaviour
 
     public event Action<Vector3> onNormalWorldEnter;
     public void NormalWorldEnter(Vector3 effectOrigin) {
-        Debug.Log("Changing to NORMAL");
+        //Debug.Log("Changing to NORMAL");
         if (onNormalWorldEnter != null) {
             onNormalWorldEnter(effectOrigin);
         }
@@ -19,7 +19,7 @@ public class GameEvents : MonoBehaviour
 
     public event Action<Vector3> onArcaneWorldEnter;
     public void ArcaneWorldEnter(Vector3 effectOrigin) {
-        Debug.Log("Changing to ARCANE");
+        //Debug.Log("Changing to ARCANE");
         if (onArcaneWorldEnter != null) {
             onArcaneWorldEnter(effectOrigin);
         }

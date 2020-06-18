@@ -1,5 +1,4 @@
-﻿using FMOD;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -33,7 +32,7 @@ public class WorldChanger : MonoBehaviour {
             //gameObject.layer = LayerMask.NameToLayer("InteractiveWorld");
         }
         else {
-            ChangeAllLayers("InteractiveWorld");
+            ChangeAllLayers("Default");
             //gameObject.layer = LayerMask.NameToLayer("InteractiveWorld");
         }
 
@@ -138,32 +137,26 @@ public class WorldChanger : MonoBehaviour {
     }
 
     void ChangeAllTextures(bool belongsToNormal) {
-        //Renderer[] allChildren = GetComponentsInChildren<Renderer>();
         Transform[] allChildren = GetComponentsInChildren<Transform>();
         foreach (Transform child in allChildren) {
             ChangeTexture(child.GetComponent<Renderer>(), belongsToNormal);
-            //ChangeLayer(child, layer);
         }
 
         ChangeTexture(GetComponent<Renderer>(), belongsToNormal);
-        //ChangeLayer(transform, layer);
     }
 
     void ChangeAllLayers(string layer) {
-        //Renderer[] allChildren = GetComponentsInChildren<Renderer>();
 
         if (shouldDisableChild) {
-            transform.GetChild(0).gameObject.SetActive(layer == "InteractiveWorld");
+            transform.GetChild(0)?.gameObject.SetActive(layer == "InteractiveWorld");
             return;
         }
 
         Transform[] allChildren = GetComponentsInChildren<Transform>();
         foreach (Transform child in allChildren) {
-            //ChangeTexture(child.GetComponent<Renderer>(), belongsToNormal);
             ChangeLayer(child, layer);
         }
 
-        //ChangeTexture(GetComponent<Renderer>(), belongsToNormal);
         ChangeLayer(transform, layer);
     }
 
@@ -172,18 +165,37 @@ public class WorldChanger : MonoBehaviour {
             return;
 
         Texture mainTexture = rend.material.GetTexture("_MainTex");
-        Texture normalMap = rend.material.GetTexture("_NormalMap");
-        Texture metallicMap = rend.material.GetTexture("_MetallicMap");
+        Texture normalMap = null;
+        Texture metallicMap = null;
         Color color = rend.material.GetColor("_Color");
-        float useNormal = rend.material.GetFloat("_UseNormalMap");
-        float useMetallic = rend.material.GetFloat("_UseMetallicMap");
-        float metallic = rend.material.GetFloat("_Metallic");
-        float smoothness = rend.material.GetFloat("_Glossiness");
 
-        Debug.Log(mainTexture);
-        Debug.Log(normalMap);
-        Debug.Log(metallicMap);
-        Debug.Log(metallic);
+        if(rend.material.HasProperty("_NormalMap"))
+            normalMap = rend.material.GetTexture("_NormalMap");
+
+        if (rend.material.HasProperty("_MetallicMap"))
+            normalMap = rend.material.GetTexture("_MetallicMap");
+
+        float useNormal = 0f;
+        float useMetallic = 0f;
+        float metallic = 0f;
+        float smoothness = 0f;
+
+        if (rend.material.HasProperty("_UseNormalMap"))
+            useNormal = rend.material.GetFloat("_UseNormalMap");
+        
+        if (rend.material.HasProperty("_UseMetallicMap"))
+            useNormal = rend.material.GetFloat("_UseMetallicMap");       
+        
+        if (rend.material.HasProperty("_Metallic"))
+            useNormal = rend.material.GetFloat("_Metallic");        
+        
+        if (rend.material.HasProperty("_Glossiness"))
+            useNormal = rend.material.GetFloat("_Glossiness");
+
+        //Debug.Log(mainTexture);
+        //Debug.Log(normalMap);
+        //Debug.Log(metallicMap);
+        //Debug.Log(metallic);
 
         // If it belongs to the Normal world then it will change to the Arcane world, and vice-versa
         if (belongsToNormal) {
@@ -199,6 +211,7 @@ public class WorldChanger : MonoBehaviour {
         rend.material.SetTexture("_NormalMap", normalMap);
         rend.material.SetTexture("_MetallicMap", metallicMap);
         rend.material.SetColor("_Color", color);
+
         rend.material.SetFloat("_UseNormalMap", useNormal);
         rend.material.SetFloat("_UseMetallicMap", useMetallic);
         rend.material.SetFloat("_Metallic", metallic);

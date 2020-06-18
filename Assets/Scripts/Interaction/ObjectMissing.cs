@@ -38,8 +38,8 @@ public class ObjectMissing : MonoBehaviour {
         if (other.gameObject.layer == LayerMask.NameToLayer("UninteractiveWorld"))
             return;
 
-        if (other.gameObject.transform.up.y <= 0)
-            return;
+        //if (other.gameObject.transform.up.y <= 0)
+        //    return;
 
         if (other.gameObject.CompareTag(objectNeeded.tag)) {
             initialParticleSystem.Stop();
@@ -56,7 +56,10 @@ public class ObjectMissing : MonoBehaviour {
             sound.start();
 
             Instantiate(Resources.Load("FoundObjectParticleSystem") as GameObject, gameObject.transform.position, Quaternion.identity).GetComponent<ParticleSystem>().Play();
-            GameObject newObject = Instantiate(objectNeeded, gameObject.transform.parent);
+
+            // Set parent to null to be child of root
+            GameObject newObject = Instantiate(objectNeeded, null);
+
             newObject.transform.position = gameObject.transform.position;
             newObject.transform.forward = gameObject.transform.forward;
 
